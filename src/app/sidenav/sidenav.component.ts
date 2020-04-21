@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./sidenav.component.css']
 })
 export class SidenavComponent implements OnInit {
-  hover = false;
+  active = 'Home'
   constructor() { }
 
   ngOnInit(): void {
