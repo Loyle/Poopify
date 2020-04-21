@@ -3,19 +3,15 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { AppComponent } from './app.component';
-import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
-import { TooltipModule } from 'ngx-bootstrap/tooltip';
-import { ModalModule } from 'ngx-bootstrap/modal';
+import { SidenavComponent } from './sidenav/sidenav.component';
 
 @NgModule({
 imports: [
-    BrowserModule,
-    BsDropdownModule.forRoot(),
-    TooltipModule.forRoot(),
-    ModalModule.forRoot()
+    BrowserModule
   ],
   declarations: [
-    AppComponent
+    AppComponent,
+    SidenavComponent
   ],
   providers: [],
   bootstrap: [AppComponent]
