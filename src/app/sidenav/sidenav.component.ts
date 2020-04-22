@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SidenavComponent implements OnInit {
   active = 'Home'
+  dropdownenable = false
   constructor() { }
 
   ngOnInit(): void {
