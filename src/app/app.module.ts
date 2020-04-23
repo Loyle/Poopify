@@ -17,7 +17,7 @@ imports: [
   ],
   declarations: [
     AppComponent,
-    PlayerBarComponent
+    PlayerBarComponent,
     SidenavComponent,
     SettingsComponent,
     SearchBarComponent
