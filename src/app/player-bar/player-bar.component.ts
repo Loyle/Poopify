@@ -23,6 +23,9 @@ export class PlayerBarComponent implements OnInit {
 	public musicTitle = "";
 	public thumbnail = "";
 
+	public playlist : string[];
+	public listened : string[];
+
 	constructor() { }
 	init() {
 		var tag = document.createElement('script');
@@ -62,7 +65,13 @@ export class PlayerBarComponent implements OnInit {
 	}
 	
 	previousMusic() : void {
-		alert("Previous");
+		if(this.currentTime > 2 && this.isPlaying) {
+			// On remet au debut
+			this.player.seekTo(0);
+		}
+		else {
+			// On charge la musique precedente
+		}
 	}
 	playPauseMusic(videoID) : void {
 		if(this.isPlaying) {

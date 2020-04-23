@@ -1,7 +1,7 @@
 .player-bar {
 	position:  fixed;
 	bottom: 0px;
-	left: 70px;
+	left: 85px;
 	right: 0px;
 
 	height: 80px;
@@ -12,6 +12,10 @@
 }
 .music-info, .music-volume, .music-controller {
 	padding: 10px 10px;
+}
+.music-info .thumbnail {
+	width: 60px;
+	padding: 5px;
 }
 .music-info {
 	font-size: 13px;
