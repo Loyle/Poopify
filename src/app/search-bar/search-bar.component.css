@@ -1,0 +1,32 @@
+*{
+  transition-duration: 0.5s;
+}
+
+.serchBar{
+  height: 2.5em;
+  margin-left: 70px;
+  background-color: rgb(44, 50, 56);
+}
+
+.searchZone{
+  width: 10em;
+  height: 1.8em;
+  cursor: pointer;
+}
+
+.textField{
+  width: 5em;
+  border: none;
+  outline: none;
+  color: transparent;
+  text-shadow: 0 0 0 gray;
+  cursor: pointer;
+}
+
+.active{
+  width: 15em;
+}
+
+.active .textField{
+  width: 10em;
+}
