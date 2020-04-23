@@ -1,21 +1,39 @@
 <div *ngIf="open" class="container-fluid mask h-100 d-flex align-items-center justify-content-center">
-  <div class="container bg-dark h-75 rounded-lg settings p-0">
+  <div class="container h-75 rounded-lg settings p-0">
     <div class="leaveBtn mt-3 ml-3 position-absolute" (click)="leaveSettings()" (mouseover)="hoverBtn = true" (mouseleave)="hoverBtn = false">
       <svg class="bi bi-x" [ngClass]="hoverBtn ? 'text-white' : 'text-muted'" width="2em" height="2em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
         <path fill-rule="evenodd" d="M11.854 4.146a.5.5 0 010 .708l-7 7a.5.5 0 01-.708-.708l7-7a.5.5 0 01.708 0z" clip-rule="evenodd"/>
         <path fill-rule="evenodd" d="M4.146 4.146a.5.5 0 000 .708l7 7a.5.5 0 00.708-.708l-7-7a.5.5 0 00-.708 0z" clip-rule="evenodd"/>
       </svg>
     </div>
-    <div class="row p-5">
-      <div class="col-2">
-        <ul class="navbar-nav text-muted">
-          <li class="nav-item p-3">Test</li>
-          <li class="nav-item p-3">Test</li>
-          <li class="nav-item p-3">Test</li>
+    <div class="row h-100">
+      <div class="col-2 offset-1 settingsMenu d-flex p-0 align-items-center">
+        <ul class="navbar-nav text-muted w-100 h-75 py-5 ">
+          <li class="nav-item p-3 font-weight-bold d-flex align-items-center">General</li>
+          <li class="nav-item p-3 font-weight-bold d-flex align-items-center">Quality</li>
+          <li class="nav-item p-3 font-weight-bold d-flex align-items-center">Confidentiality</li>
         </ul>
       </div>
-      <div class="col-9">
+      <div class="col-9 settingsParam">
+        <div class="container">
+          <ng-template *ngIf="settingsField === 'General' ; then General else Quality"></ng-template>
+          <ng-template #General>
+            <div class="p-5 text-white">
+              <h2>General</h2>
+              <hr class="bg-white">
+              <h5 class="mt-5">Theme :</h5>
+              <div class="custom-control custom-switch d-flex ml-5 mt-2">
+                <p class="text-muted">Enable dark mode</p>
+                <input type="checkbox" class="custom-control-input" id="customSwitches">
+                <label class="custom-control-label  ml-5" for="customSwitches"></label>
+              </div>
+            </div>
+          </ng-template>
 
+          <ng-template #Quality>
+
+          </ng-template>
+        </div>
       </div>
     </div>
   </div>

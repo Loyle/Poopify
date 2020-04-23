@@ -1,13 +1,15 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit,Input , Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-settings',
   templateUrl: './settings.component.html',
-  styleUrls: ['./settings.component.css']
+  styleUrls: ['./settings.component.css'],
 })
 export class SettingsComponent implements OnInit {
 
-  hoverBtn = false
+  hoverBtn = false;
+  settingsField = "General";
+
   constructor() { }
 
   @Input()
@@ -20,8 +22,6 @@ export class SettingsComponent implements OnInit {
   }
 
   leaveSettings(){
-    this.open = !this.open;
-    this.close.emit(this.open);
+    this.close.emit(false);
   }
-
 }

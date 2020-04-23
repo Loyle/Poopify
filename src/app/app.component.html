@@ -1,5 +1,6 @@
 <app-search-bar></app-search-bar>
-<app-sidenav></app-sidenav>
+<app-sidenav  (open)="openSettings($event)"></app-sidenav>
+<app-settings [open] = "toggleSettings" (close)="closeSettings($event)"></app-settings>
 <div class="container bg-primary">
   main
 </div>

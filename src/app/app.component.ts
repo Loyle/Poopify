@@ -7,5 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AppComponent implements OnInit{
   title = 'Poopify';
+  toggleSettings = false;
   ngOnInit() {}
+
+  openSettings(event){
+    this.toggleSettings = event;
+  }
+
+  closeSettings(event){
+    this.toggleSettings = event;
+  }
 }

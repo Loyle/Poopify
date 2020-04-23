@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-sidenav',
@@ -8,18 +8,17 @@ import { Component, OnInit } from '@angular/core';
 export class SidenavComponent implements OnInit {
   active = 'Home';
   dropdownenable = false;
-  toggleSettings = false;
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  @Output()
+  open = new EventEmitter<boolean>();
+
   openSettings(){
-    this.toggleSettings = true;
+    this.open.emit(true);
   }
 
-  closeSettings(event){
-    this.toggleSettings = event;
-  }
 }
