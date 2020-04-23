@@ -1,0 +1,34 @@
+.player-bar {
+	position:  fixed;
+	bottom: 0px;
+	left: 0px;
+	right: 0px;
+
+	height: 80px;
+
+	background: #282923;
+
+	color: white;
+}
+.music-info, .music-volume, .music-controller {
+	padding: 10px 10px;
+}
+.music-controller {
+	font-size: 30px;
+}
+
+.music-controller .controller-button div {
+	color: #bdbdbd;
+	transition-duration: 0.1s;
+	cursor: pointer;
+}
+.music-controller .controller-button div:hover{
+	color: white;
+}
+.music-controller .controller-bar {
+	margin: 5px 0px; /* 10px de h en plus, 80px*/
+	width: 80%;
+	height: 5px;	/* 5 px de h en plus, 80px*/
+	border-radius: 25px;
+	background: #3a3b33;
+}

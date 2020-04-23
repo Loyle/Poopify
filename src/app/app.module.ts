@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { ModalModule } from 'ngx-bootstrap/modal';
+import { PlayerBarComponent } from './player-bar/player-bar.component';
 
 @NgModule({
 imports: [
@@ -15,7 +16,8 @@ imports: [
     ModalModule.forRoot()
   ],
   declarations: [
-    AppComponent
+    AppComponent,
+    PlayerBarComponent
   ],
   providers: [],
   bootstrap: [AppComponent]
