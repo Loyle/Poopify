@@ -82,7 +82,7 @@
           <li class="nav-item d-flex align-items-center justify-content-center" (click)="active='Playlist'">Playlist3</li>
         </div>
       </li>
-      <li class="nav-item d-flex align-items-center text-muted" [ngClass]="active==='Settings' ? 'active' : ''" (click)="active='Settings'">
+      <li class="nav-item d-flex align-items-center text-muted" (click)="openSettings()">
         <div class="icon">
           <ng-template *ngIf="active === 'Settings' ; then settingsActive else settingsNotActive"></ng-template>
           <ng-template #settingsActive>
@@ -111,3 +111,4 @@
     </ul>
   </nav>
 </div>
+<app-settings [open] = "toggleSettings" (leaveSettings)="closeSettings($event)"></app-settings>

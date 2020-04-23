@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 
 import { AppComponent } from './app.component';
 import { SidenavComponent } from './sidenav/sidenav.component';
+import { SettingsComponent } from './settings/settings.component';
 
 @NgModule({
 imports: [
@@ -11,7 +12,8 @@ imports: [
   ],
   declarations: [
     AppComponent,
-    SidenavComponent
+    SidenavComponent,
+    SettingsComponent,
   ],
   providers: [],
   bootstrap: [AppComponent]
