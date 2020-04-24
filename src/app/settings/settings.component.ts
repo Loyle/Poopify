@@ -31,4 +31,8 @@ export class SettingsComponent implements OnInit {
   changeTheme(){
     this.themeSwap.emit(!this.darkMode);
   }
+
+  setFadeVal(){
+    
+  }
 }

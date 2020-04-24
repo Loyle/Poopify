@@ -9,7 +9,7 @@ export class AppComponent implements OnInit{
   title = 'Poopify';
   toggleSettings = false;
   themedark = true;
-
+  url = '';
   ngOnInit() {}
 
   openSettings(event){

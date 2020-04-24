@@ -1,5 +1,5 @@
 *{
-  transition-duration: 0.5s;
+  transition-duration: 0.3s;
 }
 
 .sidenav{
@@ -56,10 +56,12 @@
   height: 50px;
   margin-bottom: 40px;
   cursor: pointer;
+  border: 1px solid var(--text-color);
 }
 
 .more{
   opacity: 0;
+  color: var(--text-color);
 }
 
 .profil-pic:hover{

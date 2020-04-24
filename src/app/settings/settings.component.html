@@ -18,15 +18,21 @@
         <div class="container">
           <ng-template *ngIf="settingsField === 'General' ; then General else Quality"></ng-template>
           <ng-template #General>
-            <div class="p-5 text-white">
+            <div class="p-5">
               <h2>General</h2>
-              <hr class="bg-white">
+              <hr>
               <h5 class="mt-5">Theme :</h5>
               <div class="custom-control custom-switch d-flex ml-5 mt-2">
                 <p>Enable dark mode</p>
-                <input type="checkbox" class="custom-control-input" id="customSwitches" checked (click)="changeTheme()">
+                <input type="checkbox" class="custom-control-input" id="customSwitches" [checked]="darkMode" (click)="changeTheme()">
                 <label class="custom-control-label  ml-5" for="customSwitches"></label>
               </div>
+                <h5 class="mt-5">Song Fade :</h5>
+                <div class="custom-control custom-switch d-flex ml-5 mt-2">
+                  <span>Set Fade effect value :</span>
+                  <input type="text" class="fadeVal rounded mx-3" (keyup.enter)="setFadeVal()"/>
+                  <span> seconds</span>
+                </div>
             </div>
           </ng-template>
 
