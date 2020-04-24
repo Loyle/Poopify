@@ -8,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class AppComponent implements OnInit{
   title = 'Poopify';
   toggleSettings = false;
+  toggleProfil = false;
   themedark = true;
   ngOnInit() {}
 
@@ -17,6 +18,14 @@ export class AppComponent implements OnInit{
 
   closeSettings(event){
     this.toggleSettings = event;
+  }
+
+  openProfil(event){
+    this.toggleProfil = event;
+  }
+
+  closeProfil(event){
+    this.toggleProfil = event;
   }
 
   changeTheme(event){

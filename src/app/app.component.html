@@ -1,6 +1,8 @@
 <app-search-bar></app-search-bar>
-<app-sidenav (open)="openSettings($event)"></app-sidenav>
-<app-settings [open] = "toggleSettings" [darkMode]="themedark" (close)="closeSettings($event)" (themeSwap)="changeTheme($event)"></app-settings>
+<app-sidenav (setting)="openSettings($event)" (profil)="openProfil($event)"></app-sidenav>
+<app-profil></app-profil>
+<app-settings [openSetting] = "toggleSettings" [darkMode]="themedark" (close)="closeSettings($event)" (themeSwap)="changeTheme($event)"></app-settings>
+<app-profil [openProfil]="toggleProfil" (close)="closeProfil($event)"></app-profil>
 <div class="container bg-primary">
   main
 </div>

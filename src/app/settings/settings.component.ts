@@ -12,7 +12,7 @@ export class SettingsComponent implements OnInit {
   constructor() { }
 
   @Input()
-  open : boolean;
+  openSetting : boolean;
   @Input()
   darkMode : boolean;
 
@@ -33,6 +33,6 @@ export class SettingsComponent implements OnInit {
   }
 
   setFadeVal(){
-    
+
   }
 }

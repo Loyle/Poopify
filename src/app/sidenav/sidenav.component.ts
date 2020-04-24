@@ -15,10 +15,17 @@ export class SidenavComponent implements OnInit {
   }
 
   @Output()
-  open = new EventEmitter<boolean>();
+  setting = new EventEmitter<boolean>();
+
+  @Output()
+  profil = new EventEmitter<boolean>();
 
   openSettings(){
-    this.open.emit(true);
+    this.setting.emit(true);
+  }
+
+  openProfil(){
+    this.profil.emit(true);
   }
 
 }

@@ -1,0 +1,40 @@
+*{
+  transition-duration: 0.1s;
+}
+
+.mask{
+  z-index: 10;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgba(0,0,0,0.3);
+}
+
+.profilContainer{
+  background-color: var(--bg-secondary);
+}
+
+.leaveBtn{
+  color: var(--text-color);
+}
+
+.leaveBtn:hover{
+  color: white;
+}
+
+.profil-pic{
+  width: 200px;
+  height: 200px;
+}
+
+.profilpiccontainer{
+  border-right: 1px solid var(--text-color);
+}
+
+.profilinfo{
+  color: var(--text-color);
+}
+
+hr{
+  background-color: var(--text-color);
+}
