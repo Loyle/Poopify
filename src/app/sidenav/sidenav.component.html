@@ -1,4 +1,4 @@
-<div class="sidenav bg-dark">
+<div class="sidenav">
   <nav>
     <div class="profil d-flex justify-content-center mt-5">
       <div class="profil-pic border rounded-circle justify-content-center d-flex align-items-center">
@@ -7,7 +7,7 @@
     </div>
     <ul class="navbar-nav text-center w-100">
 
-      <li class="nav-item d-flex align-items-center text-muted" [ngClass]="active==='Home' ? 'active' : ''" (click)="active='Home'">
+      <li class="nav-item d-flex align-items-center" [ngClass]="active==='Home' ? 'active' : ''" (click)="active='Home'">
         <div class="icon">
           <ng-template *ngIf="active === 'Home' ; then homeActive else homeNotActive"></ng-template>
           <ng-template #homeActive>
@@ -26,7 +26,7 @@
         <span class="">Home</span>
       </li>
 
-      <li class="nav-item d-flex align-items-center text-muted" [ngClass]="active==='Top' ? 'active' : ''" (click)="active='Top'">
+      <li class="nav-item d-flex align-items-center" [ngClass]="active==='Top' ? 'active' : ''" (click)="active='Top'">
         <div class="icon">
           <ng-template *ngIf="active === 'Top' ; then topActive else topNotActive"></ng-template>
           <ng-template #topActive>
@@ -42,7 +42,7 @@
         </div>
         <span class="">Top</span>
       </li>
-      <li class="nav-item d-flex align-items-center text-muted" [ngClass]="active==='Favorite' ? 'active' : ''" (click)="active='Favorite'">
+      <li class="nav-item d-flex align-items-center" [ngClass]="active==='Favorite' ? 'active' : ''" (click)="active='Favorite'">
         <div class="icon">
           <ng-template *ngIf="active === 'Favorite' ; then favActive else favNotActive"></ng-template>
           <ng-template #favActive>
@@ -58,7 +58,7 @@
         </div>
         <span class="">Favorite</span>
       </li>
-      <li class="nav-item d-flex align-items-center text-muted" [ngClass]="{'active' : active==='Playlist', 'dropdown' : dropdownenable, '' : !dropdownenable}" (mouseenter)="dropdownenable=true" (mouseleave)="dropdownenable=false">
+      <li class="nav-item d-flex align-items-center" [ngClass]="{'active' : active==='Playlist', 'dropdown' : dropdownenable, '' : !dropdownenable}" (mouseenter)="dropdownenable=true" (mouseleave)="dropdownenable=false">
         <div class="pasopti d-flex align-items-center">
           <div class="icon">
             <ng-template *ngIf="active === 'Playlist' ; then playlistActive else playlistNotActive"></ng-template>
@@ -82,7 +82,7 @@
           <li class="nav-item d-flex align-items-center justify-content-center" (click)="active='Playlist'">Playlist3</li>
         </div>
       </li>
-      <li class="nav-item d-flex align-items-center text-muted" (click)="openSettings()">
+      <li class="nav-item d-flex align-items-center" (click)="openSettings()">
         <div class="icon">
           <ng-template *ngIf="active === 'Settings' ; then settingsActive else settingsNotActive"></ng-template>
           <ng-template #settingsActive>
@@ -99,7 +99,7 @@
         </div>
         <span class="">Settings</span>
       </li>
-      <li class="nav-item d-flex align-items-center text-muted position-absolute w-100">
+      <li class="nav-item d-flex align-items-center position-absolute w-100">
         <div class="icon">
           <svg class="bi bi-power" width="2rem" height="2rem" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
             <path fill-rule="evenodd" d="M5.578 4.437a5 5 0 104.922.044l.5-.866a6 6 0 11-5.908-.053l.486.875z" clip-rule="evenodd"/>

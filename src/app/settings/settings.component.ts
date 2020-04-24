@@ -9,19 +9,26 @@ export class SettingsComponent implements OnInit {
 
   hoverBtn = false;
   settingsField = "General";
-
   constructor() { }
 
   @Input()
   open : boolean;
+  @Input()
+  darkMode : boolean;
 
   @Output()
   close = new EventEmitter<boolean>();
+  @Output()
+  themeSwap = new EventEmitter<boolean>();
 
   ngOnInit(): void {
   }
 
   leaveSettings(){
     this.close.emit(false);
+  }
+
+  changeTheme(){
+    this.themeSwap.emit(!this.darkMode);
   }
 }

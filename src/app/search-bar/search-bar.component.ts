@@ -18,5 +18,5 @@ export class SearchBarComponent implements OnInit {
     alert(this.search);
   }
 
-  
+
 }

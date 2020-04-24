@@ -1,5 +1,19 @@
 @import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;600&display=swap');
+
+:root{
+  --dark-theme-primary : #343A40;
+  --dark-theme-secondary : rgb(44, 50, 56);
+  --dark-theme-text : #96989A ;
+  --light-theme-primary : #E1E4E7;
+  --light-theme-secondary : #CCD8E3;
+  --light-theme-text : #343A40;
+  --bg-primary : var(--dark-theme-primary);
+  --bg-secondary : var(--dark-theme-secondary);
+  --text-color : var(--dark-theme-text);
+  --accent-color : #FBB59C;
+}
+
 html,body{
   height: 100%;
   margin: 0;
