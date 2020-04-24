@@ -8,6 +8,8 @@ import { Component, OnInit } from '@angular/core';
 export class AppComponent implements OnInit{
   title = 'Poopify';
   toggleSettings = false;
+  themedark = true;
+
   ngOnInit() {}
 
   openSettings(event){
@@ -16,5 +18,18 @@ export class AppComponent implements OnInit{
 
   closeSettings(event){
     this.toggleSettings = event;
+  }
+
+  changeTheme(event){
+    this.themedark = event;
+    if (event){
+      document.documentElement.style.setProperty('--bg-primary','var(--dark-theme-primary)');
+      document.documentElement.style.setProperty('--bg-secondary','var(--dark-theme-secondary)');
+      document.documentElement.style.setProperty('--text-color','var(--dark-theme-text)');
+    }else{
+      document.documentElement.style.setProperty('--bg-primary','var(--light-theme-primary)');
+      document.documentElement.style.setProperty('--bg-secondary','var(--light-theme-secondary)');
+      document.documentElement.style.setProperty('--text-color','var(--light-theme-text)');
+    }
   }
 }

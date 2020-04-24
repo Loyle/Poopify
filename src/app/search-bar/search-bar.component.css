@@ -5,7 +5,7 @@
 .serchBar{
   height: 2.5em;
   margin-left: 70px;
-  background-color: rgb(44, 50, 56);
+  background-color: var(--bg-secondary);
 }
 
 .searchZone{
