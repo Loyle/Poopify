@@ -1,7 +1,7 @@
-<input #videoID type="textfield" value="VPRjCeoBqrI"/>
-<img src="{{thumbnail}}" />
+<input #videoIDInput class="videoIDInput" type="textfield" value="{{videoID}}"/>
 <div class="player-bar text-center row">
 	<div class="music-info h-100 align-items-center d-flex justify-content-center col-2">
+		<img *ngIf="thumbnail" class="thumbnail" src="{{thumbnail}}" alt="thumbnail"/>
 		{{musicTitle}}
 	</div>
 	<div class="music-controller h-100 d-flex align-items-center justify-content-center col-8">
@@ -15,7 +15,7 @@
 					</svg>
 				</div>
 
-				<div class="d-flex" (click)="playPauseMusic(videoID.value)">
+				<div class="d-flex" (click)="playPauseMusic(videoIDInput.value)">
 					<ng-template *ngIf="isPlaying ; then pauseTemplate else playTemplate"></ng-template>
 					<ng-template #playTemplate>
 						<svg class="bi bi-caret-right-fill" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -48,7 +48,8 @@
 	</div>
 
 	<div class="music-volume h-100 align-items-center d-flex justify-content-center col-2">
-		<input #volumeRange type="range" name="volumeRange" class="customRange" value="100" (input)="volumeChanged(volumeRange.value)">
+		<input #volumeRange type="range" name="volumeRange" class="customRange" value="{{volume}}" (input)="volumeChanged(volumeRange.value)">
 	</div>
 </div>
-<div class="" id="player"></div>
+<div class="" id="player1"></div>
+<div class="" id="player2"></div>
