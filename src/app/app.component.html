@@ -1,6 +1,6 @@
-<app-search-bar (results)="url = $event.videoUrl"></app-search-bar>
-<app-sidenav  (open)="openSettings($event)"></app-sidenav>
+<app-search-bar></app-search-bar>
+<app-sidenav (open)="openSettings($event)"></app-sidenav>
 <app-settings [open] = "toggleSettings" [darkMode]="themedark" (close)="closeSettings($event)" (themeSwap)="changeTheme($event)"></app-settings>
 <div class="container bg-primary">
-  {{url}}
+  main
 </div>
