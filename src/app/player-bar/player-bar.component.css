@@ -6,9 +6,9 @@
 
 	height: 80px;
 
-	background: #282923;
+	background: var(--bg-secondary);
 
-	color: white;
+	color: var(--text-color);
 }
 .music-info, .music-volume, .music-controller {
 	padding: 10px 10px;
@@ -25,7 +25,7 @@
 }
 
 .music-controller .controller-button div {
-	color: #bdbdbd;
+	color: var(--text-color);
 	transition-duration: 0.1s;
 	cursor: pointer;
 }
