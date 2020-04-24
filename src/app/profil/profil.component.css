@@ -18,6 +18,10 @@
   color: var(--text-color);
 }
 
+.modifyBtn{
+  color: var(--text-color);
+}
+
 .leaveBtn:hover{
   color: white;
 }
@@ -25,6 +29,7 @@
 .profil-pic{
   width: 200px;
   height: 200px;
+  border: 1px solid var(--text-color);
 }
 
 .profilpiccontainer{
