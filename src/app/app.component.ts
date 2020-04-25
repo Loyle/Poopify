@@ -10,6 +10,8 @@ export class AppComponent implements OnInit{
   toggleSettings = false;
   toggleProfil = false;
   themedark = true;
+  logged = false;
+
   ngOnInit() {}
 
   openSettings(event){
