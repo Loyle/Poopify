@@ -1,4 +1,4 @@
-<app-logscreen></app-logscreen>
+<app-logscreen *ngIf="!logged" (authentify)="logged=true"></app-logscreen>
 
 <app-search-bar></app-search-bar>
 <app-sidenav (setting)="openSettings($event)" (profil)="openProfil($event)"></app-sidenav>
