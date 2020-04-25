@@ -35,7 +35,8 @@ export class LogscreenComponent implements OnInit {
 
     if(this.emailInput === this.email && this.passInput === this.password){
       this.logged = true;
-      setTimeout(() => {this.fade = true;this.authentify.emit(true);}, 4000);
+      setTimeout(() => {this.fade = true;}, 4000);
+      setTimeout(() => {this.authentify.emit(true);}, 4500);
     }else{
       this.error = true;
     }
