@@ -1,6 +1,6 @@
-<div class="container-fluid logscreen h-100 w-100">
+<div class="container-fluid logscreen h-100 w-100" [ngClass]="fade ? 'fade' : ''">
   <div class="row h-100 align-items-center ">
-    <div class="col-4 offset-4 logging rounded-lg shadow-lg p-5 text-white">
+    <div *ngIf="!logged" class="col-4 offset-4 logging rounded-lg shadow-lg p-5 text-white">
       <h3 class="font-weight-bold text-center">Logging</h3>
       <form action="" method="POST">
           <div class="form-group col-12">
@@ -11,10 +11,15 @@
           <div class="form-group col-12">
             <h4 class="font-weight-bold">Password</h4>
             <input type="password" class="form-control" placeholder="Password" (keyup)="getPass($event)">
-            <small *ngIf="error" class="text-danger p-2">Wrong Email</small>
+            <small *ngIf="error" class="text-danger p-2">Wrong Password</small>
           </div>
         <button type="submit" class="btn btn-light mx-auto mt-5 px-4 rounded-pill d-block shadow" (click)="logTest()">Sign in</button>
       </form>
+    </div>
+    <div *ngIf="logged" class="col-2 offset-5 d-flex justify-content-center">
+      <div class="spinner-border" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
     </div>
   </div>
 </div>

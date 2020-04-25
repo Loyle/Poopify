@@ -1,22 +1,19 @@
-<app-logscreen *ngIf="!logged" (authentify)="logged=$event"></app-logscreen>
+<app-logscreen></app-logscreen>
 
-
-<div *ngIf="logged">
-  <app-search-bar></app-search-bar>
-  <app-sidenav (setting)="openSettings($event)" (profil)="openProfil($event)"></app-sidenav>
-  <app-profil></app-profil>
-  <app-settings [openSetting] = "toggleSettings" [darkMode]="themedark" (close)="closeSettings($event)" (themeSwap)="changeTheme($event)"></app-settings>
-  <app-profil [openProfil]="toggleProfil" (close)="closeProfil($event)"></app-profil>
-  <div class="container">
-    <div class="row">
-      <div class="col-2 offset-1">
-        <div class="playlistTile">
-          <div class="playlistPic">
-            <img src="./assets/imag.png" alt="" class="img-fluid rounded">
-          </div>
-          <div class="hoverinfo h-100 w-100 d-flex align-items-center justify-content-center rounded">
-            some info
-          </div>
+<app-search-bar></app-search-bar>
+<app-sidenav (setting)="openSettings($event)" (profil)="openProfil($event)"></app-sidenav>
+<app-profil></app-profil>
+<app-settings [openSetting]="toggleSettings" [darkMode]="themedark" (close)="closeSettings($event)" (themeSwap)="changeTheme($event)"></app-settings>
+<app-profil [openProfil]="toggleProfil" (close)="closeProfil($event)"></app-profil>
+<div class="container">
+  <div class="row">
+    <div class="col-2 offset-1">
+      <div class="playlistTile">
+        <div class="playlistPic">
+          <img src="./assets/imag.png" alt="" class="img-fluid rounded">
+        </div>
+        <div class="hoverinfo h-100 w-100 d-flex align-items-center justify-content-center rounded">
+          some info
         </div>
       </div>
     </div>
