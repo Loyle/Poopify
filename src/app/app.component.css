@@ -2,3 +2,19 @@
 .wraper{
   height: 100%;
 }
+
+.playlistTile{
+  position: absolute;
+}
+
+.hoverinfo{
+  transition-duration: 0.3s;
+  position: absolute;
+  top: 0;
+  opacity: 0;
+  background-color: rgb(200,200,200,0.4);
+}
+
+.playlistTile:hover .hoverinfo{
+  opacity: 1;
+}
