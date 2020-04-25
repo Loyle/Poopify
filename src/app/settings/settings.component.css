@@ -19,9 +19,6 @@
 }
 
 .settingsMenu{
-  -webkit-box-shadow: 0px 0px 40px 9px rgba(0,0,0,0.25);
-  -moz-box-shadow: 0px 0px 40px 9px rgba(0,0,0,0.25);
-  box-shadow: 0px 0px 70px -9px rgba(0,0,0,0.25);
   color: var(--text-color);
 }
 
@@ -57,6 +54,7 @@ hr{
   height: 5rem;
   bottom: 0;
   cursor: pointer;
+  background-color: var(--bg-primary);
 }
 
 .nav-item:hover{
