@@ -48,7 +48,7 @@
 }
 
 .nav-item:hover{
-  background-color: rgb(82,87,92,0.4);
+  background-color: var(--hover);
 }
 
 .profil-pic{
@@ -65,7 +65,7 @@
 }
 
 .profil-pic:hover{
-  background-color: rgb(82,87,92,0.4);
+  background-color: var(--hover);;
 }
 
 .profil-pic:hover .more{

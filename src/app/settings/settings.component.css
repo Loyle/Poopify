@@ -60,7 +60,7 @@ hr{
 }
 
 .nav-item:hover{
-  background-color: rgb(34, 40, 46,0.3);
+  background-color: var(--hover);
 }
 
 
