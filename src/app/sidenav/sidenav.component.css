@@ -21,12 +21,13 @@
 }
 
 .sidenav:hover .profil-pic{
-  width: 150px;
-  height: 150px;
+  width: 20vh;
+  height: 20vh;
 }
 
 .icon{
-  margin: 0 19px;
+  position: absolute;
+  width: 70px;
 }
 
 .active::before{
@@ -37,12 +38,9 @@
   height: 100%;
 }
 
-.active .icon{
-  margin-left: 14px;
-}
 
 .nav-item{
-  height: 5rem;
+  height: 10vh;
   bottom: 0;
   cursor: pointer;
 }
@@ -51,10 +49,14 @@
   background-color: var(--hover);
 }
 
+.menuspan{
+  margin-left: 70px;
+}
+
 .profil-pic{
-  width: 50px;
-  height: 50px;
-  margin-bottom: 40px;
+  width: 6vh;
+  height: 6vh;
+  margin-bottom: 5vh;
   cursor: pointer;
   border: 1px solid var(--text-color);
 }
@@ -79,7 +81,7 @@
 }
 
 .dropdown{
-  transform: translateY(-15rem);
+  transform: translateY(-30vh);
   transition-duration: 0.6s;
 }
 
@@ -90,11 +92,11 @@
   height: 0;
   background-color: var(--bg-secondary);
   box-shadow: inset 0px 0px 103px -61px rgba(0,0,0,0.75);
-  top: 5rem;
+  top: 10vh;
 }
 
 .dropdown .dropdown-container{
   transition-duration: 0.6s;
-  height: 15rem;
+  height: 31vh;
   display: block;
 }
