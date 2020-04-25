@@ -124,6 +124,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "Poopify"
+    }
+  },
+  "defaultProject": "Poopify",
+  "cli": {
+    "analytics": false
+  }
 }

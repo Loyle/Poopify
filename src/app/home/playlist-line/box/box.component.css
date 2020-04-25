@@ -1,0 +1,30 @@
+.box{
+  height: 200px;
+  width: 150px;
+
+  border-radius : 10px;
+  background-color:#222324;
+
+}
+.box-container{
+  padding-left: 20px;
+}
+.box:hover{
+
+
+}
+.image{
+  object-position: center;
+  width: 100px;
+  height: 100px;
+}
+
+.spacing{
+  padding-top: 25px;
+  margin: 0;
+}
+
+h4,h6{
+  color: white;
+
+}
