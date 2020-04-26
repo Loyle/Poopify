@@ -6,7 +6,7 @@ import 'rxjs/add/operator/map';
 
 import { YouTubeSearchResult } from './youtube-search-result';
 
-export const YOUTUBE_API_KEY = 'AIzaSyDOfT_BO81aEZScosfTYMruJobmpjqNeEk';
+export const YOUTUBE_API_KEY = 'AIzaSyAXAm6kBMTM1njJAhUnSTi9u0gN827uoos';//'AIzaSyDOfT_BO81aEZScosfTYMruJobmpjqNeEk';
 export const YOUTUBE_API_URL = 'https://www.googleapis.com/youtube/v3/search';
 
 @Injectable()

@@ -14,7 +14,7 @@ export class AppComponent implements OnInit{
   logged = true;
   loading: boolean;
   results: YouTubeSearchResult[];
-  loadResults = true;
+  loadResults = false;
 
   ngOnInit() {}
 
@@ -52,5 +52,9 @@ export class AppComponent implements OnInit{
   updateResults(results: YouTubeSearchResult[]): void {
     this.results = results;
     this.loadResults = true;
+  }
+
+  playSong(song){
+    alert(song.id);
   }
 }

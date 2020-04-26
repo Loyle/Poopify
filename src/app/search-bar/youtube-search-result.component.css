@@ -13,6 +13,10 @@
   color: var(--text-color);
 }
 
+.bi:hover{
+  color: var(--accent-color);
+}
+
 .minia{
   width: 20vh;
   height: 20vh;
