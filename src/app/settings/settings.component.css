@@ -11,6 +11,7 @@
 }
 
 .settings{
+  transition-duration: 0.4s;
   -webkit-box-shadow: 0px 0px 40px 9px rgba(0,0,0,0.75);
   -moz-box-shadow: 0px 0px 40px 9px rgba(0,0,0,0.75);
   box-shadow: 0px 0px 40px 9px rgba(0,0,0,0.50);
@@ -18,9 +19,24 @@
 }
 
 .settingsMenu{
-  -webkit-box-shadow: 0px 0px 40px 9px rgba(0,0,0,0.25);
-  -moz-box-shadow: 0px 0px 40px 9px rgba(0,0,0,0.25);
-  box-shadow: 0px 0px 70px -9px rgba(0,0,0,0.25);
+  color: var(--text-color);
+}
+
+hr{
+  background-color: var(--text-color);
+}
+
+.fadeVal{
+  background-color: transparent;
+  border: 1px solid  var(--text-color);
+  color: transparent;
+  text-shadow: 0 0 0 var(--text-color);
+  text-align: right;
+  width: 40px;
+  outline: none;
+}
+
+.settingsParam{
   color: var(--text-color);
 }
 
@@ -38,10 +54,11 @@
   height: 5rem;
   bottom: 0;
   cursor: pointer;
+  background-color: var(--bg-primary);
 }
 
 .nav-item:hover{
-  background-color: rgb(34, 40, 46,0.3);
+  background-color: var(--hover);
 }
 
 

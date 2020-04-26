@@ -1,8 +1,33 @@
-<app-search-bar></app-search-bar>
-<app-sidenav  (open)="openSettings($event)"></app-sidenav>
-<app-settings [open] = "toggleSettings" [darkMode]="themedark" (close)="closeSettings($event)" (themeSwap)="changeTheme($event)"></app-settings>
-<div class="container bg-primary">
-  main
+<app-logscreen *ngIf="!logged" (authentify)="logged=true"></app-logscreen>
+
+<app-search-bar (loading)="loading=$event" (results)="updateResults($event)"></app-search-bar>
+<app-sidenav (setting)="openSettings($event)" (profil)="openProfil($event)" (path)="openPage($event)" (quit)="logged =!$event"></app-sidenav>
+<app-profil></app-profil>
+<app-settings [openSetting]="toggleSettings" [darkMode]="themedark" (close)="closeSettings($event)" (themeSwap)="changeTheme($event)"></app-settings>
+<app-profil [openProfil]="toggleProfil" (close)="closeProfil($event)"></app-profil>
+<div class="row">
+  <!--<div class="container">
+    <div class="col-2 offset-1">
+      <div class="playlistTile">
+        <div class="playlistPic">
+          <img src="./assets/imag.png" alt="" class="img-fluid rounded">
+        </div>
+        <div class="hoverinfo h-100 w-100 d-flex align-items-center justify-content-center rounded">
+          some info
+        </div>
+      </div>
+    </div>
+  </div>-->
+
+  <div *ngIf="loadResults" class="results w-100 h-100">
+    <h1 class="pt-5 pl-3 font-weight-bold">Results</h1>
+      <app-youtube-search-result
+          *ngFor="let r of results"
+          [result]="r"
+          (played)="playSong($event)">
+    </app-youtube-search-result>
+  </div>
+
 </div>
 
 <app-player-bar></app-player-bar>

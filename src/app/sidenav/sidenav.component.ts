@@ -15,10 +15,47 @@ export class SidenavComponent implements OnInit {
   }
 
   @Output()
-  open = new EventEmitter<boolean>();
+  setting = new EventEmitter<boolean>();
+
+  @Output()
+  profil = new EventEmitter<boolean>();
+
+  @Output()
+  path = new EventEmitter<string>();
+
+  @Output()
+  quit = new EventEmitter<boolean>();
 
   openSettings(){
-    this.open.emit(true);
+    this.setting.emit(true);
+  }
+
+  openProfil(){
+    this.profil.emit(true);
+  }
+
+  goHome(){
+    this.path.emit("Home");
+    this.active = "Home";
+  }
+
+  goTop(){
+    this.path.emit("Top");
+    this.active = "Top";
+  }
+
+  goFav(){
+    this.path.emit("Fav");
+    this.active = "Fav";
+  }
+
+  goPlaylist(int){
+    this.path.emit("Playlist"+int);
+    this.active = "Playlist";
+  }
+
+  logout(){
+    this.quit.emit(true);
   }
 
 }

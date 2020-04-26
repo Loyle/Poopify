@@ -5,18 +5,22 @@
   --dark-theme-primary : #343A40;
   --dark-theme-secondary : rgb(44, 50, 56);
   --dark-theme-text : #96989A ;
-  --light-theme-primary : #E1E4E7;
-  --light-theme-secondary : #CCD8E3;
+  --dark-theme-hover: rgb(82,87,92,0.4);
+  --light-theme-primary : #E2E4E7;
+  --light-theme-secondary : #D1D3D6;
   --light-theme-text : #343A40;
+  --light-theme-hover: rgb(190,190,190,0.4);;
   --bg-primary : var(--dark-theme-primary);
   --bg-secondary : var(--dark-theme-secondary);
   --text-color : var(--dark-theme-text);
+  --hover: var(--dark-theme-hover);
   --accent-color : #FBB59C;
 }
 
 html,body{
   height: 100%;
   margin: 0;
+  overflow-y: hidden;
 }
 
 *{
