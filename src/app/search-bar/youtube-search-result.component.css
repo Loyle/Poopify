@@ -1,17 +1,21 @@
 :host(.thumbnail) {
-  max-width: 230px;
-  display: inline-block;
-  margin: 0 30px 30px 0;
-  vertical-align: top;
-  border: 1px solid #eee;
-  border-radius: 4px;
-  overflow: hidden;
-  min-height: 550px;
-  position: relative;
+  display: flex;
+  margin: 10vh 0;
+  -webkit-box-shadow: 0px 0px 114px -24px rgba(0,0,0,0.75);
+  -moz-box-shadow: 0px 0px 114px -24px rgba(0,0,0,0.75);
+  box-shadow: 0px 0px 50px -24px rgba(0,0,0,0.75);
+  border-radius: 50% 50% 50% 50%;
+  border-radius: 50rem!important;
 }
 
 .caption {
   padding: 15px;
+  color: var(--text-color);
+}
+
+.minia{
+  width: 20vh;
+  height: 20vh;
 }
 
 h3 {

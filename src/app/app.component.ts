@@ -11,9 +11,10 @@ export class AppComponent implements OnInit{
   toggleSettings = false;
   toggleProfil = false;
   themedark = true;
-  logged = false;
+  logged = true;
   loading: boolean;
   results: YouTubeSearchResult[];
+  loadResults = true;
 
   ngOnInit() {}
 
@@ -50,5 +51,6 @@ export class AppComponent implements OnInit{
 
   updateResults(results: YouTubeSearchResult[]): void {
     this.results = results;
+    this.loadResults = true;
   }
 }

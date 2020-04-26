@@ -3,14 +3,16 @@
 }
 
 .serchBar{
-  height: 2.5em;
-  margin-left: 70px;
+  height: 7vh;
   background-color: var(--bg-secondary);
+  position: absolute;
+  z-index: 5;
 }
 
 .searchZone{
+  margin-left: 90px;
   width: 10em;
-  height: 1.8em;
+  height: 4vh;
   cursor: pointer;
 }
 

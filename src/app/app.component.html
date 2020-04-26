@@ -9,8 +9,8 @@
 <app-profil></app-profil>
 <app-settings [openSetting]="toggleSettings" [darkMode]="themedark" (close)="closeSettings($event)" (themeSwap)="changeTheme($event)"></app-settings>
 <app-profil [openProfil]="toggleProfil" (close)="closeProfil($event)"></app-profil>
-<div class="container">
-  <div class="row">
+<div class="row">
+  <!--<div class="container">
     <div class="col-2 offset-1">
       <div class="playlistTile">
         <div class="playlistPic">
@@ -21,13 +21,14 @@
         </div>
       </div>
     </div>
-  </div>
+  </div>-->
 
-  <div class="results">
+  <div *ngIf="loadResults" class="results w-100 h-100">
+    <h1 class="pt-5 pl-3 font-weight-bold">Results</h1>
       <app-youtube-search-result
           *ngFor="let r of results"
           [result]="r">
     </app-youtube-search-result>
   </div>
-  
+
 </div>
