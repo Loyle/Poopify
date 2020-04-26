@@ -12,7 +12,8 @@ export class LogscreenComponent implements OnInit {
   emailInput ='';
   passInput = '';
   logged = false;
-  error = false;
+  errorPass = false;
+  errorEmail = false;
   fade = false;
 
   @Output()
@@ -33,12 +34,18 @@ export class LogscreenComponent implements OnInit {
 
   logTest(){
 
-    if(this.emailInput === this.email && this.passInput === this.password){
-      this.logged = true;
-      setTimeout(() => {this.fade = true;}, 4000);
-      setTimeout(() => {this.authentify.emit(true);}, 4500);
+    if(this.emailInput === this.email){
+      this.errorEmail = false;
+      if (this.passInput === this.password){
+        this.logged = true;
+        this.errorPass = false;
+        setTimeout(() => {this.fade = true;}, 4000);
+        setTimeout(() => {this.authentify.emit(true);}, 4500);
+      }else{
+        this.errorPass = true;
+      }
     }else{
-      this.error = true;
+      this.errorEmail = true;
     }
   }
 }
