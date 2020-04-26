@@ -57,4 +57,9 @@ export class AppComponent implements OnInit{
   playSong(song){
     alert(song.id);
   }
+
+  openPage(path){
+    this.loadResults=false;
+    alert(path);
+  }
 }

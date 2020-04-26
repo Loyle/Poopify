@@ -7,7 +7,7 @@
     </div>
     <ul class="navbar-nav text-center w-100">
 
-      <li class="nav-item d-flex align-items-center" [ngClass]="active==='Home' ? 'active' : ''" (click)="active='Home'">
+      <li class="nav-item d-flex align-items-center" [ngClass]="active==='Home' ? 'active' : ''" (click)="goHome()">
         <div class="icon">
           <ng-template *ngIf="active === 'Home' ; then homeActive else homeNotActive"></ng-template>
           <ng-template #homeActive>
@@ -26,7 +26,7 @@
         <span class="menuspan">Home</span>
       </li>
 
-      <li class="nav-item d-flex align-items-center" [ngClass]="active==='Top' ? 'active' : ''" (click)="active='Top'">
+      <li class="nav-item d-flex align-items-center" [ngClass]="active==='Top' ? 'active' : ''" (click)="goTop()">
         <div class="icon">
           <ng-template *ngIf="active === 'Top' ; then topActive else topNotActive"></ng-template>
           <ng-template #topActive>
@@ -42,7 +42,7 @@
         </div>
         <span class="menuspan">Top</span>
       </li>
-      <li class="nav-item d-flex align-items-center" [ngClass]="active==='Favorite' ? 'active' : ''" (click)="active='Favorite'">
+      <li class="nav-item d-flex align-items-center" [ngClass]="active==='Favorite' ? 'active' : ''" (click)="goFav()">
         <div class="icon">
           <ng-template *ngIf="active === 'Favorite' ; then favActive else favNotActive"></ng-template>
           <ng-template #favActive>
@@ -76,9 +76,9 @@
           </div>
           <span class="menuspan">Playlist</span>
           <div class="dropdown-container">
-            <li class="nav-item d-flex align-items-center justify-content-center" (click)="active='Playlist'">Playlist1</li>
-            <li class="nav-item d-flex align-items-center justify-content-center" (click)="active='Playlist'">Playlist2</li>
-            <li class="nav-item d-flex align-items-center justify-content-center" (click)="active='Playlist'">Playlist3</li>
+            <li class="nav-item d-flex align-items-center justify-content-center" (click)="goPlaylist(1)">Playlist1</li>
+            <li class="nav-item d-flex align-items-center justify-content-center" (click)="goPlaylist(2)">Playlist2</li>
+            <li class="nav-item d-flex align-items-center justify-content-center" (click)="goPlaylist(3)">Playlist3</li>
           </div>
         </div>
       </li>

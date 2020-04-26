@@ -21,23 +21,3 @@
   width: 20vh;
   height: 20vh;
 }
-
-h3 {
-  font-size: 1.6rem;
-  font-weight: 600;
-  letter-spacing: 0.5px;
-}
-
-img {
-  max-width: 100%;
-}
-
-p {
-  font-size: 1.4rem;
-}
-
-.button {
-  position: absolute;
-  bottom: 20px;
-  left: 15px;
-}

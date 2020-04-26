@@ -5,7 +5,7 @@ import { YouTubeSearchResult } from './youtube-search-result';
   selector: 'app-youtube-search-result',
   styleUrls: ['./youtube-search-result.component.css'],
   template: `
-    <div>
+    <div class="d-flex align-items-center justify-content-center">
       <img class="minia rounded-circle img-fluid shadow-lg" src="{{ result.thumbnailUrl }}"/>
     </div>
     <div class="caption d-flex align-items-center w-100 pl-3">
