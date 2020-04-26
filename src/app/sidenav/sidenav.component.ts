@@ -23,6 +23,9 @@ export class SidenavComponent implements OnInit {
   @Output()
   path = new EventEmitter<string>();
 
+  @Output()
+  quit = new EventEmitter<boolean>();
+
   openSettings(){
     this.setting.emit(true);
   }
@@ -49,6 +52,10 @@ export class SidenavComponent implements OnInit {
   goPlaylist(int){
     this.path.emit("Playlist"+int);
     this.active = "Playlist";
+  }
+
+  logout(){
+    this.quit.emit(true);
   }
 
 }

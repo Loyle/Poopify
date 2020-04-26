@@ -1,7 +1,7 @@
 <app-logscreen *ngIf="!logged" (authentify)="logged=true"></app-logscreen>
 
 <app-search-bar (loading)="loading=$event" (results)="updateResults($event)"></app-search-bar>
-<app-sidenav (setting)="openSettings($event)" (profil)="openProfil($event)" (path)="openPage($event)"></app-sidenav>
+<app-sidenav (setting)="openSettings($event)" (profil)="openProfil($event)" (path)="openPage($event)" (quit)="logged =!$event"></app-sidenav>
 <app-profil></app-profil>
 <app-settings [openSetting]="toggleSettings" [darkMode]="themedark" (close)="closeSettings($event)" (themeSwap)="changeTheme($event)"></app-settings>
 <app-profil [openProfil]="toggleProfil" (close)="closeProfil($event)"></app-profil>
