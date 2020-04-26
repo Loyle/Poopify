@@ -1,6 +1,10 @@
 <app-logscreen *ngIf="!logged" (authentify)="logged=true"></app-logscreen>
 
-<app-search-bar></app-search-bar>
+<app-search-bar (loading)="loading=$event" (results)="updateResults($event)"></app-search-bar>
+
+<div *ngIf="loading">
+  loading....
+</div>
 <app-sidenav (setting)="openSettings($event)" (profil)="openProfil($event)"></app-sidenav>
 <app-profil></app-profil>
 <app-settings [openSetting]="toggleSettings" [darkMode]="themedark" (close)="closeSettings($event)" (themeSwap)="changeTheme($event)"></app-settings>
@@ -18,4 +22,12 @@
       </div>
     </div>
   </div>
+
+  <div class="results">
+      <app-youtube-search-result
+          *ngFor="let r of results"
+          [result]="r">
+    </app-youtube-search-result>
+  </div>
+  
 </div>

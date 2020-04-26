@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { YouTubeSearchResult } from './search-bar/youtube-search-result';
 
 @Component({
   selector: 'app-root',
@@ -10,7 +11,9 @@ export class AppComponent implements OnInit{
   toggleSettings = false;
   toggleProfil = false;
   themedark = true;
-  logged = false;
+  logged = true;
+  loading: boolean;
+  results: YouTubeSearchResult[];
 
   ngOnInit() {}
 
@@ -43,5 +46,9 @@ export class AppComponent implements OnInit{
       document.documentElement.style.setProperty('--text-color','var(--light-theme-text)');
       document.documentElement.style.setProperty('--hover','var(--light-theme-hover)');
     }
+  }
+
+  updateResults(results: YouTubeSearchResult[]): void {
+    this.results = results;
   }
 }
