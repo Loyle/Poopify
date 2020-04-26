@@ -29,7 +29,6 @@ export class ProfilComponent implements OnInit {
 
   nameChange(data){
     this.name = data.target.value;
-    alert(this.name);
   }
 
   dateChange(data){
