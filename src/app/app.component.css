@@ -25,7 +25,7 @@
   left: 0;
   overflow-y: scroll;
   position: absolute;
-  padding: 8vh 120px;
+  padding: 8vh 0;
 }
 
 ::-webkit-scrollbar {

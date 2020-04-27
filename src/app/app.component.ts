@@ -11,7 +11,7 @@ export class AppComponent implements OnInit{
   toggleSettings = false;
   toggleProfil = false;
   themedark = true;
-  logged = false;
+  logged = true;
   loading: boolean;
   results: YouTubeSearchResult[];
   loadResults = false;

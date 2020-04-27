@@ -19,12 +19,12 @@
     </div>
   </div>-->
 
-  <div *ngIf="loadResults" class="results w-100 h-100">
-    <h1 class="pt-5 pl-3 font-weight-bold">Results</h1>
+  <div *ngIf="loadResults" class="results w-100 h-100 px-md-5 pl-5 pr-3">
+    <h1 class="pt-5 pl-3 font-weight-bold ml-5">Results</h1>
       <app-youtube-search-result
           *ngFor="let r of results"
           [result]="r"
-          (played)="playSong($event)">
+          (played)="playSong($event)" class="ml-5">
     </app-youtube-search-result>
   </div>
 
