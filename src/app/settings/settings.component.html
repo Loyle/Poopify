@@ -7,30 +7,23 @@
       </svg>
     </div>
     <div class="row h-100 w-100 m-0">
-      <div class="col-3 settingsMenu d-flex p-0 align-items-center">
-        <ul class="navbar-nav w-100 h-75 py-5 ">
-          <li class="nav-item p-3 font-weight-bold d-flex align-items-center justify-content-center shadow m-3 rounded"><h3 class="m-0">General</h3></li>
-          <li class="nav-item p-3 font-weight-bold d-flex align-items-center justify-content-center shadow m-3 rounded"><h3 class="m-0">Quality</h3></li>
-          <li class="nav-item p-3 font-weight-bold d-flex align-items-center justify-content-center shadow m-3 rounded"><h3 class="m-0">Confidentiality</h3></li>
-        </ul>
-      </div>
-      <div class="col-9 settingsParam">
+      <div class="col-sm-8 offset-sm-2 col-12 p-0 settingsParam">
         <div class="container">
           <ng-template *ngIf="settingsField === 'General' ; then General else Quality"></ng-template>
           <ng-template #General>
-            <div class="p-5">
+            <div class="p-sm-5 pt-5 px-1">
               <h2>General</h2>
               <hr>
               <h5 class="mt-5">Theme :</h5>
-              <div class="custom-control custom-switch d-flex ml-5 mt-2">
+              <div class="custom-control custom-switch d-flex ml-sm-5 mt-2 pl-2">
                 <p>Enable dark mode</p>
                 <input type="checkbox" class="custom-control-input" id="customSwitches" [checked]="darkMode" (click)="changeTheme()">
                 <label class="custom-control-label  ml-5" for="customSwitches"></label>
               </div>
-                <h5 class="mt-5">Song Fade :</h5>
-                <div class="custom-control custom-switch d-flex ml-5 mt-2">
+                <h5 class="mt-sm-5 mt-3">Song Fade :</h5>
+                <div class="custom-control d-flex ml-sm-5 mt-2 pl-2">
                   <span>Set Fade effect value :</span>
-                  <input type="text" class="fadeVal rounded mx-3" (keyup.enter)="setFadeVal()"/>
+                  <input type="text" class="fadeVal rounded mx-sm-3 mx-1" (keyup.enter)="setFadeVal()"/>
                   <span> seconds</span>
                 </div>
             </div>
@@ -40,6 +33,13 @@
 
           </ng-template>
         </div>
+      </div>
+      <div class="col-12 settingsMenu d-flex p-0 align-items-center">
+        <ul class="navbar-nav w-100 rounded justify-content-center align-items-center position-absolute">
+          <li class="nav-item p-sm-3 p-2 font-weight-bold d-flex align-items-center shadow mx-sm-4 justify-content-center"><h3 class="m-0 d-sm-block d-none">General</h3><h5 class="m-0 d-sm-none d-block">General</h5></li>
+          <li class="nav-item p-sm-3 p-2 font-weight-bold d-flex align-items-center shadow mx-sm-4 justify-content-center"><h3 class="m-0 d-sm-block d-none">Quality</h3><h5 class="m-0 d-sm-none d-block">Quality</h5></li>
+          <li class="nav-item p-sm-3 p-2 font-weight-bold d-flex align-items-center shadow mx-sm-4 justify-content-center"><h3 class="m-0 d-sm-block d-none">Confidentiality</h3><h5 class="m-0 d-sm-none d-block">Confidentiality</h5></li>
+        </ul>
       </div>
     </div>
   </div>
