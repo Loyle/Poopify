@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild  } from '@angular/core';
 import { YouTubeSearchResult } from './search-bar/youtube-search-result';
+import { PlayerBarComponent } from './player-bar/player-bar.component';
 
 @Component({
   selector: 'app-root',
@@ -54,8 +55,9 @@ export class AppComponent implements OnInit{
     this.loadResults = true;
   }
 
+  @ViewChild(PlayerBarComponent ) playerBar: PlayerBarComponent ; 
   playSong(song){
-    alert(song.id);
+    this.playerBar.playMusic(song.id,true);
   }
 
   openPage(path){

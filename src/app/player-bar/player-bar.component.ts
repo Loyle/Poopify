@@ -113,16 +113,21 @@ export class PlayerBarComponent implements OnInit {
 
 		}
 	}
-	playPauseMusic(videoID, autoplay = true) : void {
+	playMusic(videoID, autoplay = true) : void {
+		this.videoID = videoID;
+		this.loadMusic(autoplay);
+		this.preloadNext();
+		this.isMusicLoaded = false;
+		this.isPlaying = true;
+	}
+	playPauseMusic(autoplay = true) : void {
 		if(this.isPlaying) {
 			this.pauseAllVideo();
 		}
 		else {
-			if(videoID != this.videoID || this.duration == 0) { // Si la musique est pas load (duration == 0) on la load
-				this.videoID = videoID;
-				this.loadMusic(autoplay);
-				this.preloadNext();
-				this.isMusicLoaded = false;
+			if(this.duration == 0) { // Si la musique est pas load (duration == 0) on la load
+				this.playMusic(this.videoID, autoplay);
+				return;
 			}
 
 			if(this.isFading)
@@ -278,7 +283,7 @@ export class PlayerBarComponent implements OnInit {
 	@HostListener('document:keypress', ['$event'])
 	handleKeyboardEvent(event: KeyboardEvent) { 
 		if(event.key == " ") {
-			this.playPauseMusic(this.videoID, true);
+			//this.playPauseMusic(true);
 		}
 	}
 
