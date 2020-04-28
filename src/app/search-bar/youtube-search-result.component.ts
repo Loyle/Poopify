@@ -5,16 +5,16 @@ import { YouTubeSearchResult } from './youtube-search-result';
   selector: 'app-youtube-search-result',
   styleUrls: ['./youtube-search-result.component.css'],
   template: `
-    <div class="d-md-flex d-none align-items-center justify-content-center">
+    <div class="d-sm-flex d-none align-items-center justify-content-center">
       <img class="minia rounded-lg img-fluid shadow-lg" src="{{ result.thumbnailUrl }}"/>
     </div>
-    <div class="caption d-flex align-items-center w-100 pl-3">
+    <div class="caption d-flex align-items-center w-100 pl-sm-3 py-sm-0 py-2">
     <div class="row w-100">
-      <div class="col-md-6 col-10 d-flex align-items-center">
-        <h3 class="d-lg-block d-none">{{ result.title }}</h3>
-        <h5 class="d-lg-none d-block">{{ result.title }}</h5>
+      <div class="col-md-6 col-7 pl-4 d-flex align-items-center justify-content-sm-start justify-content-center">
+        <h3 class="d-lg-block d-none m-0">{{ result.title }}</h3>
+        <h5 class="d-lg-none d-block m-0">{{ result.title }}</h5>
       </div>
-      <div class="col-md-6 col-10 d-flex align-items-center justify-content-end">
+      <div class="col-md-6 col-5 p-0 d-flex align-items-center justify-content-end">
         <div class="m-md-3 m-1">
           <svg class="bi bi-play" width="5vh" height="5vh" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg" (click)="playSong()">
             <path fill-rule="evenodd" d="M10.804 8L5 4.633v6.734L10.804 8zm.792-.696a.802.802 0 010 1.392l-6.363 3.692C4.713 12.69 4 12.345 4 11.692V4.308c0-.653.713-.998 1.233-.696l6.363 3.692z" clip-rule="evenodd"/>
@@ -58,7 +58,7 @@ export class YouTubeSearchResultComponent implements OnInit {
   playlistAdded = false;
   songliked = false;
   @Input() result: YouTubeSearchResult;
-  @HostBinding('attr.class') cssClass = 'thumbnail ml-5 rounded-lg';
+  @HostBinding('attr.class') cssClass = 'thumbnail ml-sm-5 my-sm-5 my-3 rounded-lg';
   @Output() played = new EventEmitter<YouTubeSearchResult>();
 
   constructor() { }

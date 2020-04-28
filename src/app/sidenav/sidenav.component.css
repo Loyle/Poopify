@@ -135,4 +135,8 @@
     flex-direction: row;
   }
 
+  .dropdown{
+    transform: none;
+  }
+
 }
