@@ -13,6 +13,7 @@ export class AppComponent implements OnInit{
   themedark = true;
   logged = true;
   loading: boolean;
+  error: boolean;
   results: YouTubeSearchResult[];
   loadResults = false;
 
