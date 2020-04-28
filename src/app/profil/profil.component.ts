@@ -24,6 +24,7 @@ export class ProfilComponent implements OnInit {
   }
 
   leaveSettings(){
+    this.allowModification=false;
     this.close.emit(false);
   }
 
