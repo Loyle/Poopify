@@ -46,7 +46,7 @@ export class SidenavComponent implements OnInit {
 
   goFav(){
     this.path.emit("Fav");
-    this.active = "Fav";
+    this.active = "Favorite";
   }
 
   goPlaylist(int){

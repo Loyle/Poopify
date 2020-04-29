@@ -32,6 +32,7 @@ export class SearchBarComponent implements OnInit {
 
     @Output() loading: EventEmitter<boolean> = new EventEmitter<boolean>();
     @Output() results: EventEmitter<YouTubeSearchResult[]> = new EventEmitter<YouTubeSearchResult[]>();
+    @Output() error: EventEmitter<boolean> = new EventEmitter<boolean>();
 
     constructor(
       private youtube: YouTubeSearchService,
@@ -58,15 +59,17 @@ export class SearchBarComponent implements OnInit {
           // on success
           (results: YouTubeSearchResult[]) => {
             this.loading.emit(false);
+            this.error.emit(false);
             this.results.emit(results);
           },
           // on error
           (err: any) => {
-            console.log(err);
+            this.error.emit(true);
             this.loading.emit(false);
           },
           // on completion
           () => {
+            this.error.emit(false);
             this.loading.emit(false);
           }
         );

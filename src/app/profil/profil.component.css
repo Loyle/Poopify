@@ -45,3 +45,28 @@ input{
   text-align: right;
   font-size: 25px;
 }
+
+.profilpiccontainer{
+  height: 100%;
+}
+
+@media screen and (max-width: 768px){
+  .profil-pic{
+    width: 90px;
+    height: 90px;
+  }
+
+  .profilpiccontainer{
+    height: auto;
+  }
+
+  input{
+    font-size: 15px;
+    text-align: center;
+  }
+
+  h5{
+    font-size: 0.9em;
+  }
+
+}

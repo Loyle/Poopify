@@ -7,56 +7,56 @@
       </svg>
     </div>
     <div class="row h-100 align-items-center w-100 m-0">
-      <div class="col-3 h-100 d-flex align-items-center justify-content-center profilpiccontainer">
-        <div class="profil-pic rounded-circle shadow-lg">
+      <div class="col-md-3 col-12 d-flex align-items-center justify-content-center profilpiccontainer">
+        <div class="profil-pic rounded-circle shadow-lg mt-md-0 mt-2">
 
         </div>
       </div>
-      <div class="col-9 profilinfo">
+      <div class="col-md-9 col-12 profilinfo">
         <div class="container">
-          <div class="row my-4 shadow p-4 rounded">
-            <div class="col-2 offset-1 d-flex align-items-center">
+          <div class="row my-4 shadow p-md-4 p-2 rounded">
+            <div class="col-md-2 col-4 offset-md-1 d-flex align-items-center">
               <h5 class="m-0">Name</h5>
             </div>
-            <div class="col-8 text-right">
+            <div class="col-8 text-right p-0">
               <input type="text" name="" value="{{name}}" [disabled]="!allowModification" (keyup)=nameChange($event)>
             </div>
           </div>
 
-          <div class="row my-4 shadow p-4 rounded">
-            <div class="col-3 offset-1 d-flex align-items-center">
+          <div class="row my-4 shadow p-md-4 p-2 rounded">
+            <div class="col-md-3 col-5 offset-md-1 d-flex align-items-center">
               <h5 class="m-0">Birth Date</h5>
             </div>
-            <div class="col-7 text-right">
+            <div class="col-7 text-right p-0">
               <input type="text" name="" value="{{birthdate}}" [disabled]="!allowModification" (keyup)=dateChange($event)>
             </div>
           </div>
 
-          <div class="row my-4 shadow p-4 rounded">
-            <div class="col-3 offset-1 d-flex align-items-center">
+          <div class="row my-4 shadow p-md-4 p-2 rounded">
+            <div class="col-3 offset-md-1 d-flex align-items-center">
               <h5 class="m-0">Email address</h5>
             </div>
-            <div class="col-7 text-right">
+            <div class="col-7 text-right p-0">
               <input type="email" name="" value="{{email}}" [disabled]="!allowModification" (keyup)=mailChange($event)>
             </div>
           </div>
 
-          <div class="row my-4 shadow p-4 rounded">
-            <div class="col-2 offset-1 d-flex align-items-center">
+          <div class="row my-4 shadow p-md-4 p-2 rounded">
+            <div class="col-2 offset-md-1 d-flex align-items-center">
               <h5 class="m-0">Localisation</h5>
             </div>
-            <div class="col-8 text-right">
+            <div class="col-8 text-right p-0">
               <input type="text" name="" value="{{land}}" [disabled]="!allowModification" (keyup)=landChange($event)>
             </div>
           </div>
           <div class="row justify-content-center">
             <button type="button" class="btn btn-light rounded-pill" name="button" (click)="allowModification = !allowModification">
-              <svg class="bi bi-pencil mr-2" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+              <svg class="bi bi-pencil mr-md-2 mr-0" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                 <path fill-rule="evenodd" d="M11.293 1.293a1 1 0 011.414 0l2 2a1 1 0 010 1.414l-9 9a1 1 0 01-.39.242l-3 1a1 1 0 01-1.266-1.265l1-3a1 1 0 01.242-.391l9-9zM12 2l2 2-9 9-3 1 1-3 9-9z" clip-rule="evenodd"/>
                 <path fill-rule="evenodd" d="M12.146 6.354l-2.5-2.5.708-.708 2.5 2.5-.707.708zM3 10v.5a.5.5 0 00.5.5H4v.5a.5.5 0 00.5.5H5v.5a.5.5 0 00.5.5H6v-1.5a.5.5 0 00-.5-.5H5v-.5a.5.5 0 00-.5-.5H3z" clip-rule="evenodd"/>
               </svg>
-              <span *ngIf="!allowModification">Modify</span>
-              <span *ngIf="allowModification">End</span>
+              <span *ngIf="!allowModification" class="d-md-inline-block d-none">Modify</span>
+              <span *ngIf="allowModification" class="d-md-inline-block d-none">End</span>
             </button>
           </div>
         </div>

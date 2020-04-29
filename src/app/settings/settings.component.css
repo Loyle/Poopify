@@ -50,11 +50,17 @@ hr{
   color: white;
 }
 
+.navbar-nav{
+  bottom: 0;
+  height: 60px;
+  flex-direction: row;
+  background-color: var(--bg-primary);
+}
+
 .nav-item{
-  height: 5rem;
+  height: 50px;
   bottom: 0;
   cursor: pointer;
-  background-color: var(--bg-primary);
 }
 
 .nav-item:hover{
@@ -66,4 +72,14 @@ hr{
     color: #fff;
     border: none;
     background-color: var(--accent-color);
+}
+
+@media screen and (max-width: 576px){
+  h5{
+    font-size: 1em;
+  }
+
+  span{
+    font-size: 0.8em;
+  }
 }
