@@ -1,30 +1,69 @@
-.box{
-  height: 200px;
+.box {
+  position: relative;
   width: 150px;
-
-  border-radius : 10px;
-  background-color:#222324;
-
-}
-.box-container{
-  padding-left: 20px;
-}
-.box:hover{
-
-
-}
-.image{
-  object-position: center;
-  width: 100px;
-  height: 100px;
+  height: 200px;
+  border-radius: 25px;
+  margin: 5px;
+  padding: 2px;
+  background-color: gray;
 }
 
-.spacing{
-  padding-top: 25px;
-  margin: 0;
+.image {
+  width: 100%;
+  height: 80%;
+  border-radius: 25px;
 }
 
-h4,h6{
+.overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  transition: .2s ease;
+  background-image: linear-gradient(to bottom, rgba(80,80,80,0) ,rgba(60,60,60,1) );
+  border-radius: 25px;
+}
+
+.box:hover .overlay {
+  opacity: 1;
+}
+
+h6{
   color: white;
+  margin: 5px;
+  padding-top: 5px;
+  text-align: center;
+  justify-content: center;
+}
+
+.circle{
+  background-color:black;
+  color: blue;
+  position: absolute;
+  right: 5%;
+  bottom: 5%;
+  border-radius:50%;
+  width:35px;
+  height:35px;
+  border:black;
+  padding: 0px 0px 7px 0px;
 
 }
+
+.circle:hover{
+  animation: scale-up-center 0.2s ease-out both ;
+}
+
+@keyframes scale-up-center {
+  0%{
+    transform: scale(1);
+  }
+  100%{
+    transform: scale(1.2);
+  }
+}
+
