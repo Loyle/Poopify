@@ -6,8 +6,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./playlist-line.component.css']
 })
 export class PlaylistLineComponent implements OnInit {
-
-  constructor() { }
+  playlistName: string;
+  constructor() {
+    this.playlistName = "Playlist Name";
+  }
 
   ngOnInit(): void {
   }

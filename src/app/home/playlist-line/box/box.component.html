@@ -1,12 +1,18 @@
 <div class="box">
   <img [src]="imgURL" class="image">
-  <h6>{{songName}}</h6>
+  <p>{{songName}}</p>
   <div class="overlay">
-    <h6>{{description}}</h6>
-      <button class="circle">
-          <svg height="20" role="img" width="20">
-            <polygon points="21.57 12 5.98 3 5.98 21 21.57 12" fill="white"></polygon>
+    <p>{{description}}</p>
+      <button id="play" class="circle" [hidden]="isPlay" (click)="onPlayPause()">
+          <svg height="18" role="img" width="18">
+            <polygon points="18.57 10 5.98 3 5.98 18 18.57 10" fill="white"></polygon>
           </svg>
+      </button>
+      <button id="pause" class="circle"[hidden]="!isPlay" (click)="onPlayPause()">
+        <svg height="16" role="img" width="16" viewBox="0 0 24 24" >
+          <rect x="5" y="3" width="6" height="22" fill="white"></rect>
+          <rect x="15" y="3" width="6" height="22" fill="white"></rect>
+        </svg>
       </button>
   </div>
 </div>

@@ -32,19 +32,21 @@
   opacity: 1;
 }
 
-h6{
+p{
+  height: 70%;
   color: white;
   margin: 5px;
   padding-top: 5px;
   text-align: center;
+  overflow: auto;
+  word-wrap: break-word;
   justify-content: center;
 }
 
 .circle{
   background-color:black;
-  color: blue;
   position: absolute;
-  right: 5%;
+  left: 40%;
   bottom: 5%;
   border-radius:50%;
   width:35px;
@@ -60,10 +62,49 @@ h6{
 
 @keyframes scale-up-center {
   0%{
-    transform: scale(1);
+    transform: scale(1) ;
   }
   100%{
-    transform: scale(1.2);
+    transform: scale(1.2) ;
   }
+}
+
+#play{
+}
+
+#pause{
+}
+::-webkit-scrollbar {
+  width: 2px;
+  height: 2px;
+}
+::-webkit-scrollbar-button {
+  width: 0px;
+  height: 0px;
+}
+::-webkit-scrollbar-thumb {
+  background-image: linear-gradient(to bottom, rgba(80,80,80,0) ,rgba(60,60,60,1) );
+  border: 31px none #000000;
+  border-radius: 5px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background-image: linear-gradient(to bottom, rgba(80,80,80,0) ,rgba(60,60,60,1) );
+}
+::-webkit-scrollbar-thumb:active {
+  background-image: linear-gradient(to bottom, rgba(80,80,80,0) ,rgba(60,60,60,1) );
+}
+::-webkit-scrollbar-track {
+  background-image: linear-gradient(to bottom, rgba(80,80,80,0) ,rgba(60,60,60,1) );
+  border: 1px solid transparent;
+  border-radius: 5px;
+}
+::-webkit-scrollbar-track:hover {
+  bbackground-image: linear-gradient(to bottom, rgba(80,80,80,0) ,rgba(60,60,60,1) );
+}
+::-webkit-scrollbar-track:active {
+  background-image: linear-gradient(to bottom, rgba(80,80,80,0) ,rgba(60,60,60,1) );
+}
+::-webkit-scrollbar-corner {
+  background-image: linear-gradient(to bottom, rgba(80,80,80,0) ,rgba(60,60,60,1) );
 }
 
