@@ -4,7 +4,7 @@
 
 .sidenav{
   position: absolute;
-  z-index: 5;
+  z-index: 100;
   float: left;
   top: 0;
   left: 0;

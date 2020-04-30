@@ -1,4 +1,4 @@
-import { Component, OnInit, HostListener } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-playlist',
@@ -6,19 +6,9 @@ import { Component, OnInit, HostListener } from '@angular/core';
   styleUrls: ['./playlist.component.css']
 })
 export class PlaylistComponent implements OnInit {
+  songliked = false;
 
   constructor() { }
 
   ngOnInit(): void {}
-
-  @HostListener('window:scroll', ['$event'])
-    handleScroll(){
-      const windowScroll = window.pageYOffset;
-      if(windowScroll >= document.getElementsByClassName('title').offsetTop()){
-        alert('stick');
-      } else {
-        alert('notstick');
-      }
-    }
-
 }

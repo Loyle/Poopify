@@ -7,32 +7,34 @@
 }
 
 .top{
-  margin-top: 7vh;
-  height: 50%;
+  height: 20vw;
   overflow: hidden;
 }
 
 .title{
-  position: absolute;
+  position: sticky;
+  top: 8vh;
+  height: 5vw;
   z-index: 4;
-  top: 35%;
   color: var(--text-color);
+  background-color: var(--bg-secondary);
 }
 
 .cover{
-  margin-top: 7vh;
-  height: 50%;
+  height: 25vw;
   width: 100%;
   position: absolute;
   z-index: 4;
   top: 0;
   left: 0;
   background: rgb(19,19,19);
-  background: linear-gradient(0deg, var(--bg-secondary) 31%, rgba(80,80,80,0.9) 100%);
+  background: linear-gradient(0deg, var(--bg-secondary) 30%, rgba(80,80,80,0.9) 100%);
 }
 
-hr{
-  background-color: var(--text-color);
+.song{
+  border-top: 1px solid var(--text-color);
+  border-bottom: 1px solid var(--text-color);
+  color: var(--text-color);
 }
 
 ::-webkit-scrollbar {
