@@ -11,6 +11,7 @@ import { LogscreenComponent } from './logscreen/logscreen.component';
 import { FormsModule } from '@angular/forms';
 import { youTubeSearchInjectables } from './search-bar/youtube-search-injectables';
 import { YouTubeSearchResultComponent } from './search-bar/youtube-search-result.component';
+import { PlaylistComponent } from './playlist/playlist.component';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ imports: [
     SearchBarComponent,
     ProfilComponent,
     LogscreenComponent,
-    YouTubeSearchResultComponent
+    YouTubeSearchResultComponent,
+    PlaylistComponent
   ],
   providers: [youTubeSearchInjectables],
   bootstrap: [AppComponent]

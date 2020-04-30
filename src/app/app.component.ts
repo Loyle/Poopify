@@ -16,6 +16,7 @@ export class AppComponent implements OnInit{
   error: boolean;
   results: YouTubeSearchResult[];
   loadResults = false;
+  path ="Home";
 
   ngOnInit() {}
 
@@ -61,6 +62,7 @@ export class AppComponent implements OnInit{
 
   openPage(path){
     this.loadResults=false;
+    this.path = path;
     alert(path);
   }
 }

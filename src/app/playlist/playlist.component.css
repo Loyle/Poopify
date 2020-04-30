@@ -1,0 +1,70 @@
+.playlistContainer{
+  position: absolute;
+  background-color: var(--bg-secondary);
+  top: 0;
+  left: 0;
+  overflow-y: scroll;
+}
+
+.top{
+  margin-top: 7vh;
+  height: 50%;
+  overflow: hidden;
+}
+
+.title{
+  position: absolute;
+  z-index: 4;
+  top: 35%;
+  color: var(--text-color);
+}
+
+.cover{
+  margin-top: 7vh;
+  height: 50%;
+  width: 100%;
+  position: absolute;
+  z-index: 4;
+  top: 0;
+  left: 0;
+  background: rgb(19,19,19);
+  background: linear-gradient(0deg, var(--bg-secondary) 31%, rgba(80,80,80,0.9) 100%);
+}
+
+hr{
+  background-color: var(--text-color);
+}
+
+::-webkit-scrollbar {
+  width: 3px;
+  height: 2px;
+}
+::-webkit-scrollbar-button {
+  width: 0px;
+  height: 0px;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--accent-color);
+  border: 0px none #ffffff;
+  border-radius: 50px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #ffffff;
+}
+::-webkit-scrollbar-thumb:active {
+  background: #000000;
+}
+::-webkit-scrollbar-track {
+  background: var(--hover);
+  border: 0px none #ffffff;
+  border-radius: 50px;
+}
+::-webkit-scrollbar-track:hover {
+  background: #666666;
+}
+::-webkit-scrollbar-track:active {
+  background: #333333;
+}
+::-webkit-scrollbar-corner {
+  background: transparent;
+}
