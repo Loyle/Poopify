@@ -15,6 +15,7 @@ export class LogscreenComponent implements OnInit {
   errorPass = false;
   errorEmail = false;
   fade = false;
+  createAccount = false;
 
   @Output()
   authentify = new EventEmitter<boolean>();
@@ -47,5 +48,17 @@ export class LogscreenComponent implements OnInit {
     }else{
       this.errorEmail = true;
     }
+  }
+
+  newEmail(data){
+    this.emailInput = data.target.value;
+  }
+
+  newPass(data){
+    this.passInput = data.target.value;
+  }
+
+  createNewAccount(){
+    alert("create");
   }
 }

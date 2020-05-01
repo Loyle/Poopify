@@ -2,21 +2,41 @@
   <div class="row align-items-center justify h-100">
       <h1 class="d-md-block d-none text-white text-center my-5 w-100">Poopify your Music streaming App</h1>
       <h3 class="d-md-none d-block text-white text-center my-5 w-100">Poopify your Music streaming App</h3>
-    <div *ngIf="!logged" class="col-md-4 col-10 offset-md-4 offset-1 logging rounded-lg shadow-lg p-md-5 py-5 mb-5 text-white">
-      <h3 class="font-weight-bold text-center mb-md-0 mb-4">Logging</h3>
-      <form action="" method="POST">
-          <div class="form-group col-12">
-            <h4 class="font-weight-bold">Email</h4>
-            <input type="email" class="form-control" placeholder="Email" (keyup)="getEmail($event)">
-            <small *ngIf="errorEmail" class="text-danger p-2">Wrong Email</small>
-          </div>
-          <div class="form-group col-12">
-            <h4 class="font-weight-bold">Password</h4>
-            <input type="password" class="form-control" placeholder="Password" (keyup)="getPass($event)">
-            <small *ngIf="errorPass" class="text-danger p-2">Wrong Password</small>
-          </div>
-        <button type="submit" class="btn btn-light mx-auto mt-5 px-4 rounded-pill d-block shadow" (click)="logTest()">Sign in</button>
-      </form>
+    <div *ngIf="!logged" class="col-md-4 col-10 offset-md-4 offset-1 logging rounded-lg shadow-lg p-md-5 pt-5 pb-2 mb-5 text-white">
+      <ng-template *ngIf="createAccount ; then create else log"></ng-template>
+      <ng-template #log>
+        <h3 class="font-weight-bold text-center mb-md-0 mb-4">Logging</h3>
+        <form action="" method="POST">
+            <div class="form-group col-12">
+              <h4 class="font-weight-bold">Email</h4>
+              <input type="email" class="form-control" placeholder="Email" (keyup)="getEmail($event)">
+              <small *ngIf="errorEmail" class="text-danger p-2">Wrong Email</small>
+            </div>
+            <div class="form-group col-12">
+              <h4 class="font-weight-bold">Password</h4>
+              <input type="password" class="form-control" placeholder="Password" (keyup)="getPass($event)">
+              <small *ngIf="errorPass" class="text-danger p-2">Wrong Password</small>
+            </div>
+          <button type="submit" class="btn btn-light mx-auto mt-5 px-4 rounded-pill d-block shadow" (click)="logTest()">Sign in</button>
+        </form>
+        <div class="createAccount text-center mt-3 text-muted" (click)="createAccount = true">
+          Create Account
+        </div>
+      </ng-template>
+      <ng-template #create>
+        <h3 class="font-weight-bold text-center mb-md-0 mb-4">Create Account</h3>
+        <form action="" method="POST">
+            <div class="form-group col-12">
+              <h4 class="font-weight-bold">Email</h4>
+              <input type="email" class="form-control" placeholder="Email" (keyup)="newEmail($event)">
+            </div>
+            <div class="form-group col-12">
+              <h4 class="font-weight-bold">Password</h4>
+              <input type="password" class="form-control" placeholder="Password" (keyup)="newPass($event)">
+            </div>
+          <button type="submit" class="btn btn-light mx-auto mt-5 px-4 mb-4 rounded-pill d-block shadow" (click)="createNewAccount()">Create</button>
+        </form>
+      </ng-template>
     </div>
     <div *ngIf="logged" class="col-2 offset-5 d-flex justify-content-center">
       <div class="spinner-border" role="status">

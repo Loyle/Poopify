@@ -5,7 +5,7 @@
 <app-profil></app-profil>
 <app-settings [openSetting]="toggleSettings" [darkMode]="themedark" (close)="closeSettings($event)" (themeSwap)="changeTheme($event)"></app-settings>
 <app-profil [openProfil]="toggleProfil" (close)="closeProfil($event)"></app-profil>
-<div ng-if="path.indexOf('Playlist') > -1">
+<div ng-if="path.indexOf('Playlist') == 0">
   <app-playlist></app-playlist>
 </div>
 <div class="row">

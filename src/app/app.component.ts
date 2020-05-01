@@ -11,7 +11,7 @@ export class AppComponent implements OnInit{
   toggleSettings = false;
   toggleProfil = false;
   themedark = true;
-  logged = true;
+  logged = false;
   loading: boolean;
   error: boolean;
   results: YouTubeSearchResult[];
@@ -63,6 +63,5 @@ export class AppComponent implements OnInit{
   openPage(path){
     this.loadResults=false;
     this.path = path;
-    alert(path);
   }
 }
