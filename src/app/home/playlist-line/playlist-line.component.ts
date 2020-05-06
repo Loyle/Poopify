@@ -7,10 +7,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PlaylistLineComponent implements OnInit {
   playlistName: string;
+  nbSong: number;
+
   constructor() {
     this.playlistName = "Playlist Name";
   }
-
   ngOnInit(): void {
   }
 

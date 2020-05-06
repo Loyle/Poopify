@@ -1,16 +1,25 @@
 
-.spacing{
-  padding: 25px 50px 0;
-  margin: 0;
-}
-
-#conteneur
+.conteneur
 {
   display: inline-flex;
-  justify-content: space-between;
   flex-wrap: wrap;
+  alignment: center;
+  margin-left: 10.5%;
+}
+#carousel{
+  position: center;
+  width: border-box;
+}
+
+.large{
+  width: border-box;
 }
 
 h1{
   color: white;
+  margin: 50px;
 }
+
+
+
+
