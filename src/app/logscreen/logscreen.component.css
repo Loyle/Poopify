@@ -1,7 +1,7 @@
 .logscreen{
   background-color: var(--bg-secondary);
   position: absolute;
-  z-index: 100;
+  z-index: 1000;
   transition-duration: 0.5s;
 }
 

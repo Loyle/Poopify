@@ -5,20 +5,10 @@
 <app-profil></app-profil>
 <app-settings [openSetting]="toggleSettings" [darkMode]="themedark" (close)="closeSettings($event)" (themeSwap)="changeTheme($event)"></app-settings>
 <app-profil [openProfil]="toggleProfil" (close)="closeProfil($event)"></app-profil>
+<div ng-if="path.indexOf('Playlist') == 0">
+  <app-playlist></app-playlist>
+</div>
 <div class="row">
-  <!--<div class="container">
-    <div class="col-2 offset-1">
-      <div class="playlistTile">
-        <div class="playlistPic">
-          <img src="./assets/imag.png" alt="" class="img-fluid rounded">
-        </div>
-        <div class="hoverinfo h-100 w-100 d-flex align-items-center justify-content-center rounded">
-          some info
-        </div>
-      </div>
-    </div>
-  </div>-->
-
   <div *ngIf="loadResults" class="results w-100 h-100 px-md-5 pl-sm-5 px-2 pr-sm-3">
     <h1 class="pt-sm-5 pl-sm-3 pt-2 font-weight-bold ml-sm-5">Results</h1>
       <app-youtube-search-result
@@ -27,11 +17,9 @@
           (played)="playSong($event)">
     </app-youtube-search-result>
   </div>
-
   <div *ngIf="error" class="results w-100 h-100 px-md-5 pl-sm-5 px-2 pr-sm-3">
     <h4 class="pt-sm-5 pl-sm-3 pt-2 font-weight-bold ml-sm-5">No more research available, come back tomorrow</h4>
   </div>
-
 </div>
 
 <app-player-bar></app-player-bar>

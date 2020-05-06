@@ -6,7 +6,7 @@
   height: 7vh;
   background-color: var(--bg-secondary);
   position: absolute;
-  z-index: 5;
+  z-index: 10;
 }
 
 .searchZone{

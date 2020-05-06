@@ -12,11 +12,12 @@ export class AppComponent implements OnInit{
   toggleSettings = false;
   toggleProfil = false;
   themedark = true;
-  logged = true;
+  logged = false;
   loading: boolean;
   error: boolean;
   results: YouTubeSearchResult[];
   loadResults = false;
+  path ="Home";
 
   ngOnInit() {}
 
@@ -63,6 +64,6 @@ export class AppComponent implements OnInit{
 
   openPage(path){
     this.loadResults=false;
-    alert(path);
+    this.path = path;
   }
 }
