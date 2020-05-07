@@ -18,7 +18,7 @@
             <div class="col-md-2 col-4 offset-md-1 d-flex align-items-center">
               <h5 class="m-0">Name</h5>
             </div>
-            <div class="col-8 text-right p-0">
+            <div class="col-8 p-0 text-right">
               <input type="text" name="" value="{{name}}" [disabled]="!allowModification" [ngClass]="allowModification ? 'modif pr-md-3' : ''" (keyup)=nameChange($event)>
             </div>
           </div>
@@ -27,25 +27,25 @@
             <div class="col-md-3 col-5 offset-md-1 d-flex align-items-center">
               <h5 class="m-0">Birth Date</h5>
             </div>
-            <div class="col-7 text-right p-0">
+            <div class="col-7 p-0 text-right">
               <input type="text" name="" value="{{birthdate}}" [disabled]="!allowModification" [ngClass]="allowModification ? 'modif pr-md-3' : ''" (keyup)=dateChange($event)>
             </div>
           </div>
 
           <div class="row my-4 shadow p-md-4 p-2 rounded">
-            <div class="col-3 offset-md-1 d-flex align-items-center">
+            <div class="col-md-3 col-5 offset-md-1 d-flex align-items-center">
               <h5 class="m-0">Email address</h5>
             </div>
-            <div class="col-7 text-right p-0">
+            <div class="col-7 p-0 text-right">
               <input type="email" name="" value="{{email}}" [disabled]="!allowModification" [ngClass]="allowModification ? 'modif pr-md-3' : ''" (keyup)=mailChange($event)>
             </div>
           </div>
 
           <div class="row my-4 shadow p-md-4 p-2 rounded">
-            <div class="col-2 offset-md-1 d-flex align-items-center">
+            <div class="col-md-2 col-4 offset-md-1 d-flex align-items-center">
               <h5 class="m-0">Localisation</h5>
             </div>
-            <div class="col-8 text-right p-0">
+            <div class="col-8 p-0 text-right">
               <input type="text" name="" value="{{land}}" [disabled]="!allowModification" [ngClass]="allowModification ? 'modif pr-md-3' : ''" (keyup)=landChange($event)>
             </div>
           </div>
