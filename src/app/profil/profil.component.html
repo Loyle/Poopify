@@ -19,7 +19,7 @@
               <h5 class="m-0">Name</h5>
             </div>
             <div class="col-8 text-right p-0">
-              <input type="text" name="" value="{{name}}" [disabled]="!allowModification" (keyup)=nameChange($event)>
+              <input type="text" name="" value="{{name}}" [disabled]="!allowModification" [ngClass]="allowModification ? 'modif pr-md-3' : ''" (keyup)=nameChange($event)>
             </div>
           </div>
 
@@ -28,7 +28,7 @@
               <h5 class="m-0">Birth Date</h5>
             </div>
             <div class="col-7 text-right p-0">
-              <input type="text" name="" value="{{birthdate}}" [disabled]="!allowModification" (keyup)=dateChange($event)>
+              <input type="text" name="" value="{{birthdate}}" [disabled]="!allowModification" [ngClass]="allowModification ? 'modif pr-md-3' : ''" (keyup)=dateChange($event)>
             </div>
           </div>
 
@@ -37,7 +37,7 @@
               <h5 class="m-0">Email address</h5>
             </div>
             <div class="col-7 text-right p-0">
-              <input type="email" name="" value="{{email}}" [disabled]="!allowModification" (keyup)=mailChange($event)>
+              <input type="email" name="" value="{{email}}" [disabled]="!allowModification" [ngClass]="allowModification ? 'modif pr-md-3' : ''" (keyup)=mailChange($event)>
             </div>
           </div>
 
@@ -46,7 +46,7 @@
               <h5 class="m-0">Localisation</h5>
             </div>
             <div class="col-8 text-right p-0">
-              <input type="text" name="" value="{{land}}" [disabled]="!allowModification" (keyup)=landChange($event)>
+              <input type="text" name="" value="{{land}}" [disabled]="!allowModification" [ngClass]="allowModification ? 'modif pr-md-3' : ''" (keyup)=landChange($event)>
             </div>
           </div>
           <div class="row justify-content-center">
