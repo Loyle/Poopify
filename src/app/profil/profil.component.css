@@ -50,6 +50,11 @@ input{
   height: 100%;
 }
 
+.modif{
+  border: 1px solid var(--accent-color);
+  border-radius: 50px;
+}
+
 @media screen and (max-width: 768px){
   .profil-pic{
     width: 90px;
