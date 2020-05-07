@@ -39,6 +39,21 @@ input, input:focus{
 
 .spinner-border{
   color: var(--accent-color);
-  width: 50px;
-  height: 50px;
+  width: 100px;
+  height: 100px;
+}
+
+.createAccount{
+  cursor: pointer;
+  color: var(--text-color);
+}
+
+.createAccount:hover{
+  color: var(--accent-color);
+}
+
+@media screen and (max-width : 758px){
+  h4{
+    font-size: 1em;
+  }
 }
