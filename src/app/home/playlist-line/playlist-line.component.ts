@@ -9,11 +9,13 @@ import {element} from "protractor";
 })
 export class PlaylistLineComponent implements OnInit {
   playlistName: string;
+  id: number;
   nbSong: number;
 
   constructor() {
     this.playlistName = "Playlist Name";
     this.nbSong = 12;
+    this.id = 1;
   }
   ngOnInit(): void {
   }
