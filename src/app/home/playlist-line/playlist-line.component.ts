@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {getWindowSizes} from "ngx-bootstrap/positioning/utils";
+import {element} from "protractor";
 
 @Component({
   selector: 'app-playlist-line',
@@ -11,8 +13,8 @@ export class PlaylistLineComponent implements OnInit {
 
   constructor() {
     this.playlistName = "Playlist Name";
+    this.nbSong = 12;
   }
   ngOnInit(): void {
   }
-
 }

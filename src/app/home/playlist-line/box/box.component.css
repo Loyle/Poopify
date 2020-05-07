@@ -52,7 +52,7 @@ p{
   width:35px;
   height:35px;
   border:black;
-  padding: 0px 3px 7px 0px;
+  padding: 4px 3px 7px 0px;
 
 }
 
@@ -74,6 +74,7 @@ p{
 
 #pause{
 }
+
 ::-webkit-scrollbar {
   width: 2px;
   height: 2px;
