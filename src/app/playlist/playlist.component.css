@@ -31,6 +31,10 @@
   background: linear-gradient(0deg, var(--bg-secondary) 20%, rgba(80,80,80,0.9) 100%);
 }
 
+.content{
+  margin-bottom: 100px;
+}
+
 .song{
   border-top: 1px solid var(--text-color);
   border-bottom: 1px solid var(--text-color);
