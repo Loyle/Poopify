@@ -9,8 +9,11 @@ export class LogscreenComponent implements OnInit {
 
   private password = "Poopify";
   private email = "GL40";
+  nameInput ='';
+  bdateInput = '';
   emailInput ='';
   passInput = '';
+  countryInput ='';
   logged = false;
   errorPass = false;
   errorEmail = false;
@@ -50,12 +53,24 @@ export class LogscreenComponent implements OnInit {
     }
   }
 
+  newName(data){
+    this.nameInput = data.target.value;
+  }
+
   newEmail(data){
     this.emailInput = data.target.value;
   }
 
   newPass(data){
     this.passInput = data.target.value;
+  }
+
+  newBDate(data){
+    this.bdateInput = data.target.value;
+  }
+
+  newCountry(data){
+    this.countryInput = data.target.value;
   }
 
   createNewAccount(){
