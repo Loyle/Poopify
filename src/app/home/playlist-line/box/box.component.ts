@@ -26,4 +26,5 @@ export class BoxComponent implements OnInit {
     this.isPlay = !this.isPlay;
   }
 
+
 }

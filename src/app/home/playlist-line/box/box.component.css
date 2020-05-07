@@ -1,7 +1,7 @@
 .box {
   position: relative;
-  width: 150px;
-  height: 200px;
+  width: 8vw;
+  height: 10vw;
   border-radius: 25px;
   margin: 5px;
   padding: 2px;
@@ -49,8 +49,8 @@ p{
   left: 40%;
   bottom: 5%;
   border-radius:50%;
-  width:35px;
-  height:35px;
+  width:2vw;
+  height:2vw;
   border:black;
   padding: 4px 3px 7px 0px;
 
