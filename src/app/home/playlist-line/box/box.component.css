@@ -2,16 +2,16 @@
   position: relative;
   width: 8vw;
   height: 10vw;
-  border-radius: 25px;
+  border-radius: 1.3vw;
   margin: 5px;
-  padding: 2px;
+  padding: 5px;
   background-color: gray;
 }
 
 .image {
   width: 100%;
   height: 80%;
-  border-radius: 25px;
+  border-radius: 1.3vw;
 }
 
 .overlay {
@@ -25,7 +25,7 @@
   opacity: 0;
   transition: .2s ease;
   background-image: linear-gradient(to bottom, rgba(80,80,80,0) ,rgba(60,60,60,1) );
-  border-radius: 25px;
+  border-radius: 1.3vw;
 }
 
 .box:hover .overlay {
@@ -36,7 +36,6 @@ p{
   height: 70%;
   color: white;
   margin: 5px;
-  padding-top: 5px;
   text-align: center;
   overflow: auto;
   word-wrap: break-word;
@@ -52,7 +51,7 @@ p{
   width:2vw;
   height:2vw;
   border:black;
-  padding: 4px 3px 7px 0px;
+  box-sizing: border-box;
 
 }
 
@@ -68,11 +67,24 @@ p{
     transform: scale(1.2) ;
   }
 }
-
-#play{
+svg{
+  width: 70%;
+  height: 70%;
+  position: center;
 }
 
-#pause{
+.play {
+  width: 0.6vw;
+  height: 0.8vw;
+  border-top: 0.4vw solid transparent;
+  border-left: 0.6vw solid #FFFFFF;
+  border-bottom: 0.4vw solid transparent;
+}
+.pause {
+  width: 0.6vw;
+  height: 0.8vw;
+  border-right: 0.2vw solid #FFFFFF;
+  border-left: 0.2vw solid #FFFFFF;
 }
 
 ::-webkit-scrollbar {
