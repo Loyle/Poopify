@@ -3,6 +3,7 @@
   background-color: var(--bg-secondary);
   top: 0;
   left: 0;
+  bottom: 80px;
   overflow-y: scroll;
 }
 

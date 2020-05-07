@@ -1,4 +1,6 @@
 .player-bar {
+	transition-duration: 0.2px;
+
 	position:  fixed;
 	bottom: 0px;
 	left: 85px;
@@ -6,9 +8,15 @@
 
 	height: 80px;
 
+	padding: 0px 30px;
+
 	background: var(--bg-secondary);
 
 	color: var(--text-color);
+
+	z-index: 50;
+
+	border-top: 1px solid var(--text-color);
 }
 .music-info, .music-volume, .music-controller {
 	padding: 10px 10px;
@@ -107,4 +115,13 @@ input[type=range].customRange::-ms-thumb {
 	position: absolute;
 	top: 50%;
 	left: 50%;
+}
+
+@media screen and (max-width: 576px){
+	.player-bar {
+		left: 0px;
+		bottom: 60px;
+
+		padding: 0px 60px;
+	}
 }
