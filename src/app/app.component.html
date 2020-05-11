@@ -1,3 +1,4 @@
+<div  *ngFor="let item of accounts">{{item.name}} | {{item.email}}></div>
 <app-logscreen *ngIf="!logged" (authentify)="logged=true"></app-logscreen>
 
 <app-search-bar (loading)="loading=$event" (results)="updateResults($event)" (error)="error=$event"></app-search-bar>
