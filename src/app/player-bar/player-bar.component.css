@@ -120,7 +120,7 @@ input[type=range].customRange::-ms-thumb {
 @media screen and (max-width: 576px){
 	.player-bar {
 		left: 0px;
-		bottom: 60px;
+		bottom: 50px;
 
 		padding: 0px 60px;
 	}
