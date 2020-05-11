@@ -1,6 +1,8 @@
 import { Component, OnInit, ViewChild  } from '@angular/core';
 import { YouTubeSearchResult } from './search-bar/youtube-search-result';
 import { PlayerBarComponent } from './player-bar/player-bar.component';
+import {Account} from './account';
+import {AccountService} from './account.service';
 
 @Component({
   selector: 'app-root',
@@ -18,8 +20,18 @@ export class AppComponent implements OnInit{
   results: YouTubeSearchResult[];
   loadResults = false;
   path ="Home";
+  accounts: Account[];
 
-  ngOnInit() {}
+  constructor(private accountService: AccountService) { }
+
+  getAccounts(): void{
+    this.accountService.getAll().subscribe(
+      (res:Account[])=>{
+        this.accounts = res;
+      });
+  }
+
+  ngOnInit() {this.getAccounts();}
 
   openSettings(event){
     this.toggleSettings = event;
@@ -57,7 +69,7 @@ export class AppComponent implements OnInit{
     this.loadResults = true;
   }
 
-  @ViewChild(PlayerBarComponent ) playerBar: PlayerBarComponent ; 
+  @ViewChild(PlayerBarComponent ) playerBar: PlayerBarComponent ;
   playSong(song){
     this.playerBar.playMusic(song.id,true);
   }
