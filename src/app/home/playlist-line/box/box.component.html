@@ -2,7 +2,7 @@
   <div class="box">
     <img [src]="imgURL" class="image">
     <h1 style="font-size: 1vw">{{songName}}</h1>
-    <div class="overlay d-flex justify-content-center ">
+    <div class="overlay d-inline-flex justify-content-sm-center ">
       <p class="" style="font-size: 1vw">{{description}}</p>
       <button class="circle d-flex justify-content-center" (click)="onPlayPause()">
         <div class="play"[hidden]="isPlay"></div>

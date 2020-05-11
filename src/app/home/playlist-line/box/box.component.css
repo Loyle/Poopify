@@ -1,7 +1,7 @@
 
 
 
-@media screen and (min-width: 960px) {
+@media screen and (min-width: 960px) { /*******************************/
   .box {
     position: relative;
     width: 8vw;
@@ -109,7 +109,7 @@
   }
 }
 
-@media screen and (max-width: 959px) {
+@media screen and (max-width: 959px) { /*******************************/
   .box {
     position: relative;
     width: 12vw;
@@ -135,6 +135,7 @@
     width: 100%;
     opacity: 0;
     transition: 0s ease;
+    padding: 4vw;
     background-color: rgba(60,60,60,0.5);
     border-radius: 1.3vw;
   }
@@ -148,6 +149,8 @@
   .circle{
     background-color:black;
     border-radius:50%;
+    left: 40%;
+    bottom: 50%;
     width:4vw;
     height:4vw;
     border:black;
@@ -168,15 +171,15 @@
     }
   }
   .play {
-    width: 0.8vw;
-    height: 1vw;
-    border-top: 0.6vw solid transparent;
-    border-left: 0.8vw solid #FFFFFF;
-    border-bottom: 0.6vw solid transparent;
+    width: 1vw;
+    height: 1.2vw;
+    border-top: 0.8vw solid transparent;
+    border-left: 1vw solid #FFFFFF;
+    border-bottom: 0.8vw solid transparent;
   }
   .pause {
-    width: 0.8vw;
-    height: 1vw;
+    width: 1.2vw;
+    height: 1.4vw;
     border-right: 0.4vw solid #FFFFFF;
     border-left: 0.4vw solid #FFFFFF;
   }

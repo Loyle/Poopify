@@ -2,7 +2,6 @@
 .size{
   width: 50px;
   margin: 0 30px 0 30px;
-  outline: none;
 }
 .marge{
   margin-left: 5%;
@@ -10,7 +9,7 @@
 
 h1{
   color: white;
-  margin: 50px;
+  margin: 1.5vw;
   position: relative;
 }
 
