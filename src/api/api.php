@@ -1,4 +1,6 @@
 <?php
+header('Content-Type: application/json');
+
 include_once("bdd.php");
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 	if($_POST["function"] == "login") {
@@ -34,12 +36,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 		$req->execute(array($account_id));
 	}
 	else {
-		header("Location: https://poopify.fr/");
+		// We do nothing
+		echo json_encode(array());
 	}
 }
 else {
-	//header("Location: https://poopify.fr/");
-	echo json_encode(array('TESST' => "TESTWOW"));
+	header("Location: https://poopify.fr/");
 }
 
 ?>
