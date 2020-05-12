@@ -19,9 +19,13 @@ export class LogscreenComponent implements OnInit {
     errorEmail = false;
     fade = false;
     createAccount = false;
+    accountId = '';
 
     @Output()
     authentify = new EventEmitter<boolean>();
+
+    @Output()
+    accountVal = new EventEmitter();
 
     constructor() { }
 
@@ -65,6 +69,8 @@ export class LogscreenComponent implements OnInit {
 
                 target.logged = true;
                 target.errorPass = false;
+                target.accountId = data.id;
+                target.accountVal.emit(target.accountId);
                 setTimeout(() => {target.fade = true;}, 4000);
                 setTimeout(() => {target.authentify.emit(true);}, 4500);
 
@@ -74,7 +80,7 @@ export class LogscreenComponent implements OnInit {
                 target.errorPass = true;
             }
         }
-        http.send(params);        
+        http.send(params);
     }
 
     newName(data){
@@ -98,6 +104,23 @@ export class LogscreenComponent implements OnInit {
     }
 
     createNewAccount(){
-        alert("create");
+      var http = new XMLHttpRequest();
+
+      // On crée les params post que l'on va envoyer
+      var params = new FormData();
+      params.append('function', 'create');
+      params.append('name',this.nameInput);
+      params.append('email', this.emailInput);
+      params.append('pwd', this.passInput);
+      params.append('bdate',this.bdateInput);
+      params.append('country',this.countryInput);
+
+      // Pour pouvoir acceder au this dans la sous function
+      var target = this;
+
+      // On connecte
+      http.open("POST","https://poopify.fr/api/api.php",true);
+
+      http.send(params);
     }
 }

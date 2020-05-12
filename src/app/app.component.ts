@@ -68,4 +68,8 @@ export class AppComponent implements OnInit{
     this.loadResults=false;
     this.path = path;
   }
+
+  test(ev){
+    alert(ev);
+  }
 }

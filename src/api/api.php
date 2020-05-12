@@ -35,6 +35,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 		$req = $bdd->prepare('INSERT INTO table_name () VALUES (:)');
 		$req->execute(array($account_id));
 	}
+	else if($_POST["function"] == "create") {
+		$req = $bdd->prepare('INSERT INTO table_name (name, email, pwd, bdate, country) VALUES (:name, :email, :pwd, :bdate, :country)');
+		$req->execute(array(
+			'name' => $nom,
+			'email' => $possesseur,
+			'pwd' => $console,
+			'bdate' => $prix,
+			'country' => $nbre_joueurs_max
+		));
+		echo "added";
+	}
 	else {
 		// We do nothing
 		echo json_encode(array());
