@@ -6,23 +6,17 @@
 </div>
 
   <div id="pl1" class="carousel slide position-relative col-sm-12" data-interval="false">
-    <div class="carousel-inner">
-      <div class="carousel-item active">
-       <div class="d-inline-flex marge">
-         <app-box></app-box>
-         <app-box></app-box>
-         <app-box></app-box>
-         <app-box></app-box>
-         <app-box></app-box>
-         <app-box></app-box>
-         <app-box></app-box>
-         <app-box></app-box>
-         <app-box></app-box>
-         <app-box></app-box>
+    <div class="carousel-inner mx-auto">
+      <div class="carousel-item col-sm-12 active">
+       <div class="d-inline-flex justify-content-center ml-sm-5 pl-5 pr-5">
+         <app-box *ngFor="let sg of songs"
+                  [songName]="sg.songName"
+                  [description]="sg.description"></app-box>
+
        </div>
       </div>
-      <div class="carousel-item ">
-        <div class="d-inline-flex marge">
+      <div class="carousel-item col-sm-12">
+        <div class="d-inline-flex justify-content-center ml-sm-5 pl-5 pr-5 ">
           <app-box></app-box>
           <app-box></app-box>
           <app-box></app-box>
@@ -35,8 +29,8 @@
           <app-box></app-box>
         </div>
       </div>
-      <div class="carousel-item ">
-        <div class="d-inline-flex marge">
+      <div class="carousel-item col-sm-12">
+        <div class="d-inline-flex justify-content-center ml-sm-5 pl-5 pr-5">
           <app-box></app-box>
           <app-box></app-box>
           <app-box></app-box>
@@ -52,10 +46,10 @@
     </div>
 
     <!-- Left and right controls -->
-    <a class="carousel-control-prev size ml-0 " style="opacity: 1" href="#pl1" data-slide="prev">
+    <a class="carousel-control-prev size ml-0 border " style="opacity: 1" href="#pl1" data-slide="prev">
       <span class="carousel-control-prev-icon"></span>
     </a>
-    <a class="carousel-control-next size mr-0 " style="opacity: 1" href="#pl1" data-slide="next">
+    <a class="carousel-control-next size mr-0  border" style="opacity: 1" href="#pl1" data-slide="next">
       <span class="carousel-control-next-icon"></span>
     </a>
   </div>

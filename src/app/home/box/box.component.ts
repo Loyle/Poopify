@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-box',
@@ -6,11 +6,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./box.component.css']
 })
 export class BoxComponent implements OnInit {
-  songName : string;
-  description:string;
-  imgURL : string
-  songCode: string;
-  isPlay: boolean
+  @Input() songName : string;
+  @Input() description:string;
+  @Input() imgURL : string
+  @Input() songCode: string;
+  @Input() isPlay: boolean
+
+
   constructor() {
     this.songName = 'Name';
     this.description = ' this is the song description, with title, author, mzoihdfozsiehdfmqoidhfoidhfomishdofhisefifezmf zeo zefzh zeçueofoe zejrjr zizezh djd )àefee  z popfes ';

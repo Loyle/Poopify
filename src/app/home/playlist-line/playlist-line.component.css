@@ -1,10 +1,11 @@
 
 .size{
-  width: 50px;
-  margin: 0 30px 0 30px;
+  width: 4vw;
+  margin: 0 1.5vw 0 1.5vw;
 }
 .marge{
-  margin-left: 5%;
+  margin-left: 6%;
+  margin-right: 5%;
 }
 
 h1{
