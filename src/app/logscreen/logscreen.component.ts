@@ -115,9 +115,6 @@ export class LogscreenComponent implements OnInit {
       params.append('bdate',this.bdateInput);
       params.append('country',this.countryInput);
 
-      // Pour pouvoir acceder au this dans la sous function
-      var target = this;
-
       // On connecte
       http.open("POST","https://poopify.fr/api/api.php",true);
 

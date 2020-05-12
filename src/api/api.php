@@ -32,22 +32,31 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 		echo json_encode($req->fetchAll(PDO::FETCH_ASSOC));
 	}
 	else if($_POST["function"] == "addMusicPlaylist") {
-		$req = $bdd->prepare('INSERT INTO table_name () VALUES (:)');
-		$req->execute(array($account_id));
+		//$req = $bdd->prepare('INSERT INTO table_name () VALUES (:)');
+		//$req->execute(array($account_id));
 	}
 	else if($_POST["function"] == "create") {
-		$req = $bdd->prepare('INSERT INTO table_name (name, password, birthdate, email, country, darkmode, fadeout, volume) VALUES (:name, :pwd, :bdate, :email, :country, :darkmode, :fadeout, :volume)');
+		$req = $bdd->prepare('INSERT INTO Account(name, password, birthdate, email, country, darkmode, fadeout, volume) VALUES(:name, :pwd, :bdate, :email, :country, :darkmode, :fadeout, :volume)');
 		$req->execute(array(
-			'name' => $nom,
-			'pwd' => $console,
-			'bdate' => $prix,
-			'email' => $possesseur,
-			'country' => $nbre_joueurs_max,
+			':name' => $_POST["name"],
+			':pwd' => $_POST["pwd"],
+			':bdate' => $_POST["bdate"],
+			':email' => $_POST["email"],
+			':country' => $_POST["country"],
+			':darkmode' => 0,
+			':fadeout' => 0,
+			':volume' => 100
+		));
+
+		// On affiche pour le debuggage
+		echo json_encode(array('name' => $_POST["name"],
+			'pwd' => $_POST["pwd"],
+			'bdate' => $_POST["bdate"],
+			'email' => $_POST["email"],
+			'country' => $_POST["country"],
 			'darkmode' => 0,
 			'fadeout' => 0,
-			'volume' => 100
-		));
-		echo "added";
+			'volume' => 100));
 	}
 	else {
 		// We do nothing
