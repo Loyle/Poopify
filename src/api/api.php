@@ -36,13 +36,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 		$req->execute(array($account_id));
 	}
 	else if($_POST["function"] == "create") {
-		$req = $bdd->prepare('INSERT INTO table_name (name, email, pwd, bdate, country) VALUES (:name, :email, :pwd, :bdate, :country)');
+		$req = $bdd->prepare('INSERT INTO table_name (name, password, birthdate, email, country, darkmode, fadeout, volume) VALUES (:name, :pwd, :bdate, :email, :country, :darkmode, :fadeout, :volume)');
 		$req->execute(array(
 			'name' => $nom,
-			'email' => $possesseur,
 			'pwd' => $console,
 			'bdate' => $prix,
-			'country' => $nbre_joueurs_max
+			'email' => $possesseur,
+			'country' => $nbre_joueurs_max,
+			'darkmode' => 0,
+			'fadeout' => 0,
+			'volume' => 100
 		));
 		echo "added";
 	}
