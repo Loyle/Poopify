@@ -18,7 +18,6 @@ import { FormsModule } from '@angular/forms';
 import { youTubeSearchInjectables } from './search-bar/youtube-search-injectables';
 import { YouTubeSearchResultComponent } from './search-bar/youtube-search-result.component';
 import { PlaylistComponent } from './playlist/playlist.component';
-import { AccountService } from './account.service';
 
 
 @NgModule({
@@ -38,7 +37,7 @@ imports: [
     YouTubeSearchResultComponent,
     PlaylistComponent
   ],
-  providers: [youTubeSearchInjectables,AccountService],
+  providers: [youTubeSearchInjectables],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
