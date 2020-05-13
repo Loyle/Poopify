@@ -97,6 +97,7 @@ export class LogscreenComponent implements OnInit {
 
     newBDate(data){
         this.bdateInput = data.target.value;
+        alert(this.bdateInput);
     }
 
     newCountry(data){
@@ -104,6 +105,7 @@ export class LogscreenComponent implements OnInit {
     }
 
     createNewAccount(){
+      alert("create");
       var http = new XMLHttpRequest();
 
       // On crée les params post que l'on va envoyer
@@ -117,6 +119,12 @@ export class LogscreenComponent implements OnInit {
 
       // On connecte
       http.open("POST","https://poopify.fr/api/api.php",true);
+
+      http.onload = function() {
+          // On parse les résultats du Json (On peut utiliser comme ceci : data.id, data.email, data.password etc...)
+
+          console.log(http.response);
+      }
 
       http.send(params);
     }
