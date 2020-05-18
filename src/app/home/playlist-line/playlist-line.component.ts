@@ -10,6 +10,7 @@ import {element} from "protractor";
 export class PlaylistLineComponent implements OnInit {
   @Input() playlistName: string;
   @Input() nbSong: number;
+  @Input() id: string;
 
 
   songs=[
@@ -28,7 +29,7 @@ export class PlaylistLineComponent implements OnInit {
       isPlay : false,
     },
     {
-      songName : 'Yolo',
+      songName : 'Yolo yolo yolo yolo yolo yolo yolo yolo',
       description : null,
       imgURL : 'https://scx1.b-cdn.net/csz/news/800/2016/578650fe544c4.jpg',
       songCode : null,

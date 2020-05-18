@@ -1,6 +1,7 @@
-<div class="main-view-container bg-dark">
+<div class="bg-dark">
   <app-playlist-line *ngFor="let pl of playlists"
                       [playlistName]="pl.playlistName"
-                      [nbSong]="pl.nbSong"></app-playlist-line>
+                      [nbSong]="pl.nbSong"
+                      [id]="pl.id"  ></app-playlist-line>
 </div>
 
