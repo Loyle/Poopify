@@ -13,8 +13,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 		echo json_encode($req->fetchAll(PDO::FETCH_ASSOC));
 	}
 	else if($_POST["function"] == "getPlaylistById") {
-		$pl_id = $_GET["pl"];
-		$account_id = $_GET["user"];
+		$pl_id = $_POST["pl"];
+		$account_id = $_POST["user"];
 
 
 		$req = $bdd->prepare('SELECT c.* FROM PlaylistContent AS c INNER JOIN Playlist AS p ON c.playlist_id = p.id INNER JOIN Account AS a ON p.account_id = a.id WHERE (p.id = :pl_id AND a.id = :ac_id) OR (p.private = 0 AND p.id = :pl_id)');
@@ -23,7 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 		echo json_encode($req->fetchAll(PDO::FETCH_ASSOC));
 	}
 	else if($_POST["function"] == "getPlaylistByUser") {
-		$account_id = $_GET["user"];
+		$account_id = $_POST["user"];
 
 
 		$req = $bdd->prepare('SELECT * FROM Playlist WHERE account_id = ?');
