@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Input } from '@angular/core';
 
 @Component({
   selector: 'app-playlist',
@@ -7,8 +7,44 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PlaylistComponent implements OnInit {
   songliked = false;
+  sounds : Array<{name : string, duration : number, id : string , addDate : Date}> = [];
+  times = Array(24);
+
+  @Input()
+  accountid;
+
+  @Input()
+  playlistId;
 
   constructor() { }
 
-  ngOnInit(): void {}
+  ngOnInit():void{
+    var http = new XMLHttpRequest();
+
+    // On crée les params post que l'on va envoyer
+    var params = new FormData();
+    params.append('function', 'getPlaylistById');
+    params.append('pl', '1');
+    params.append('user', this.accountid);
+
+    // Pour pouvoir acceder au this dans la sous function
+    var target = this;
+
+    // On connecte
+    http.open("POST","https://poopify.fr/api/api.php",true);
+
+    // Lorsque l'execution est terminé
+    http.onload = function(){
+        // On parse les résultats du Json (On peut utiliser comme ceci : data.id, data.email, data.password etc...)
+        var data = JSON.parse(http.response);
+        // On regarde si il y a un résultat
+        if(Object.keys(data).length > 0) {
+            for (let index = 0; index < data.length; index++) {
+              const element = data[index];
+              target.sounds.push({name : element.name, duration : element.duration, id : element.video_id , addDate : element.add_date});
+            }
+        }
+    }
+    http.send(params);
+  }
 }

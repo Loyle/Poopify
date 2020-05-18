@@ -50,7 +50,7 @@ export class SidenavComponent implements OnInit {
   }
 
   goPlaylist(int){
-    this.path.emit("Playlist"+int);
+    this.path.emit(int);
     this.active = "Playlist";
   }
 

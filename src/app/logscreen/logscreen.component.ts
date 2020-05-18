@@ -69,10 +69,10 @@ export class LogscreenComponent implements OnInit {
 
                 target.logged = true;
                 target.errorPass = false;
-                target.accountId = data.id;
+                target.accountId = data[0].id;
                 target.accountVal.emit(target.accountId);
                 setTimeout(() => {target.fade = true;}, 4000);
-                setTimeout(() => {target.authentify.emit(true);}, 4500);
+                setTimeout(() => {target.authentify.emit(true);}, 3800);
 
             }
             else {
@@ -105,7 +105,6 @@ export class LogscreenComponent implements OnInit {
     }
 
     createNewAccount(){
-      alert("create");
       var http = new XMLHttpRequest();
 
       // On crée les params post que l'on va envoyer
@@ -122,8 +121,6 @@ export class LogscreenComponent implements OnInit {
 
       http.onload = function() {
           // On parse les résultats du Json (On peut utiliser comme ceci : data.id, data.email, data.password etc...)
-
-          console.log(http.response);
       }
 
       http.send(params);

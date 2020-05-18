@@ -18,6 +18,8 @@ export class AppComponent implements OnInit{
   results: YouTubeSearchResult[];
   loadResults = false;
   path ="Home";
+  accountid = '';
+  switch = false;
 
   constructor() { }
 
@@ -69,7 +71,12 @@ export class AppComponent implements OnInit{
     this.path = path;
   }
 
-  test(ev){
-    alert(ev);
+  logUser(){
+    this.logged = true;
+    setTimeout(() => {this.switch = true}, 500);
+  }
+
+  getAccountId(ev){
+    this.accountid = ev;
   }
 }
