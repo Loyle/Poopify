@@ -24,11 +24,13 @@ h5{
 }
 
 .choice{
+  display: block;
+  z-index: 200;
   background-color: var(--bg-primary);
   color: var(--text-color);
   box-shadow: 0px 0px 50px -24px rgba(0,0,0,1);
   position: absolute;
-  top: 8vh;
+  top: 5vh;
   right: 5vh;
   height: auto;
   width: 30vh;

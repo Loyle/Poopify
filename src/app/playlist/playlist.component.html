@@ -11,6 +11,9 @@
     <h1 class="font-weight-bold ml-3">{{playlistName}}</h1>
   </div>
   <div class="content mt-sm-4 p-5 ml-sm-5">
+    <div class="" [ngClass]="sounds.length == 0 ? 'd-block' : 'd-none'">
+      <h4>No music here :(</h4>
+    </div>
     <div class="song row align-items-center py-2" *ngFor="let sound of sounds">
       <div class="icons col-sm-4 col-5 p-0">
         <svg class="bi bi-play mx-md-3 mx-sm-1" width="5vh" height="5vh" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
