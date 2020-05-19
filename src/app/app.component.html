@@ -16,6 +16,7 @@
         <app-youtube-search-result
             *ngFor="let r of results"
             [result]="r"
+            [accountid] = "accountid"
             (played)="playSong($event)">
       </app-youtube-search-result>
     </div>

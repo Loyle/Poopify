@@ -32,8 +32,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 		echo json_encode($req->fetchAll(PDO::FETCH_ASSOC));
 	}
 	else if($_POST["function"] == "addMusicPlaylist") {
-		//$req = $bdd->prepare('INSERT INTO table_name () VALUES (:)');
-		//$req->execute(array($account_id));
+		$req = $bdd->prepare("INSERT INTO PlaylistContent(name, playlist_id, video_id, duration, add_date) VALUES(:name, :playlist_id, :video_id, :duration, :add_date)");
+		$req->execute(array(
+			':name' => $_POST["name"],
+			':playlist_id' => $_POST["playlist_id"],
+			':video_id' => $_POST["video_id"],
+			':duration' => $_POST["duration"],
+			':add_date' => $_POST["add_date"],
+		));
+
+		echo json_encode();
 	}
 	else if($_POST["function"] == "create") {
 		$req = $bdd->prepare("INSERT INTO Account(name, password, birthday, email, country, darkmode, fadeout, volume) VALUES(:name, :pwd, :bdate, :email, :country, :darkmode, :fadeout, :volume)");
