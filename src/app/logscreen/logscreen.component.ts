@@ -20,6 +20,7 @@ export class LogscreenComponent implements OnInit {
     fade = false;
     createAccount = false;
     accountId = '';
+    alreadyCreate = false;
 
     @Output()
     authentify = new EventEmitter<boolean>();
@@ -105,24 +106,28 @@ export class LogscreenComponent implements OnInit {
     }
 
     createNewAccount(){
-      var http = new XMLHttpRequest();
+      if(!this.alreadyCreate){
+        var http = new XMLHttpRequest();
 
-      // On crée les params post que l'on va envoyer
-      var params = new FormData();
-      params.append('function', 'create');
-      params.append('name',this.nameInput);
-      params.append('email', this.emailInput);
-      params.append('pwd', this.passInput);
-      params.append('bdate',this.bdateInput);
-      params.append('country',this.countryInput);
+        // On crée les params post que l'on va envoyer
+        var params = new FormData();
+        params.append('function', 'create');
+        params.append('name',this.nameInput);
+        params.append('email', this.emailInput);
+        params.append('pwd', this.passInput);
+        params.append('bdate',this.bdateInput);
+        params.append('country',this.countryInput);
 
-      // On connecte
-      http.open("POST","https://poopify.fr/api/api.php",true);
+        // On connecte
+        http.open("POST","https://poopify.fr/api/api.php",true);
 
-      http.onload = function() {
-          // On parse les résultats du Json (On peut utiliser comme ceci : data.id, data.email, data.password etc...)
+        http.onload = function() {
+            // On parse les résultats du Json (On peut utiliser comme ceci : data.id, data.email, data.password etc...)
+        }
+
+        http.send(params);
+      }else{
+        this.createAccount = false;
       }
-
-      http.send(params);
     }
 }

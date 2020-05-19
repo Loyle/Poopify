@@ -42,7 +42,7 @@ export class SidenavComponent implements OnInit {
         if(Object.keys(data).length > 0) {
             for (let index = 0; index < data.length; index++) {
               const element = data[index];
-              target.playlists.push({name : element.name, id : element.playlist_id});
+              target.playlists.push({name : element.name, id : element.id});
             }
         }
     }
@@ -55,7 +55,7 @@ export class SidenavComponent implements OnInit {
   profil = new EventEmitter<boolean>();
 
   @Output()
-  path = new EventEmitter<string>();
+  path = new EventEmitter();
 
   @Output()
   quit = new EventEmitter<boolean>();
@@ -84,7 +84,7 @@ export class SidenavComponent implements OnInit {
   }
 
   goPlaylist(int){
-    this.path.emit(int);
+    this.path.emit(Number(int));
     this.active = "Playlist";
     this.toggleNewPlaylist = false;
   }

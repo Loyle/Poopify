@@ -81,6 +81,6 @@ export class AppComponent implements OnInit{
   }
 
   isNumber(path){
-    return typeof path === 'number'; 
+    return typeof path === 'number';
   }
 }
