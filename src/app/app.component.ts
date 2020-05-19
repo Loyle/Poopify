@@ -79,4 +79,8 @@ export class AppComponent implements OnInit{
   getAccountId(ev){
     this.accountid = ev;
   }
+
+  isNumber(path){
+    return typeof path === 'number'; 
+  }
 }
