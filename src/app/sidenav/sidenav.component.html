@@ -77,9 +77,8 @@
             </div>
             <span class="menuspan d-sm-block d-none">Playlist</span>
             <div class="dropdown-container d-sm-block d-none">
-              <li class="nav-item d-flex align-items-center justify-content-center" (click)="goPlaylist(1)">Playlist1</li>
-              <li class="nav-item d-flex align-items-center justify-content-center" (click)="goPlaylist(2)">Playlist2</li>
-              <li class="nav-item d-flex align-items-center justify-content-center" (click)="goPlaylist(3)">Playlist3</li>
+              <li class="nav-item d-flex align-items-center justify-content-center" *ngFor="let playlist of playlists; index as i" [ngClass]="i>1 ? 'd-none' : 'd-block'" (click)="goPlaylist(i+1)">{{playlist.name}}</li>
+              <li class="nav-item d-flex align-items-center justify-content-center" (click)="toggleNewPlaylist = true">&#8226;&#8226;&#8226;</li>
             </div>
           </div>
         </li>
@@ -111,5 +110,53 @@
         </li>
       </ul>
     </nav>
+  </div>
+  <div class="modal" [ngClass]="toggleNewPlaylist ? 'd-block' : 'd-none'">
+    <div class="modal-dialog h-100 py-0 my-0 align-items-center d-flex" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Playlists</h5>
+          <button type="button" class="close" data-dismiss="modal" (click)="toggleNewPlaylist = addNew = false">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <ng-template *ngIf="addNew ; then newPlaylist else List"></ng-template>
+          <ng-template #List>
+            <div class="playlistList">
+              <li class="nav-item d-flex align-items-center justify-content-center" *ngFor="let playlist of playlists; index as i" (click)="goPlaylist(i+1)">{{playlist.name}}</li>
+            </div>
+          </ng-template>
+          <ng-template #newPlaylist>
+            <div class="newPlaylist py-4">
+              <div class="pl-2">
+                <span>Playlist title</span><input type="text" class="textField ml-3 px-2 h-100 rounded" placeholder="MyNewPlaylist" id="input" (keyup)="getPlaylistName($event)">
+                <small *ngIf="errorName" class="text-danger p-2">No name</small>
+              </div>
+              <div class="custom-control custom-switch d-flex pl-2 mt-2">
+                <span>Set private</span>
+                <input type="checkbox" class="custom-control-input" id="customSwitches" [checked]="private" (click)="changePrivacy()">
+                <label class="custom-control-label  ml-5" for="customSwitches"></label>
+              </div>
+            </div>
+          </ng-template>
+          <li class="nav-item d-flex align-items-center justify-content-center" (click)="addNew = true">
+            <ng-template *ngIf="addNew ; then submitBtn else addBtn"></ng-template>
+            <ng-template #addBtn>
+              <svg class="bi bi-plus-circle" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M8 3.5a.5.5 0 01.5.5v4a.5.5 0 01-.5.5H4a.5.5 0 010-1h3.5V4a.5.5 0 01.5-.5z" clip-rule="evenodd"/>
+                <path fill-rule="evenodd" d="M7.5 8a.5.5 0 01.5-.5h4a.5.5 0 010 1H8.5V12a.5.5 0 01-1 0V8z" clip-rule="evenodd"/>
+                <path fill-rule="evenodd" d="M8 15A7 7 0 108 1a7 7 0 000 14zm0 1A8 8 0 108 0a8 8 0 000 16z" clip-rule="evenodd"/>
+              </svg>
+            </ng-template>
+            <ng-template #submitBtn>
+              <svg class="bi bi-check" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg" (click)="addPlaylist()">
+                <path fill-rule="evenodd" d="M13.854 3.646a.5.5 0 010 .708l-7 7a.5.5 0 01-.708 0l-3.5-3.5a.5.5 0 11.708-.708L6.5 10.293l6.646-6.647a.5.5 0 01.708 0z" clip-rule="evenodd"/>
+              </svg>
+            </ng-template>
+          </li>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

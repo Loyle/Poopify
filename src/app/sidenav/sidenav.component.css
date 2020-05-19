@@ -38,6 +38,72 @@
   height: 100%;
 }
 
+.modal{
+  background-color: rgba(0,0,0,0.3);
+}
+
+.modal-content{
+  background-color: var(--bg-secondary);
+  color: var(--text-color);
+}
+
+span{
+  color: var(--text-color);
+}
+
+.playlistList{
+  height: 40vh;
+  overflow-y: scroll;
+}
+
+.playlistList{
+  height: 40vh;
+}
+
+input, input:focus{
+  background-color: transparent;
+  border: 1px solid var(--text-color);
+  box-shadow: none;
+  line-height: 2;
+  outline: none;
+  color: #B0B1B3;
+  position: relative;
+}
+
+::-webkit-scrollbar {
+  width: 3px;
+  height: 2px;
+}
+::-webkit-scrollbar-button {
+  width: 0px;
+  height: 0px;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--accent-color);
+  border: 0px none #ffffff;
+  border-radius: 50px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #ffffff;
+}
+::-webkit-scrollbar-thumb:active {
+  background: #000000;
+}
+::-webkit-scrollbar-track {
+  background: var(--hover);
+  border: 0px none #ffffff;
+  border-radius: 50px;
+}
+::-webkit-scrollbar-track:hover {
+  background: #666666;
+}
+::-webkit-scrollbar-track:active {
+  background: #333333;
+}
+::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
 
 .nav-item{
   height: 10vh;

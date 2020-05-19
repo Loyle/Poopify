@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output,Input, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-sidenav',
@@ -8,11 +8,45 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 export class SidenavComponent implements OnInit {
   active = 'Home';
   dropdownenable = false;
+  toggleNewPlaylist = false;
+  addNew = false;
+  newPlaylist = '';
+  private = false;
+  isPrivate;
+  errorName = false;
+  playlists : Array<{name : string, id : number}> = [];
+
+  @Input()
+  accountid;
 
   constructor() { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit() {  var http = new XMLHttpRequest();
+
+    // On crée les params post que l'on va envoyer
+    var params = new FormData();
+    params.append('function', 'getPlaylistByUser');
+    params.append('user', this.accountid);
+
+    // Pour pouvoir acceder au this dans la sous function
+    var target = this;
+    target.playlists = [];
+    // On connecte
+    http.open("POST","https://poopify.fr/api/api.php",true);
+
+    // Lorsque l'execution est terminé
+    http.onload = function(){
+        // On parse les résultats du Json (On peut utiliser comme ceci : data.id, data.email, data.password etc...)
+        var data = JSON.parse(http.response);
+        // On regarde si il y a un résultat
+        if(Object.keys(data).length > 0) {
+            for (let index = 0; index < data.length; index++) {
+              const element = data[index];
+              target.playlists.push({name : element.name, id : element.playlist_id});
+            }
+        }
+    }
+    http.send(params); }
 
   @Output()
   setting = new EventEmitter<boolean>();
@@ -52,10 +86,51 @@ export class SidenavComponent implements OnInit {
   goPlaylist(int){
     this.path.emit(int);
     this.active = "Playlist";
+    this.toggleNewPlaylist = false;
   }
 
   logout(){
     this.quit.emit(true);
+  }
+
+  getPlaylistName(data){
+    this.newPlaylist = data.target.value;
+  }
+
+  changePrivacy(){
+    if(this.private){
+      this.isPrivate = '1';
+    }else{
+      this.isPrivate = '0';
+    }
+    this.private = !this.private;
+  }
+
+  addPlaylist(){
+    if(this.newPlaylist == ''){
+      this.errorName = true;
+    }else{
+      var http = new XMLHttpRequest();
+
+      // On crée les params post que l'on va envoyer
+      var params = new FormData();
+      params.append('function', 'addMusicPlaylist');
+      params.append('name',this.newPlaylist);
+      params.append('account_id', this.accountid);
+      params.append('private', this.isPrivate);
+
+      // On connecte
+      http.open("POST","https://poopify.fr/api/api.php",true);
+
+      http.onload = function() {}
+
+      http.send(params);
+      this.toggleNewPlaylist = false;
+      this.newPlaylist = '';
+      this.isPrivate = '0';
+      this.private = false;
+      this.addNew = false;
+    }
   }
 
 }
