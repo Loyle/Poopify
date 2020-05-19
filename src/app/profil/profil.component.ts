@@ -10,13 +10,16 @@ export class ProfilComponent implements OnInit {
   @Input()
   openProfil : boolean;
 
+  @Input()
+  accountid;
+
   @Output()
   close = new EventEmitter<boolean>();
 
-  name = "Théau Zatti";
-  birthdate = '08/05/1999';
-  email = "theau.zatti@gmail.com";
-  land = "France";
+  name = "";
+  birthdate = '';
+  email = "";
+  land = "";
   allowModification = false;
   constructor() { }
 

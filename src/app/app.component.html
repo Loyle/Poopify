@@ -4,7 +4,7 @@
 <ng-template #run>
   <app-search-bar (loading)="loading=$event" (results)="updateResults($event)" (error)="error=$event"></app-search-bar>
   <app-sidenav  [accountid] = "accountid" (setting)="openSettings($event)" (profil)="openProfil($event)" (path)="openPage($event)" (quit)="switch = logged =!$event"></app-sidenav>
-  <app-profil></app-profil>
+  <app-profil [accountid] = "accountid"></app-profil>
   <app-settings [openSetting]="toggleSettings" [darkMode]="themedark" (close)="closeSettings($event)" (themeSwap)="changeTheme($event)"></app-settings>
   <app-profil [openProfil]="toggleProfil" (close)="closeProfil($event)"></app-profil>
   <div *ngIf="isNumber(path)">

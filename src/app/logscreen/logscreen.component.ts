@@ -98,7 +98,6 @@ export class LogscreenComponent implements OnInit {
 
     newBDate(data){
         this.bdateInput = data.target.value;
-        alert(this.bdateInput);
     }
 
     newCountry(data){
@@ -106,7 +105,8 @@ export class LogscreenComponent implements OnInit {
     }
 
     createNewAccount(){
-      if(!this.alreadyCreate){
+      if(this.alreadyCreate == false){
+        this.alreadyCreate = true;
         var http = new XMLHttpRequest();
 
         // On crée les params post que l'on va envoyer
@@ -126,7 +126,6 @@ export class LogscreenComponent implements OnInit {
         }
 
         http.send(params);
-      }else{
         this.createAccount = false;
       }
     }
