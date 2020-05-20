@@ -75,6 +75,11 @@ export class SidenavComponent implements OnInit {
     this.newPlaylist = data.target.value;
   }
 
+  quit(){
+    this.addNew = false;
+    this.toggleNewPlaylist = false;
+  }
+
   changePrivacy(){
     this.private = !this.private;
     if(this.private){

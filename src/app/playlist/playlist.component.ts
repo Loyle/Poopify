@@ -27,13 +27,17 @@ export class PlaylistComponent implements OnChanges {
   OnInit(){}
 
   run(){
-    if(this.i > this.sounds.length-1){
-      this.i=0;
-      this.test = this.sounds[this.i];
-      ++this.i;
+    if(this.sounds.length != 0){
+      if(this.i > this.sounds.length-1){
+        this.i=0;
+        this.test = this.sounds[this.i].id;
+        ++this.i;
+      }else{
+        this.test = this.sounds[this.i].id;
+        ++this.i;
+      }
     }else{
-      this.test = this.sounds[this.i];
-      ++this.i;
+      this.test = '';
     }
   }
 
@@ -70,7 +74,7 @@ export class PlaylistComponent implements OnChanges {
     http.send(params);
   }
 
-  getPlaylistName(){
+  getPlaylistName(i){
     var http = new XMLHttpRequest();
 
     // On crée les params post que l'on va envoyer
@@ -90,7 +94,11 @@ export class PlaylistComponent implements OnChanges {
         var data = JSON.parse(http.response);
         // On regarde si il y a un résultat
         if(Object.keys(data).length > 0) {
-          target.playlistName = data[target.playlistId-1].name;
+          for (let index = 0; index < data.length; index++) {
+            if(data[index].id == target.playlistId){
+              target.playlistName = data[index].name;
+            }
+          }
         }
     }
     http.send(params);
