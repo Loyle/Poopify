@@ -8,7 +8,7 @@
   <app-settings [openSetting]="toggleSettings" [darkMode]="themedark" (close)="closeSettings($event)" (themeSwap)="changeTheme($event)"></app-settings>
   <app-profil [openProfil]="toggleProfil" (close)="closeProfil($event)"></app-profil>
   <div *ngIf="isNumber(path)">
-    <app-playlist [playlistId]="path" [accountid] = "accountid" ng-change="displayPlaylist()"></app-playlist>
+    <app-playlist [playlistId]="path" [accountid] = "accountid" ng-change="displayPlaylist()" (played)="playSong($event)"></app-playlist>
   </div>
   <div class="row">
     <div *ngIf="loadResults" class="results w-100 h-100 px-md-5 pl-sm-5 px-2 pr-sm-3">

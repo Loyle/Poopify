@@ -1,4 +1,4 @@
-import { Component, OnChanges, OnInit,Input,SimpleChanges } from '@angular/core';
+import { Component, OnChanges, OnInit,Output,EventEmitter,Input,SimpleChanges } from '@angular/core';
 
 @Component({
   selector: 'app-playlist',
@@ -14,12 +14,19 @@ export class PlaylistComponent implements OnChanges {
   @Input()
   accountid;
 
+  @Output()
+  played = new EventEmitter<any>();
+
   @Input()
   playlistId! :number;
 
   constructor() {}
 
   OnInit(){}
+
+  playSong(id){
+    this.played.emit(id);
+  }
 
   ngOnChanges(value : SimpleChanges){
     console.log("in");

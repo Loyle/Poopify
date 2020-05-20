@@ -68,6 +68,7 @@ export class AppComponent implements OnInit{
 
   openPage(path){
     this.loadResults=false;
+    this.error = false;
     this.path = path;
   }
 

@@ -7,6 +7,10 @@
   overflow-y: scroll;
 }
 
+.bi:hover{
+  color: var(--accent-color);
+}
+
 .top{
   height: 20vw;
   overflow: hidden;

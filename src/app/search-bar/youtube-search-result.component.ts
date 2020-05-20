@@ -113,7 +113,7 @@ export class YouTubeSearchResultComponent implements OnInit {
     var params = new FormData();
     params.append('function', 'addMusicPlaylist');
     params.append('name',this.result.title);
-    params.append('playlist_id', index.toString());
+    params.append('playlist_id', index);
     params.append('video_id', this.result.id);
     params.append('duration','100');
     params.append('add_date', pipe.transform(new Date(), 'yyyy-MM-dd'));
