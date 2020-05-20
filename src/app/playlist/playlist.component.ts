@@ -74,7 +74,7 @@ export class PlaylistComponent implements OnChanges {
     http.send(params);
   }
 
-  getPlaylistName(i){
+  getPlaylistName(){
     var http = new XMLHttpRequest();
 
     // On crée les params post que l'on va envoyer
