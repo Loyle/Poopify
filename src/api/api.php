@@ -38,7 +38,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 			':playlist_id' => $_POST["playlist_id"],
 			':video_id' => $_POST["video_id"],
 			':duration' => $_POST["duration"],
-			':add_date' => $_POST["add_date"],
+			':add_date' => $_POST["add_date"]
 		));
 
 		echo json_encode();
@@ -48,10 +48,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 		$req->execute(array(
 			':name' => $_POST["name"],
 			':account_id' => $_POST["account_id"],
-			':private' => $_POST["private"],
+			':private' => $_POST["private"]
 		));
 
-		echo json_encode();
+		echo json_encode($_POST);
 	}
 	else if($_POST["function"] == "create") {
 		$req = $bdd->prepare("INSERT INTO Account(name, password, birthday, email, country, darkmode, fadeout, volume) VALUES(:name, :pwd, :bdate, :email, :country, :darkmode, :fadeout, :volume)");

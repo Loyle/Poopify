@@ -21,11 +21,12 @@
             "aot": true,
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              "src/api"
             ],
             "styles": [
               "./node_modules/bootstrap/dist/css/bootstrap.min.css",
-              "src/styles.css",
+              "src/styles.css"
             ],
             "scripts": [
               "./node_modules/jquery/dist/jquery.min.js",
@@ -124,6 +125,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "Poopify"
+    }
+  },
+  "defaultProject": "Poopify",
+  "cli": {
+    "analytics": false
+  }
 }
