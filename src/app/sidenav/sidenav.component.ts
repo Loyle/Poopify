@@ -64,6 +64,7 @@ export class SidenavComponent implements OnInit {
     this.path.emit(Number(int));
     this.active = "Playlist";
     this.toggleNewPlaylist = false;
+    this.dropdownenable = false;
   }
 
   logout(){
@@ -104,7 +105,7 @@ export class SidenavComponent implements OnInit {
       http.send(params);
 
       this.loadPlaylists();
-      
+
       this.toggleNewPlaylist = false;
       this.newPlaylist = '';
       this.isPrivate = '0';

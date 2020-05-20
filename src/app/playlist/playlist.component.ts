@@ -10,6 +10,8 @@ export class PlaylistComponent implements OnChanges {
   sounds : Array<{name : string, duration : number, id : string , addDate : Date}> = [];
   times = Array(24);
   playlistName;
+  test;
+  i = 0;
 
   @Input()
   accountid;
@@ -24,12 +26,22 @@ export class PlaylistComponent implements OnChanges {
 
   OnInit(){}
 
+  run(){
+    if(this.i > this.sounds.length-1){
+      this.i=0;
+      this.test = this.sounds[this.i];
+      ++this.i;
+    }else{
+      this.test = this.sounds[this.i];
+      ++this.i;
+    }
+  }
+
   playSong(id){
     this.played.emit(id);
   }
 
   ngOnChanges(value : SimpleChanges){
-    console.log("in");
     this.getPlaylistName();
     var http = new XMLHttpRequest();
     // On crée les params post que l'on va envoyer
@@ -48,7 +60,6 @@ export class PlaylistComponent implements OnChanges {
         // On parse les résultats du Json (On peut utiliser comme ceci : data.id, data.email, data.password etc...)
         var data = JSON.parse(http.response);
         // On regarde si il y a un résultat
-        console.log(data);
         if(Object.keys(data).length > 0) {
             for (let index = 0; index < data.length; index++) {
               const element = data[index];
