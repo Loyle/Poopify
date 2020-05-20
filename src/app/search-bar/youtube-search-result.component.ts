@@ -36,7 +36,7 @@ import { YouTubeSearchResult } from './youtube-search-result';
               <path fill-rule="evenodd" d="M13 12.5a.5.5 0 01.5-.5h2a.5.5 0 010 1H14v1.5a.5.5 0 01-1 0v-2z" clip-rule="evenodd"/>
             </svg>
             <div class="choice rounded" [ngClass]="playlistChoice ? 'd-block' : 'd-none'" (mouseenter)="playlistChoice=true"(mouseleave)="playlistChoice=false">
-              <div *ngFor="let playlist of playlists; index as i" class="text-center py-2 playlistBtn" (click)="addToPlaylist(i)">{{playlist.name}}</div>
+              <div *ngFor="let playlist of playlists; index as i" class="text-center py-2 playlistBtn" (click)="addToPlaylist(playlist.id)">{{playlist.name}}</div>
             </div>
           </ng-template>
         </div>
@@ -70,9 +70,9 @@ export class YouTubeSearchResultComponent implements OnInit {
   @Output() played = new EventEmitter<YouTubeSearchResult>();
 
   constructor() { }
-  
 
-  ngOnInit() {  
+
+  ngOnInit() {
     var http = new XMLHttpRequest();
 
     // On crée les params post que l'on va envoyer
@@ -113,7 +113,7 @@ export class YouTubeSearchResultComponent implements OnInit {
     var params = new FormData();
     params.append('function', 'addMusicPlaylist');
     params.append('name',this.result.title);
-    params.append('playlist_id', index+1);
+    params.append('playlist_id', index.toString());
     params.append('video_id', this.result.id);
     params.append('duration','100');
     params.append('add_date', pipe.transform(new Date(), 'yyyy-MM-dd'));

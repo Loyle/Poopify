@@ -77,7 +77,7 @@
             </div>
             <span class="menuspan d-sm-block d-none">Playlist</span>
             <div class="dropdown-container d-sm-block d-none">
-              <li class="nav-item d-flex align-items-center justify-content-center" *ngFor="let playlist of playlists; index as i" [ngClass]="i>1 ? 'd-none' : 'd-block'" (click)="goPlaylist(playlist.id)">{{playlist.name}}</li>
+              <li class="nav-item align-items-center justify-content-center" *ngFor="let playlist of playlists; index as i" [ngClass]="i>1 ? 'd-none' : 'd-flex'" (click)="goPlaylist(playlist.id)">{{playlist.name}}</li>
               <li class="nav-item d-flex align-items-center justify-content-center" (click)="toggleNewPlaylist = true">&#8226;&#8226;&#8226;</li>
             </div>
           </div>
