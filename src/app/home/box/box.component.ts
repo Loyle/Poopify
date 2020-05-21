@@ -6,11 +6,11 @@ import {Component, Input, OnInit} from '@angular/core';
   styleUrls: ['./box.component.css']
 })
 export class BoxComponent implements OnInit {
-  @Input() songName : string;
-  @Input() description:string;
-  @Input() imgURL : string
+  @Input() songName: string;
+  @Input() description: string;
+  @Input() imgURL: string;
   @Input() songCode: string;
-  @Input() isPlay: boolean
+  @Input() isPlay: boolean;
 
 
   constructor() {

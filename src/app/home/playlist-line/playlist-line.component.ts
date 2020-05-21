@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {getWindowSizes} from "ngx-bootstrap/positioning/utils";
-import {element} from "protractor";
+import {getWindowSizes} from 'ngx-bootstrap/positioning/utils';
+import {element} from 'protractor';
 
 @Component({
   selector: 'app-playlist-line',
@@ -13,7 +13,7 @@ export class PlaylistLineComponent implements OnInit {
   @Input() id: string;
 
 
-  songs=[
+  songs = [
     {
       songName : 'Name',
       description : ' this is the song description, with title, author, mzoihdfozsiehdfmqoidhfoidhfomishdofhisefifezmf zeo zefzh zeçueofoe zejrjr zizezh djd )àefee  z popfes ',
@@ -34,12 +34,69 @@ export class PlaylistLineComponent implements OnInit {
       imgURL : 'https://scx1.b-cdn.net/csz/news/800/2016/578650fe544c4.jpg',
       songCode : null,
       isPlay : false,
+    },
+    {
+      songName : 'La dance des canards',
+      description : ' Coin coin',
+      imgURL : 'https://scx1.b-cdn.net/csz/news/800/2016/578650fe544c4.jpg',
+      songCode : null,
+      isPlay : false,
+    },
+    {
+      songName : 'La dance des canards',
+      description : ' Coin coin',
+      imgURL : 'https://scx1.b-cdn.net/csz/news/800/2016/578650fe544c4.jpg',
+      songCode : null,
+      isPlay : false,
+    },
+    {
+      songName : 'La dance des canards',
+      description : ' Coin coin',
+      imgURL : 'https://scx1.b-cdn.net/csz/news/800/2016/578650fe544c4.jpg',
+      songCode : null,
+      isPlay : false,
+    },
+    {
+      songName : 'La dance des canards',
+      description : ' Coin coin',
+      imgURL : 'https://scx1.b-cdn.net/csz/news/800/2016/578650fe544c4.jpg',
+      songCode : null,
+      isPlay : false,
+    },
+    {
+      songName : 'La dance des canards',
+      description : ' Coin coin',
+      imgURL : 'https://scx1.b-cdn.net/csz/news/800/2016/578650fe544c4.jpg',
+      songCode : null,
+      isPlay : false,
+    },
+    {
+      songName : 'La dance des canards',
+      description : ' Coin coin',
+      imgURL : 'https://scx1.b-cdn.net/csz/news/800/2016/578650fe544c4.jpg',
+      songCode : null,
+      isPlay : false,
+    },
+    {
+      songName : 'La dance des canards',
+      description : ' Coin coin',
+      imgURL : 'https://scx1.b-cdn.net/csz/news/800/2016/578650fe544c4.jpg',
+      songCode : null,
+      isPlay : false,
+    },
+    {
+      songName : 'La dance des canards',
+      description : ' Coin coin',
+      imgURL : 'https://scx1.b-cdn.net/csz/news/800/2016/578650fe544c4.jpg',
+      songCode : null,
+      isPlay : false,
     }
 
-  ]
+  ];
 
    constructor() {
   }
   ngOnInit(): void {
   }
+
 }
