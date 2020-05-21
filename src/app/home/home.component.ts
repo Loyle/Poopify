@@ -7,23 +7,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  playlists =[
+  playlists = [
     {
       playlistName: 'Récemment écoutées',
-      nbSong: 12,
       id: 'Rec'
     },
     {
       playlistName: 'Favoris',
-      nbSong: 10,
       id: 'fav'
     },
     {
       playlistName: 'Playlist 1',
-      nbSong: 2,
       id: 'pl1'
     }
-  ]
+  ];
   constructor() { }
 
   ngOnInit(): void {

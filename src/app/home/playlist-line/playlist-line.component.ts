@@ -1,6 +1,4 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {getWindowSizes} from 'ngx-bootstrap/positioning/utils';
-import {element} from 'protractor';
 
 @Component({
   selector: 'app-playlist-line',
@@ -9,8 +7,8 @@ import {element} from 'protractor';
 })
 export class PlaylistLineComponent implements OnInit {
   @Input() playlistName: string;
-  @Input() nbSong: number;
   @Input() id: string;
+  nbActive: number;
 
 
   songs = [
@@ -43,7 +41,28 @@ export class PlaylistLineComponent implements OnInit {
       isPlay : false,
     },
     {
-      songName : 'La dance des canards',
+      songName : 's1',
+      description : ' Coin coin',
+      imgURL : 'https://scx1.b-cdn.net/csz/news/800/2016/578650fe544c4.jpg',
+      songCode : null,
+      isPlay : false,
+    },
+    {
+      songName : 's2',
+      description : ' Coin coin',
+      imgURL : 'https://scx1.b-cdn.net/csz/news/800/2016/578650fe544c4.jpg',
+      songCode : null,
+      isPlay : false,
+    },
+    {
+      songName : 's3',
+      description : ' Coin coin',
+      imgURL : 'https://scx1.b-cdn.net/csz/news/800/2016/578650fe544c4.jpg',
+      songCode : null,
+      isPlay : false,
+    },
+    {
+      songName : 's4',
       description : ' Coin coin',
       imgURL : 'https://scx1.b-cdn.net/csz/news/800/2016/578650fe544c4.jpg',
       songCode : null,
@@ -90,13 +109,32 @@ export class PlaylistLineComponent implements OnInit {
       imgURL : 'https://scx1.b-cdn.net/csz/news/800/2016/578650fe544c4.jpg',
       songCode : null,
       isPlay : false,
-    }
+    },
+    {
+      songName : 'La dance des canards',
+      description : ' Coin coin',
+      imgURL : 'https://scx1.b-cdn.net/csz/news/800/2016/578650fe544c4.jpg',
+      songCode : null,
+      isPlay : false,
+    },
 
   ];
 
    constructor() {
-  }
-  ngOnInit(): void {
+     let width: number;
+
+     if (document.body)
+     {
+       width = (document.body.clientWidth);
+     }
+
+     if (width >= 960){
+        this.nbActive = Math.trunc(width / 200 )  ;
+     }else if (width <= 959){
+       this.nbActive = width / 100;
+     }
   }
 
+  ngOnInit(): void {
+  }
 }

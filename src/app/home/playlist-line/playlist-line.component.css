@@ -13,13 +13,12 @@ h1{
   margin: 1.5vw;
   position: relative;
 }
-
 @media (min-width: 768px) and (max-width: 991px) {
   /* Show 4th slide on md if col-md-4*/
-  .carousel-inner .active.col-md-4.carousel-item + .carousel-item + .carousel-item + .carousel-item {
+  .carousel-inner .active.col-1.carousel-item + .carousel-item + .carousel-item + .carousel-item {
     position: absolute;
     top: 0;
-    /*right: -33.3333%;  /*change this with javascript in the future*/
+    right: -33.3333%;  /*change this with javascript in the future*/
     z-index: -1;
     display: block;
     visibility: visible;
@@ -27,10 +26,10 @@ h1{
 }
 @media (min-width: 576px) and (max-width: 768px) {
   /* Show 3rd slide on sm if col-sm-6*/
-  .carousel-inner .active.col-sm-6.carousel-item + .carousel-item + .carousel-item {
+  .carousel-inner .active.col-1.carousel-item + .carousel-item + .carousel-item {
     position: absolute;
     top: 0;
-    /*right: -50%;  /*change this with javascript in the future*/
+    right: -50%;  /*change this with javascript in the future*/
     z-index: -1;
     display: block;
     visibility: visible;
@@ -77,14 +76,10 @@ h1{
     transform: translate3d(100%, 0, 0);
     visibility: visible;
     display: block;
-    visibility: visible;
   }
 }
 /* MD */
 @media (min-width: 768px) {
-  .carousel-item {
-    margin-right: 0;
-  }
   /* show 3rd of 3 item slide */
   .carousel-inner .active + .carousel-item + .carousel-item {
     display: block;
@@ -108,29 +103,24 @@ h1{
     transform: translate3d(100%, 0, 0);
     visibility: visible;
     display: block;
-    visibility: visible;
   }
 }
 /* LG */
-@media (min-width: 991px) {
-  .carousel-item {
-    margin-right: 0;
-  }
+@media (min-width: 992px) {
   /* show 4th item */
   .carousel-inner .active + .carousel-item + .carousel-item + .carousel-item {
-    display: inline-block;
+    display: block;
   }
   .carousel-inner .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left) + .carousel-item + .carousel-item + .carousel-item {
     transition: none;
   }
   /* Show 5th slide on lg if col-lg-3 */
-  .carousel-inner .active.col-lg-3.carousel-item + .carousel-item + .carousel-item + .carousel-item + .carousel-item {
+  .carousel-inner .active.col-1.carousel-item + .carousel-item + .carousel-item + .carousel-item + .carousel-item {
     position: absolute;
     top: 0;
-    /*right: -25%;  /*change this with javascript in the future*/
+    right: -25%;  /*change this with javascript in the future*/
     z-index: -1;
-    display: inline-block;
-    width: 150px;
+    display: block;
     visibility: visible;
   }
   /* left or forward direction */
@@ -144,12 +134,6 @@ h1{
     position: relative;
     transform: translate3d(100%, 0, 0);
     visibility: visible;
-    display: inline-block;
-    visibility: visible;
+    display: block;
   }
 }
-
-
-
-
-

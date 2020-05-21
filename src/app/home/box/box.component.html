@@ -5,7 +5,7 @@
     <div class="overlay d-inline-flex justify-content-sm-center ">
       <p class="" style="font-size: 1vw"><strong>{{songName}}</strong><br><br>{{description}}</p>
       <button class="circle d-flex justify-content-center" (click)="onPlayPause()">
-        <div class="play"[hidden]="isPlay"></div>
+        <div class="play" [hidden]="isPlay"></div>
         <div class="pause" [hidden]="!isPlay"></div>
       </button>
     </div>
