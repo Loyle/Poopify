@@ -9,7 +9,7 @@ export class PlaylistLineComponent implements OnInit {
   @Input() playlistName: string;
   @Input() id: string;
   nbActive: number;
-
+  content: any[];
 
   songs = [
     {
@@ -129,12 +129,29 @@ export class PlaylistLineComponent implements OnInit {
      }
 
      if (width >= 960){
-        this.nbActive = Math.trunc(width / 200 )  ;
-     }else if (width <= 959){
+       this.nbActive = Math.trunc(width / 200 )  ;
+     }else if (width <= 959) {
        this.nbActive = width / 100;
      }
+     this.songInArray();
   }
 
   ngOnInit(): void {
+  }
+
+  songInArray(){
+    this.content = [];
+    let j = -1;
+
+    for ( let i = 0; i < this.songs.length; i++){
+      if (i % this.nbActive === 0) {
+        j++;
+        this.content[j] = [];
+        this.content[j].push(this.songs[i]);
+      }
+      else {
+        this.content[j].push(this.songs[i]);
+      }
+     }
   }
 }

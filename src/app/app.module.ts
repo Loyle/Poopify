@@ -9,20 +9,23 @@ import { ModalModule } from 'ngx-bootstrap/modal';
 import { HomeComponent } from './home/home.component';
 import { PlaylistLineComponent } from './home/playlist-line/playlist-line.component';
 import { BoxComponent } from './home/box/box.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
 imports: [
     BrowserModule,
     BsDropdownModule.forRoot(),
     TooltipModule.forRoot(),
-    ModalModule.forRoot()
+    ModalModule.forRoot(),
+    NgbModule
   ],
-  declarations: [
-    AppComponent,
-    HomeComponent,
-    PlaylistLineComponent,
-    BoxComponent
-  ],
+    declarations: [
+        AppComponent,
+        HomeComponent,
+        PlaylistLineComponent,
+        BoxComponent,
+        PlaylistLineComponent
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })
