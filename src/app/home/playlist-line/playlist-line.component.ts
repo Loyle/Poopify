@@ -1,4 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
+import {$} from 'jquery';
+
 
 @Component({
   selector: 'app-playlist-line',
@@ -119,30 +121,26 @@ export class PlaylistLineComponent implements OnInit {
     },
 
   ];
+  computeNbActive(){
+    let width: number;
 
-   constructor() {
-     let width: number;
+    if (document.body)
+    {
+      width = (document.body.clientWidth);
+    }
 
-     if (document.body)
-     {
-       width = (document.body.clientWidth);
-     }
-
-     if (width >= 960){
-       this.nbActive = Math.trunc(width / 200 )  ;
-     }else if (width <= 959) {
-       this.nbActive = width / 100;
-     }
-     this.songInArray();
+    if (width >= 960){
+      this.nbActive = Math.trunc(width / 200 )  ;
+    }else if (width > 481) {
+      this.nbActive = width / 100;
+    }else{
+      this.nbActive = (width / 75) - 1;
+    }
   }
-
-  ngOnInit(): void {
-  }
-
   songInArray(){
+
     this.content = [];
     let j = -1;
-
     for ( let i = 0; i < this.songs.length; i++){
       if (i % this.nbActive === 0) {
         j++;
@@ -152,6 +150,13 @@ export class PlaylistLineComponent implements OnInit {
       else {
         this.content[j].push(this.songs[i]);
       }
-     }
+    }
+  }
+   constructor() {
+     this.computeNbActive();
+     this.songInArray();
+  }
+
+  ngOnInit(): void {
   }
 }
