@@ -172,7 +172,7 @@ input, input:focus{
   height: 5vh;
 }
 
-@media screen and (max-width: 576px){
+@media screen and (max-width: 575px){
 
   .sidenav{
     top: auto;
@@ -180,6 +180,13 @@ input, input:focus{
     left: 0;
     width: 100%;
     height: 50px;
+  }
+
+  .pasopti{
+    height: 100%;
+    width: 70px;
+    position: absolute;
+    background-color: transparent;
   }
 
   .active::before{
