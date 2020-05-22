@@ -41,7 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 			':add_date' => $_POST["add_date"]
 		));
 
-		echo json_encode();
+		echo json_encode($_POST);
 	}
 	else if($_POST["function"] == "addPlaylist") {
 		$req = $bdd->prepare("INSERT INTO Playlist(name, account_id, private) VALUES(:name, :account_id, :private)");
@@ -51,7 +51,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 			':private' => $_POST["private"]
 		));
 
-		echo json_encode($_POST);
+		echo json_encode();
 	}
 	else if($_POST["function"] == "create") {
 		$req = $bdd->prepare("INSERT INTO Account(name, password, birthday, email, country, darkmode, fadeout, volume) VALUES(:name, :pwd, :bdate, :email, :country, :darkmode, :fadeout, :volume)");

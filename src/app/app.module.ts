@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { NgModule, LOCALE_ID } from '@angular/core';
+import { CommonModule, registerLocaleData } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http'
 
 import { AppComponent } from './app.component';
@@ -19,25 +19,31 @@ import { youTubeSearchInjectables } from './search-bar/youtube-search-injectable
 import { YouTubeSearchResultComponent } from './search-bar/youtube-search-result.component';
 import { PlaylistComponent } from './playlist/playlist.component';
 
+import localeFr from '@angular/common/locales/fr';
+registerLocaleData(localeFr, 'fr');
+
 
 @NgModule({
-imports: [
-    BrowserModule,
-    FormsModule,
-    HttpClientModule
+  imports: [
+  BrowserModule,
+  FormsModule,
+  HttpClientModule
   ],
   declarations: [
-    AppComponent,
-    PlayerBarComponent,
-    SidenavComponent,
-    SettingsComponent,
-    SearchBarComponent,
-    ProfilComponent,
-    LogscreenComponent,
-    YouTubeSearchResultComponent,
-    PlaylistComponent
+  AppComponent,
+  PlayerBarComponent,
+  SidenavComponent,
+  SettingsComponent,
+  SearchBarComponent,
+  ProfilComponent,
+  LogscreenComponent,
+  YouTubeSearchResultComponent,
+  PlaylistComponent
   ],
-  providers: [youTubeSearchInjectables],
+  providers: [
+  youTubeSearchInjectables,
+  { provide: LOCALE_ID, useValue: 'fr-FR'},
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
