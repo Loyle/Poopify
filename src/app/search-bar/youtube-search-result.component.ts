@@ -105,8 +105,9 @@ export class YouTubeSearchResultComponent implements OnInit {
   }
 
   addToPlaylist(index){
-    var pipe = new DatePipe('fr-FR');
 
+    var pipe = new DatePipe('fr-FR');
+    this.playlistAdded = true;
     var http = new XMLHttpRequest();
 
     // On crée les params post que l'on va envoyer
@@ -117,15 +118,11 @@ export class YouTubeSearchResultComponent implements OnInit {
     params.append('video_id', this.result.id);
     params.append('duration','100');
     params.append('add_date', pipe.transform(new Date(), 'yyyy-MM-dd'));
-
     // On connecte
     http.open("POST","https://poopify.fr/api/api.php",true);
-
     http.onload = function() {
       console.log(http.response);
     }
-
     http.send(params);
-    this.playlistAdded = true;
   }
 }
