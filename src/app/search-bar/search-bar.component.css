@@ -20,7 +20,7 @@
   width: 5em;
   border: none;
   outline: none;
-  color: transparent;
+  color: var(--text-color);
   text-shadow: 0 0 0 gray;
   cursor: pointer;
 }

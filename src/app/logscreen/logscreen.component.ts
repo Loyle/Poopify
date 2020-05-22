@@ -78,6 +78,7 @@ export class LogscreenComponent implements OnInit {
             }
             else {
                 // Sinon, on affiche mauvais MDP
+                target.errorEmail = true;
                 target.errorPass = true;
             }
         }
