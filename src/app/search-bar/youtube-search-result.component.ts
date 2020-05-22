@@ -94,7 +94,7 @@ export class YouTubeSearchResultComponent implements OnInit {
         if(Object.keys(data).length > 0) {
             for (let index = 0; index < data.length; index++) {
               const element = data[index];
-              target.playlists.push({name : element.name, id : element.playlist_id});
+              target.playlists.push({name : element.name, id : element.id});
             }
         }
     }
@@ -105,7 +105,6 @@ export class YouTubeSearchResultComponent implements OnInit {
   }
 
   addToPlaylist(index){
-
     var pipe = new DatePipe('fr-FR');
     this.playlistAdded = true;
     var http = new XMLHttpRequest();

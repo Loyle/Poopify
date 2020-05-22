@@ -15,6 +15,7 @@ export class SidenavComponent implements OnInit {
   isPrivate;
   errorName = false;
   playlists : Array<{name : string, id : number}> = [];
+  width;
 
   @Input()
   accountid;
@@ -73,6 +74,13 @@ export class SidenavComponent implements OnInit {
 
   getPlaylistName(data){
     this.newPlaylist = data.target.value;
+  }
+
+  playlist(){
+    this.width = window.innerWidth;
+    if(this.width < 576){
+      this.toggleNewPlaylist = true;
+    }
   }
 
   quitter(){
