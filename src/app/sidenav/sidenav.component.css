@@ -54,6 +54,7 @@ span{
 .playlistList{
   height: 40vh;
   overflow-y: scroll;
+  overflow-x: hidden;
 }
 
 .playlistList{

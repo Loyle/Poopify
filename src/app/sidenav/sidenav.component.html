@@ -124,7 +124,17 @@
           <ng-template *ngIf="addNew ; then newPlaylist else List"></ng-template>
           <ng-template #List>
             <div class="playlistList">
-              <li class="h-25 d-flex align-items-center justify-content-center" *ngFor="let playlist of playlists; index as i" (click)="goPlaylist(playlist.id)">{{playlist.name}}</li>
+              <div *ngFor="let playlist of playlists; index as i" class="row px-5">
+                <div class="col-10 offset-1">
+                  <li class="d-flex align-items-center justify-content-center p-0" (click)="goPlaylist(playlist.id)">{{playlist.name}}</li>
+                </div>
+                <div class="col-1 p-0">
+                  <svg class="bi bi-x" width="4vh" height="4vh" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" d="M11.854 4.146a.5.5 0 010 .708l-7 7a.5.5 0 01-.708-.708l7-7a.5.5 0 01.708 0z" clip-rule="evenodd"/>
+                    <path fill-rule="evenodd" d="M4.146 4.146a.5.5 0 000 .708l7 7a.5.5 0 00.708-.708l-7-7a.5.5 0 00-.708 0z" clip-rule="evenodd"/>
+                  </svg>
+                </div>
+              </div>
             </div>
           </ng-template>
           <ng-template #newPlaylist>
