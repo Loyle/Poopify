@@ -1,11 +1,11 @@
-<div class="row d-flex justify-content-between ml-2 mr-5">
-  <h1 style="font-size: 3vw">{{playlistName}} </h1>
-  <div style="height: 2vw; width: 4vw" class="btn btn-outline-light btn-sm align-self-center d-flex justify-content-center">
-    <p class="mb-5" style="font-size: 0.8vw">More</p>
+<div class="row d-flex justify-content-between mt-3 ml-2 mr-5">
+  <h1>{{playlistName}} </h1>
+  <div class="btn btn-outline-light btn-sm align-self-center d-flex justify-content-center">
+    <p class="mb-5">More</p>
   </div>
 </div>
 
-  <ngb-carousel class="slick-list" [interval]="0"  [showNavigationIndicators]="false">
+  <ngb-carousel class="slick-list " [interval]="0"  [showNavigationIndicators]="false">
 
     <ng-template ngbSlide *ngFor="let slide of content;" >
       <div class="d-inline-flex marge " >

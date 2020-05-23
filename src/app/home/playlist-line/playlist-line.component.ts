@@ -130,9 +130,9 @@ export class PlaylistLineComponent implements OnInit {
     }
 
     if (width >= 960){
-      this.nbActive = Math.trunc(width / 200 ) + 1 ;
+      this.nbActive = Math.trunc(width / 200 ) - 1 ;
     }else if (width > 481) {
-      this.nbActive = Math.trunc(width / 100 ) - 2;
+      this.nbActive = Math.trunc(width / 200 ) ;
     }else{
       this.nbActive = Math.trunc(width / 75) - 2;
     }
