@@ -181,8 +181,8 @@ h1{
     background-color:black;
     position: absolute;
     border-radius:50%;
-    left: 20%;
-    bottom: 2%;
+    left: 40%;
+    bottom: 5%;
     width:8vw;
     height:8vw;
     border:black;
@@ -203,17 +203,17 @@ h1{
     }
   }
   .play {
-    width: 1vw;
+    width: 1.2vw;
     height: 1.2vw;
-    border-top: 0.8vw solid transparent;
-    border-left: 1vw solid #FFFFFF;
-    border-bottom: 0.8vw solid transparent;
+    border-top: 1.2vw solid transparent;
+    border-left: 1.4vw solid #FFFFFF;
+    border-bottom: 1.2vw solid transparent;
   }
   .pause {
-    width: 1.2vw;
-    height: 1.4vw;
-    border-right: 0.4vw solid #FFFFFF;
-    border-left: 0.4vw solid #FFFFFF;
+    width: 1.8vw;
+    height: 2vw;
+    border-right: 0.8vw solid #FFFFFF;
+    border-left: 0.8vw solid #FFFFFF;
   }
 }
 
@@ -303,8 +303,8 @@ h1{
     border-bottom: 0.8vw solid transparent;
   }
   .pause {
-    width: 1.2vw;
-    height: 1.4vw;
+    width: 1.4vw;
+    height: 1.6vw;
     border-right: 0.4vw solid #FFFFFF;
     border-left: 0.4vw solid #FFFFFF;
   }
