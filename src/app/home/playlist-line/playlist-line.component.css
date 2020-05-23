@@ -1,8 +1,22 @@
 
-
-.marge{
-  margin-left: 6%;
+.carousel-item {
+  /* Force to always be block */
+  display: block !important;
+  z-index: 1;
+  position: absolute;
+  transform: translateX(100%);
+  opacity: 0;
+  transition:all  0.2s;
+  visibility: hidden;
 }
+
+.carousel-item.active {
+  position: relative;
+  transform: translateX(0);
+  visibility: visible ;
+  opacity: 1;
+}
+
 .slick-list {
   outline: none;
 }
@@ -10,4 +24,14 @@ h1{
   color: white;
   margin: 1.5vw;
   position: relative;
+}
+@media screen and (min-width: 481px){
+  .marge{
+    padding-left: 8%;
+  }
+}
+@media screen and (max-width: 480px){
+  .marge{
+    padding-left: 15%;
+  }
 }

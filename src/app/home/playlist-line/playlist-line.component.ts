@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, HostListener, Input, OnInit} from '@angular/core';
 import {$} from 'jquery';
 
 
@@ -130,11 +130,11 @@ export class PlaylistLineComponent implements OnInit {
     }
 
     if (width >= 960){
-      this.nbActive = Math.trunc(width / 200 )  ;
+      this.nbActive = Math.trunc(width / 200 ) + 1 ;
     }else if (width > 481) {
-      this.nbActive = width / 100;
+      this.nbActive = Math.trunc(width / 100 ) - 2;
     }else{
-      this.nbActive = (width / 75) - 1;
+      this.nbActive = Math.trunc(width / 75) - 2;
     }
   }
   songInArray(){
@@ -156,7 +156,11 @@ export class PlaylistLineComponent implements OnInit {
      this.computeNbActive();
      this.songInArray();
   }
-
+  @HostListener('window:resize', ['$event'])
+  onResize(event) {
+   this.computeNbActive();
+   this.songInArray();
+  }
   ngOnInit(): void {
   }
 }
