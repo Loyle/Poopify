@@ -68,6 +68,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 		echo json_encode();
 	}
+	else if($_POST["function"] == "deletePlaylist") {
+		$req = $bdd->prepare("DELETE FROM Playlist WHERE id = ?)");
+		$req->execute(array($_POST["id"]));
+
+		$req = $bdd->prepare("DELETE FROM PlaylistContent WHERE playlist_id = ?)");
+		$req->execute(array($_POST["id"]));
+
+		echo json_encode();
+	}
+	else if($_POST["function"] == "deleteMusicFromPlaylist") {
+		$req = $bdd->prepare("DELETE FROM PlaylistContent WHERE id = ?)");
+		$req->execute(array($_POST["id"]));
+
+		echo json_encode();
+	}
 	else {
 		// We do nothing
 		echo json_encode(array());
