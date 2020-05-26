@@ -12,14 +12,14 @@ export class AppComponent implements OnInit{
   toggleSettings = false;
   toggleProfil = false;
   themedark = true;
-  logged = true;
+  logged = false;
   loading: boolean;
   error: boolean;
   results: YouTubeSearchResult[];
   loadResults = false;
   path ="Home";
   accountid = '';
-  switch = true;
+  switch = false;
 
   constructor() { }
 
