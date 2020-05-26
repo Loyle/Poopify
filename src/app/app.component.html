@@ -11,7 +11,7 @@
     <app-home></app-home>
   </div>
   <div *ngIf="path == 'Top'">
-    <app-top></app-top>
+    <app-top [accountid] = "accountid"></app-top>
   </div>
   <div *ngIf="isNumber(path)">
     <app-playlist [playlistId]="path" [accountid] = "accountid" ng-change="displayPlaylist()" (played)="playSong($event)"></app-playlist>
