@@ -7,6 +7,9 @@
   <app-profil [accountid] = "accountid"></app-profil>
   <app-settings [openSetting]="toggleSettings" [darkMode]="themedark" (close)="closeSettings($event)" (themeSwap)="changeTheme($event)"></app-settings>
   <app-profil [openProfil]="toggleProfil" (close)="closeProfil($event)"></app-profil>
+  <div *ngIf="path == 'Home'">
+    <app-home></app-home>
+  </div>
   <div *ngIf="isNumber(path)">
     <app-playlist [playlistId]="path" [accountid] = "accountid" ng-change="displayPlaylist()" (played)="playSong($event)"></app-playlist>
   </div>
@@ -22,7 +25,7 @@
     </div>
     <div *ngIf="error" class="results w-100 h-100 px-md-5 pl-sm-5 px-2 pr-sm-3">
      <h4 class="pt-sm-5 pl-sm-3 pt-2 font-weight-bold ml-sm-5">No more research available, come back tomorrow</h4>
-   </div>
+    </div>
   </div>
   <app-player-bar></app-player-bar>
 </ng-template>
