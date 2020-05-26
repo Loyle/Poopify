@@ -1,6 +1,7 @@
-<div class="bg-dark  h-100">
-  <app-playlist-line *ngFor="let pl of playlists"
-                      [playlistName]="pl.playlistName"
-                      [id]="pl.id"  ></app-playlist-line>
+<div class="home pl-sm-5 py-sm-5 w-100 h-100">
+  <div class="ml-sm-5 margin">
+    <app-playlist-line *ngFor="let pl of playlists"
+                        [playlistName]="pl.playlistName"
+                        [id]="pl.id"  ></app-playlist-line>
+  </div>
 </div>
-
