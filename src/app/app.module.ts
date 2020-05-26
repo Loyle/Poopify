@@ -21,6 +21,7 @@ import { FormsModule } from '@angular/forms';
 import { youTubeSearchInjectables } from './search-bar/youtube-search-injectables';
 import { YouTubeSearchResultComponent } from './search-bar/youtube-search-result.component';
 import { PlaylistComponent } from './playlist/playlist.component';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 import localeFr from '@angular/common/locales/fr';
 registerLocaleData(localeFr, 'fr');
