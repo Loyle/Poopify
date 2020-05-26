@@ -24,6 +24,7 @@ import { PlaylistComponent } from './playlist/playlist.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 import localeFr from '@angular/common/locales/fr';
+import { TopComponent } from './top/top.component';
 registerLocaleData(localeFr, 'fr');
 
 
@@ -50,6 +51,7 @@ registerLocaleData(localeFr, 'fr');
   HomeComponent,
   PlaylistLineComponent,
   BoxComponent,
+  TopComponent,
   ],
   providers: [
   youTubeSearchInjectables,
