@@ -5,7 +5,7 @@ include_once("bdd.php");
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 	if($_POST["function"] == "login") {
 		$email = $_POST["email"];
-		$pwd = $_POST["pwd"];
+		$pwd = hash('sha256',$_POST["pwd"]);
 
 		$req = $bdd->prepare('SELECT * FROM Account AS a WHERE a.email = :email AND a.password = :pwd');
 		$req->execute(array(":email" => $email,":pwd" => $pwd));
@@ -57,7 +57,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 		$req = $bdd->prepare("INSERT INTO Account(name, password, birthday, email, country, darkmode, fadeout, volume) VALUES(:name, :pwd, :bdate, :email, :country, :darkmode, :fadeout, :volume)");
 		$req->execute(array(
 			':name' => $_POST["name"],
-			':pwd' => $_POST["pwd"],
+			':pwd' => hash('sha256',$_POST["pwd"]),
 			':bdate' => $_POST["bdate"],
 			':email' => $_POST["email"],
 			':country' => $_POST["country"],
@@ -80,6 +80,46 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 	else if($_POST["function"] == "deleteMusicFromPlaylist") {
 		$req = $bdd->prepare("DELETE FROM PlaylistContent WHERE id = ?)");
 		$req->execute(array($_POST["id"]));
+
+		echo json_encode();
+	}
+	else if($_POST["function"] == "updateProfil") {
+		$req = $bdd->prepare("UPDATE Account SET name = :name, birthday = :birthday, email = :email, country = :country WHERE id = :id)");
+		$req->execute(array(
+			':name' => $_POST["name"],
+			':birthday' => $_POST["birthday"],
+			':email' => $_POST["email"],
+			':country' => $_POST["country"],
+			':id' => $_POST["id"]
+		));
+
+		echo json_encode();
+	}
+	else if($_POST["function"] == "updateFadeout") {
+		$req = $bdd->prepare("UPDATE Account SET fadeout = :fadeout WHERE id = :id)");
+		$req->execute(array(
+			':fadeout' => $_POST["fadeout"],
+			':id' => $_POST["id"]
+		));
+
+		echo json_encode();
+	}
+	else if($_POST["function"] == "updateVolume") {
+		$req = $bdd->prepare("UPDATE Account SET volume = :volume WHERE id = :id)");
+		$req->execute(array(
+			':volume' => $_POST["volume"],
+			':id' => $_POST["id"]
+		));
+
+		echo json_encode();
+	}
+	else if($_POST["function"] == "updateDarkmode") {
+		$req = $bdd->prepare("UPDATE Account SET darkmode = :darkmode WHERE id = :id)");
+		$req->execute(array(
+			':darkmode' => $_POST["darkmode"],
+			':id' => $_POST["id"]
+		));
+
 
 		echo json_encode();
 	}

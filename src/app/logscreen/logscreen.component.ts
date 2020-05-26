@@ -1,4 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { sha256 } from 'js-sha256';
 
 @Component({
     selector: 'app-logscreen',
@@ -49,7 +50,7 @@ export class LogscreenComponent implements OnInit {
         var params = new FormData();
         params.append('function', 'login');
         params.append('email', this.emailInput);
-        params.append('pwd', this.passInput);
+        params.append('pwd', sha256(this.passInput));
 
         // Pour pouvoir acceder au this dans la sous function
         var target = this;
@@ -115,7 +116,7 @@ export class LogscreenComponent implements OnInit {
         params.append('function', 'create');
         params.append('name',this.nameInput);
         params.append('email', this.emailInput);
-        params.append('pwd', this.passInput);
+        params.append('pwd', sha256(this.passInput));
         params.append('bdate',this.bdateInput);
         params.append('country',this.countryInput);
 
