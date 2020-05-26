@@ -7,6 +7,9 @@ import { AppComponent } from './app.component';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { ModalModule } from 'ngx-bootstrap/modal';
+import { HomeComponent } from './home/home.component';
+import { PlaylistLineComponent } from './home/playlist-line/playlist-line.component';
+import { BoxComponent } from './home/box/box.component';
 import { PlayerBarComponent } from './player-bar/player-bar.component';
 import { SidenavComponent } from './sidenav/sidenav.component';
 import { SettingsComponent } from './settings/settings.component';
@@ -27,7 +30,11 @@ registerLocaleData(localeFr, 'fr');
   imports: [
   BrowserModule,
   FormsModule,
-  HttpClientModule
+  HttpClientModule,
+  BsDropdownModule.forRoot(),
+  TooltipModule.forRoot(),
+  ModalModule.forRoot(),
+  NgbModule
   ],
   declarations: [
   AppComponent,
@@ -38,7 +45,10 @@ registerLocaleData(localeFr, 'fr');
   ProfilComponent,
   LogscreenComponent,
   YouTubeSearchResultComponent,
-  PlaylistComponent
+  PlaylistComponent,
+  HomeComponent,
+  PlaylistLineComponent,
+  BoxComponent,
   ],
   providers: [
   youTubeSearchInjectables,

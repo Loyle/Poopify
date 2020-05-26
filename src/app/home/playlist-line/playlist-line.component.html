@@ -1,0 +1,22 @@
+<div class="row d-flex justify-content-between mt-3 ml-2 mr-5">
+  <h1>{{playlistName}} </h1>
+  <div class="btn btn-outline-light btn-sm align-self-center d-flex justify-content-center">
+    <p class="mb-5">More</p>
+  </div>
+</div>
+
+  <ngb-carousel class="slick-list " [interval]="0"  [showNavigationIndicators]="false">
+
+    <ng-template ngbSlide *ngFor="let slide of content;" >
+      <div class="d-inline-flex marge " >
+       <div *ngFor="let sg of slide" >
+          <app-box [description]="sg.description"
+                   [songName]="sg.songName"></app-box>
+        </div>
+      </div>
+    </ng-template>
+  </ngb-carousel>
+
+
+
+

@@ -1,0 +1,65 @@
+.carousel-control-next{
+  border: #FFFFFF;
+}
+
+.slick-list {
+  outline: none;
+}
+h1{
+  color: white;
+  margin: 1.5vw;
+  position: relative;
+}
+
+@media all and (min-width: 960px) {
+  .marge{
+    padding-left: 15%;
+    padding-right: 8%;
+  }
+
+  .btn{
+    height: 2vw;
+    width: 4vw;
+  }
+  h1{
+    font-size: 3vw;
+  }
+  p{
+    font-size: 0.8vw;
+  }
+}
+@media screen and (max-width: 959px){
+  .marge{
+    padding-left: 15%;
+    padding-right: 8%;
+  }
+
+  .btn{
+    height: 4vw;
+    width: 8vw;
+  }
+  h1{
+    font-size: 3vw;
+  }
+  p{
+    font-size: 2vw;
+  }
+}
+
+@media screen and (max-width: 480px){
+  .marge{
+    padding-left: 15%;
+    padding-right: 15%;
+  }
+
+  .btn{
+    height: 6vw;
+    width: 10vw;
+  }
+  h1{
+    font-size: 5vw;
+  }
+  p{
+    font-size: 3vw;
+  }
+}
