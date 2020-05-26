@@ -126,7 +126,7 @@
             <div class="playlistList">
               <div *ngFor="let playlist of playlists; index as i" class="row px-5">
                 <div class="col-10 offset-1">
-                  <li class="d-flex align-items-center justify-content-center p-0" (click)="goPlaylist(playlist.id)">{{playlist.name}}</li>
+                  <li class="playlistName d-flex align-items-center justify-content-center p-0" (click)="goPlaylist(playlist.id)">{{playlist.name}}</li>
                 </div>
                 <div class="col-1 p-0">
                   <svg class="bi bi-x" width="4vh" height="4vh" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">

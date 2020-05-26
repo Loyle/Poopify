@@ -171,6 +171,15 @@ input, input:focus{
 .bi{
   width: 5vh;
   height: 5vh;
+  cursor: pointer;
+}
+
+.playlistName{
+  cursor: pointer;
+}
+
+.playlistName:hover{
+  color: var(--accent-color);
 }
 
 @media screen and (max-width: 575px){
