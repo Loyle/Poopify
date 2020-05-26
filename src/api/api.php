@@ -22,6 +22,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 		echo json_encode($req->fetchAll(PDO::FETCH_ASSOC));
 	}
+	else if($_POST["function"] == "getUserInfo") {
+		$account_id = $_POST["user"];
+
+		$req = $bdd->prepare('SELECT a.* FROM Account AS a WHERE a.id = :id');
+		$req->execute(array(":id" => $account_id);
+
+		echo json_encode($req->fetchAll(PDO::FETCH_ASSOC));
+	}
 	else if($_POST["function"] == "getPlaylistByUser") {
 		$account_id = $_POST["user"];
 
@@ -69,22 +77,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 		echo json_encode();
 	}
 	else if($_POST["function"] == "deletePlaylist") {
-		$req = $bdd->prepare("DELETE FROM Playlist WHERE id = ?)");
+		$req = $bdd->prepare("DELETE FROM Playlist WHERE id = ?");
 		$req->execute(array($_POST["id"]));
 
-		$req = $bdd->prepare("DELETE FROM PlaylistContent WHERE playlist_id = ?)");
+		$req = $bdd->prepare("DELETE FROM PlaylistContent WHERE playlist_id = ?");
 		$req->execute(array($_POST["id"]));
 
 		echo json_encode();
 	}
 	else if($_POST["function"] == "deleteMusicFromPlaylist") {
-		$req = $bdd->prepare("DELETE FROM PlaylistContent WHERE id = ?)");
+		$req = $bdd->prepare("DELETE FROM PlaylistContent WHERE id = ?");
 		$req->execute(array($_POST["id"]));
 
 		echo json_encode();
 	}
 	else if($_POST["function"] == "updateProfil") {
-		$req = $bdd->prepare("UPDATE Account SET name = :name, birthday = :birthday, email = :email, country = :country WHERE id = :id)");
+		$req = $bdd->prepare("UPDATE Account SET name = :name, birthday = :birthday, email = :email, country = :country WHERE id = :id");
 		$req->execute(array(
 			':name' => $_POST["name"],
 			':birthday' => $_POST["birthday"],
@@ -96,7 +104,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 		echo json_encode();
 	}
 	else if($_POST["function"] == "updateFadeout") {
-		$req = $bdd->prepare("UPDATE Account SET fadeout = :fadeout WHERE id = :id)");
+		$req = $bdd->prepare("UPDATE Account SET fadeout = :fadeout WHERE id = :id");
 		$req->execute(array(
 			':fadeout' => $_POST["fadeout"],
 			':id' => $_POST["id"]
@@ -105,7 +113,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 		echo json_encode();
 	}
 	else if($_POST["function"] == "updateVolume") {
-		$req = $bdd->prepare("UPDATE Account SET volume = :volume WHERE id = :id)");
+		$req = $bdd->prepare("UPDATE Account SET volume = :volume WHERE id = :id");
 		$req->execute(array(
 			':volume' => $_POST["volume"],
 			':id' => $_POST["id"]
@@ -114,7 +122,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 		echo json_encode();
 	}
 	else if($_POST["function"] == "updateDarkmode") {
-		$req = $bdd->prepare("UPDATE Account SET darkmode = :darkmode WHERE id = :id)");
+		$req = $bdd->prepare("UPDATE Account SET darkmode = :darkmode WHERE id = :id");
 		$req->execute(array(
 			':darkmode' => $_POST["darkmode"],
 			':id' => $_POST["id"]
