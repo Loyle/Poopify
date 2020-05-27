@@ -101,6 +101,7 @@ export class SidenavComponent implements OnInit {
     if(this.newPlaylist == ''){
       this.errorName = true;
     }else{
+      this.addNew = false;
       var http = new XMLHttpRequest();
 
       // On crée les params post que l'on va envoyer
@@ -123,8 +124,6 @@ export class SidenavComponent implements OnInit {
       this.newPlaylist = '';
       this.isPrivate = '0';
       this.private = false;
-      this.addNew = false;
-
     }
   }
 
@@ -156,5 +155,21 @@ export class SidenavComponent implements OnInit {
       }
     }
     http.send(params);
+  }
+
+  removePlaylist(playlist){
+    var http = new XMLHttpRequest();
+
+    // On crée les params post que l'on va envoyer
+    var params = new FormData();
+    params.append('function', 'deletePlaylist');
+    params.append('id', playlist.id);
+    // On connecte
+    http.open("POST","https://poopify.fr/api/api.php",true);
+    http.onload = function() {
+    }
+    http.send(params);
+    
+    this.loadPlaylists();
   }
 }

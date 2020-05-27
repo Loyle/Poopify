@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-profil',
@@ -24,7 +25,6 @@ export class ProfilComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    console.log("in");
     var http = new XMLHttpRequest();
 
     // On crée les params post que l'on va envoyer
@@ -76,8 +76,10 @@ export class ProfilComponent implements OnInit {
   }
 
   updateProfil(){
-    if(this.allowModification){
-      this.allowModification = !this.allowModification;
+    this.allowModification = !this.allowModification;
+    if(!this.allowModification){
+
+      var pipe = new DatePipe('fr-FR');
       var http = new XMLHttpRequest();
 
       // On crée les params post que l'on va envoyer
@@ -94,6 +96,5 @@ export class ProfilComponent implements OnInit {
       }
       http.send(params);
     }
-    this.allowModification = !this.allowModification;
   }
 }

@@ -30,6 +30,10 @@
   width: 70px;
 }
 
+.delete:hover{
+  color: var(--accent-color);
+}
+
 .active::before{
   content: "";
   display: inline-block;

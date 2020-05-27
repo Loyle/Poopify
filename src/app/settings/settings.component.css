@@ -29,11 +29,16 @@ hr{
 .fadeVal{
   background-color: transparent;
   border: 1px solid  var(--text-color);
-  color: transparent;
+  color: var(--text-color);
   text-shadow: 0 0 0 var(--text-color);
   text-align: right;
   width: 40px;
   outline: none;
+  cursor: pointer;
+}
+
+.fadeVal:hover{
+  border: 1px solid var(--accent-color);
 }
 
 .settingsParam{
