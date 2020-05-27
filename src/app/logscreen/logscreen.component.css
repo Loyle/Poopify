@@ -3,6 +3,7 @@
   position: absolute;
   z-index: 1000;
   transition-duration: 0.5s;
+  color: var(--text-color);
 }
 
 .fade{

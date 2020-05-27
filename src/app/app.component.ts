@@ -11,7 +11,7 @@ export class AppComponent implements OnInit{
   title = 'Poopify';
   toggleSettings = false;
   toggleProfil = false;
-  themedark = true;
+  themedark;
   logged = false;
   loading: boolean;
   error: boolean;
@@ -24,28 +24,6 @@ export class AppComponent implements OnInit{
   constructor() { }
 
   ngOnInit() {
-    var http = new XMLHttpRequest();
-
-    // On crée les params post que l'on va envoyer
-    var params = new FormData();
-    params.append('function', 'getUserInfo');
-    params.append('user', this.accountid);
-
-    // Pour pouvoir acceder au this dans la sous function
-    var target = this;
-    // On connecte
-    http.open("POST","https://poopify.fr/api/api.php",true);
-
-    // Lorsque l'execution est terminé
-    http.onload = function(){
-        // On parse les résultats du Json (On peut utiliser comme ceci : data.id, data.email, data.password etc...)
-        var data = JSON.parse(http.response);
-        // On regarde si il y a un résultat
-        if(Object.keys(data).length > 0) {
-          target.themedark = data[0].darkmode;
-        }
-    }
-    http.send(params);
   }
 
   openSettings(event){
@@ -96,8 +74,35 @@ export class AppComponent implements OnInit{
   }
 
   logUser(){
-    this.logged = true;
-    setTimeout(() => {this.switch = true}, 500);
+    var http = new XMLHttpRequest();
+
+    // On crée les params post que l'on va envoyer
+    var params = new FormData();
+    params.append('function', 'getUserInfo');
+    params.append('user', this.accountid);
+
+    // Pour pouvoir acceder au this dans la sous function
+    var target = this;
+    // On connecte
+    http.open("POST","https://poopify.fr/api/api.php",true);
+
+    // Lorsque l'execution est terminé
+    http.onload = function(){
+        // On parse les résultats du Json (On peut utiliser comme ceci : data.id, data.email, data.password etc...)
+        var data = JSON.parse(http.response);
+        // On regarde si il y a un résultat
+        if(Object.keys(data).length > 0) {
+          if(data[0].darkmode == 1){
+            target.themedark = true;
+          }else{
+            target.themedark = false;
+          }
+        }
+        target.changeTheme(target.themedark);
+    }
+    http.send(params);
+    target.logged = true;
+    setTimeout(() => {target.switch = true}, 500);
   }
 
   getAccountId(ev){
