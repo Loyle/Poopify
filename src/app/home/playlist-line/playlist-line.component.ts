@@ -1,4 +1,4 @@
-import {Component, HostListener, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, HostListener, Input, OnInit, Output} from '@angular/core';
 import {$} from 'jquery';
 
 
@@ -12,6 +12,10 @@ export class PlaylistLineComponent implements OnInit {
   @Input() id: string;
   nbActive: number;
   content: any[];
+
+  active = '';
+  @Output()
+  path = new EventEmitter();
 
   songs = [
     {
