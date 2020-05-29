@@ -136,6 +136,30 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 		echo json_encode();
 	}
+	else if($_POST["function"] == "addLiked") {
+		$req = $bdd->prepare("INSERT INTO LikeContent(name, account_id, video_id, duration, add_date) VALUES(:name, :account_id, :video_id, :duration, :add_date)");
+		$req->execute(array(
+			':name' => $_POST["name"],
+			':account_id' => $_POST["playlist_id"],
+			':video_id' => $_POST["video_id"],
+			':duration' => $_POST["duration"],
+			':add_date' => $_POST["add_date"]
+		));
+
+		echo json_encode();
+	}
+	else if($_POST["function"] == "getLiked") {
+		$req = $bdd->prepare('SELECT * FROM LikeContent WHERE account_id = ?');
+		$req->execute(array($_POST["account_id"]));
+
+		echo json_encode($req->fetchAll(PDO::FETCH_ASSOC));
+	}
+	else if($_POST["function"] == "removeLiked") {
+		$req = $bdd->prepare("DELETE FROM LikeContent WHERE account_id = ? AND video_id = ?");
+		$req->execute(array($_POST["account_id"],$_POST["video_id"]));
+
+		echo json_encode();
+	}
 	else {
 		// We do nothing
 		echo json_encode(array());
