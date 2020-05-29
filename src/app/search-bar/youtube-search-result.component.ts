@@ -43,12 +43,12 @@ import { YouTubeSearchResult } from './youtube-search-result';
         <div class="m-md-3 m-1">
           <ng-template *ngIf="songliked ; then liked else notliked"></ng-template>
           <ng-template #liked>
-            <svg class="bi bi-heart-fill" width="5vh" height="5vh" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg" (click)="songliked=false">
+            <svg class="bi bi-heart-fill" width="5vh" height="5vh" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg" (click)="switchLike(result)">
               <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z" clip-rule="evenodd"/>
             </svg>
           </ng-template>
           <ng-template #notliked>
-            <svg class="bi bi-heart" width="5vh" height="5vh" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg" (click)="songliked=true">
+            <svg class="bi bi-heart" width="5vh" height="5vh" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg" (click)="switchLike(result)">
               <path fill-rule="evenodd" d="M8 2.748l-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 01.176-.17C12.72-3.042 23.333 4.867 8 15z" clip-rule="evenodd"/>
             </svg>
           </ng-template>
@@ -73,6 +73,7 @@ export class YouTubeSearchResultComponent implements OnInit {
 
 
   ngOnInit() {
+    this.checkIfLiked();
     var http = new XMLHttpRequest();
 
     // On crée les params post que l'on va envoyer
@@ -100,6 +101,33 @@ export class YouTubeSearchResultComponent implements OnInit {
     }
     http.send(params); }
 
+  checkIfLiked(){
+    var http = new XMLHttpRequest();
+    // On crée les params post que l'on va envoyer
+    var params = new FormData();
+    params.append('function', 'getLiked');
+    params.append('account_id', this.accountid);
+    // Pour pouvoir acceder au this dans la sous function
+    var target = this;
+    // On connecte
+    http.open("POST","https://poopify.fr/api/api.php",true);
+    // Lorsque l'execution est terminé
+    http.onload = function(){
+        // On parse les résultats du Json (On peut utiliser comme ceci : data.id, data.email, data.password etc...)
+        var data = JSON.parse(http.response);
+        // On regarde si il y a un résultat
+        if(Object.keys(data).length > 0) {
+            for (let index = 0; index < data.length; index++) {
+              const element = data[index];
+              if(target.result.id === element.video_id){
+                target.songliked = true;
+              }
+            }
+        }
+    }
+    http.send(params);
+  }
+
   playSong(){
     this.played.emit(this.result);
   }
@@ -123,5 +151,42 @@ export class YouTubeSearchResultComponent implements OnInit {
       console.log(http.response);
     }
     http.send(params);
+  }
+
+  switchLike(music){
+    if(this.songliked == false){
+      var pipe = new DatePipe('fr-FR');
+      this.songliked = true;
+      var http = new XMLHttpRequest();
+
+      // On crée les params post que l'on va envoyer
+      var params = new FormData();
+      params.append('function', 'addLiked');
+      params.append('name',music.title);
+      params.append('account_id', this.accountid);
+      params.append('video_id', music.id);
+      params.append('duration','100');
+      params.append('add_date', pipe.transform(new Date(), 'yyyy-MM-dd'));
+      // On connecte
+      http.open("POST","https://poopify.fr/api/api.php",true);
+      http.onload = function() {
+        console.log(http.response);
+      }
+      http.send(params);
+    }else{
+      this.songliked = false;
+      var http = new XMLHttpRequest();
+
+      // On crée les params post que l'on va envoyer
+      var params = new FormData();
+      params.append('function', 'removeLiked');
+      params.append('account_id', this.accountid);
+      params.append('video_id', music.id);
+      // On connecte
+      http.open("POST","https://poopify.fr/api/api.php",true);
+      http.onload = function() {
+      }
+      http.send(params);
+    }
   }
 }
