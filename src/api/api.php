@@ -140,7 +140,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 		$req = $bdd->prepare("INSERT INTO LikeContent(name, account_id, video_id, duration, add_date) VALUES(:name, :account_id, :video_id, :duration, :add_date)");
 		$req->execute(array(
 			':name' => $_POST["name"],
-			':account_id' => $_POST["playlist_id"],
+			':account_id' => $_POST["account_id"],
 			':video_id' => $_POST["video_id"],
 			':duration' => $_POST["duration"],
 			':add_date' => $_POST["add_date"]
