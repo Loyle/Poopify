@@ -25,6 +25,7 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 import localeFr from '@angular/common/locales/fr';
 import { TopComponent } from './top/top.component';
+import { VignetteComponent } from './top/vignette/vignette.component';
 registerLocaleData(localeFr, 'fr');
 
 
@@ -52,6 +53,7 @@ registerLocaleData(localeFr, 'fr');
   PlaylistLineComponent,
   BoxComponent,
   TopComponent,
+  VignetteComponent,
   ],
   providers: [
   youTubeSearchInjectables,

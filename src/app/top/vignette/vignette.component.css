@@ -1,0 +1,43 @@
+
+.mask{
+  position: absolute;
+  display: none;
+  top: 0;
+  left: 0;
+  transition-duration: 0.5s;
+  background-color: rgba(0,0,0,0.2);
+}
+
+.choice{
+  display: block;
+  z-index: 200;
+  background-color: var(--bg-primary);
+  color: var(--text-color);
+  box-shadow: 0px 0px 50px -24px rgba(0,0,0,1);
+  position: absolute;
+  top: 5vh;
+  right: 8vh;
+  height: auto;
+  width: 30vh;
+}
+
+.playlistBtn:hover{
+  color: var(--accent-color);
+}
+
+.bi{
+  color: var(--text-color);
+}
+
+.bi:hover{
+  color: var(--accent-color);
+}
+
+.vignette{
+  background: var(--bg-secondary);
+  padding: 0;
+}
+
+.vignette:hover .mask{
+  display: flex;
+}
