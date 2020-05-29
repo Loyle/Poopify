@@ -53,7 +53,8 @@ h1{
 
 .vignette{
   background: var(--bg-secondary);
-  height: 20vh;
+  overflow: hidden;
+  padding: 0;
 }
 
 .vignette:hover .mask{

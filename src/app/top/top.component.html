@@ -26,10 +26,10 @@
                       <path fill-rule="evenodd" d="M13 12.5a.5.5 0 01.5-.5h2a.5.5 0 010 1H14v1.5a.5.5 0 01-1 0v-2z" clip-rule="evenodd"/>
                     </svg>
                     <div class="choice rounded" [ngClass]="playlistChoice ? 'd-block' : 'd-none'" (mouseenter)="playlistChoice=true"(mouseleave)="playlistChoice=false">
-                      <div *ngFor="let playlist of playlists; index as i" class="text-center py-2 playlistBtn" (click)="addToPlaylist(playlist.id)">{{playlist.name}}</div>
+                      <div *ngFor="let playlist of playlists; index as i" class="text-center py-2 playlistBtn" (click)="addToPlaylist(playlist.id,sound)">{{playlist.name}}</div>
                     </div>
                   </ng-template>
-                  <svg class="bi bi-play mx-md-3 mx-sm-1" width="5vh" height="5vh" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg" (click)="playSong( )">
+                  <svg class="bi bi-play mx-md-3 mx-sm-1" width="5vh" height="5vh" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg" (click)="playSong(sound)">
                     <path fill-rule="evenodd" d="M10.804 8L5 4.633v6.734L10.804 8zm.792-.696a.802.802 0 010 1.392l-6.363 3.692C4.713 12.69 4 12.345 4 11.692V4.308c0-.653.713-.998 1.233-.696l6.363 3.692z" clip-rule="evenodd"/>
                   </svg>
                   <ng-template *ngIf="songliked ; then liked else notliked"></ng-template>
@@ -68,10 +68,10 @@
                       <path fill-rule="evenodd" d="M13 12.5a.5.5 0 01.5-.5h2a.5.5 0 010 1H14v1.5a.5.5 0 01-1 0v-2z" clip-rule="evenodd"/>
                     </svg>
                     <div class="choice rounded" [ngClass]="playlistChoice ? 'd-block' : 'd-none'" (mouseenter)="playlistChoice=true"(mouseleave)="playlistChoice=false">
-                      <div *ngFor="let playlist of playlists; index as i" class="text-center py-2 playlistBtn" (click)="addToPlaylist(playlist.id)">{{playlist.name}}</div>
+                      <div *ngFor="let playlist of playlists; index as i" class="text-center py-2 playlistBtn" (click)="addToPlaylist(playlist.id,sound)">{{playlist.name}}</div>
                     </div>
                   </ng-template>
-                  <svg class="bi bi-play mx-md-3 mx-sm-1" width="5vh" height="5vh" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg" (click)="playSong( )">
+                  <svg class="bi bi-play mx-md-3 mx-sm-1" width="5vh" height="5vh" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg" (click)="playSong(sound)">
                     <path fill-rule="evenodd" d="M10.804 8L5 4.633v6.734L10.804 8zm.792-.696a.802.802 0 010 1.392l-6.363 3.692C4.713 12.69 4 12.345 4 11.692V4.308c0-.653.713-.998 1.233-.696l6.363 3.692z" clip-rule="evenodd"/>
                   </svg>
                   <ng-template *ngIf="songliked ; then liked else notliked"></ng-template>
@@ -110,10 +110,10 @@
                       <path fill-rule="evenodd" d="M13 12.5a.5.5 0 01.5-.5h2a.5.5 0 010 1H14v1.5a.5.5 0 01-1 0v-2z" clip-rule="evenodd"/>
                     </svg>
                     <div class="choice rounded" [ngClass]="playlistChoice ? 'd-block' : 'd-none'" (mouseenter)="playlistChoice=true"(mouseleave)="playlistChoice=false">
-                      <div *ngFor="let playlist of playlists; index as i" class="text-center py-2 playlistBtn" (click)="addToPlaylist(playlist.id)">{{playlist.name}}</div>
+                      <div *ngFor="let playlist of playlists; index as i" class="text-center py-2 playlistBtn" (click)="addToPlaylist(playlist.id,sound)">{{playlist.name}}</div>
                     </div>
                   </ng-template>
-                  <svg class="bi bi-play mx-md-3 mx-sm-1" width="5vh" height="5vh" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg" (click)="playSong( )">
+                  <svg class="bi bi-play mx-md-3 mx-sm-1" width="5vh" height="5vh" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg" (click)="playSong(sound)">
                     <path fill-rule="evenodd" d="M10.804 8L5 4.633v6.734L10.804 8zm.792-.696a.802.802 0 010 1.392l-6.363 3.692C4.713 12.69 4 12.345 4 11.692V4.308c0-.653.713-.998 1.233-.696l6.363 3.692z" clip-rule="evenodd"/>
                   </svg>
                   <ng-template *ngIf="songliked ; then liked else notliked"></ng-template>
@@ -194,10 +194,10 @@
                       <path fill-rule="evenodd" d="M13 12.5a.5.5 0 01.5-.5h2a.5.5 0 010 1H14v1.5a.5.5 0 01-1 0v-2z" clip-rule="evenodd"/>
                     </svg>
                     <div class="choice rounded" [ngClass]="playlistChoice ? 'd-block' : 'd-none'" (mouseenter)="playlistChoice=true"(mouseleave)="playlistChoice=false">
-                      <div *ngFor="let playlist of playlists; index as i" class="text-center py-2 playlistBtn" (click)="addToPlaylist(playlist.id)">{{playlist.name}}</div>
+                      <div *ngFor="let playlist of playlists; index as i" class="text-center py-2 playlistBtn" (click)="addToPlaylist(playlist.id,sound)">{{playlist.name}}</div>
                     </div>
                   </ng-template>
-                  <svg class="bi bi-play mx-md-3 mx-sm-1" width="5vh" height="5vh" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg" (click)="playSong( )">
+                  <svg class="bi bi-play mx-md-3 mx-sm-1" width="5vh" height="5vh" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg" (click)="playSong(sound)">
                     <path fill-rule="evenodd" d="M10.804 8L5 4.633v6.734L10.804 8zm.792-.696a.802.802 0 010 1.392l-6.363 3.692C4.713 12.69 4 12.345 4 11.692V4.308c0-.653.713-.998 1.233-.696l6.363 3.692z" clip-rule="evenodd"/>
                   </svg>
                   <ng-template *ngIf="songliked ; then liked else notliked"></ng-template>
