@@ -27,12 +27,14 @@ export class PlayerBarComponent implements OnInit {
 	public isMusicLoaded = false;
 	public volume = 100;
 
+	public firstPlay = true;
 
 	public musicTitle = "";
 	public thumbnail = "";
 
 	public playlist : string[] = [];
 	public playlistPos = 0;
+	public waitingList : string[] = [];
 
 	public listened : string[] = [];
 
@@ -78,20 +80,15 @@ export class PlayerBarComponent implements OnInit {
 		this.player = this.player1;
 		this.playerPassiv = this.player2;
 		this.actualPlayer = 1;
-
-		setInterval(() => {
-			if(!this.isMusicLoaded) {
-				if(this.player.getDuration() > 0) {
-					this.loadMusicData();
-				}
-			}
-			else {
-				this.checkPlayerStatus();
-			}
-		}, 100);
 	}
 	
 	previousMusic() : void {
+		// On stop si il y avait un fadeOut
+		this.isFading = false;
+		clearInterval(this.fading);
+		this.player1.setVolume(this.volume);
+		this.player2.setVolume(this.volume);
+
 		if(this.currentTime > 2) {
 			// On remet au debut
 			this.player.seekTo(0);
@@ -119,6 +116,20 @@ export class PlayerBarComponent implements OnInit {
 		this.preloadNext();
 		this.isMusicLoaded = false;
 		this.isPlaying = true;
+
+		if(this.firstPlay) {
+			this.firstPlay = false;
+			setInterval(() => {
+				if(!this.isMusicLoaded) {
+					if(this.player.getDuration() > 0) {
+						this.loadMusicData();
+					}
+				}
+				else {
+					this.checkPlayerStatus();
+				}
+			}, 100);
+		}
 	}
 	playPauseMusic(autoplay = true) : void {
 		if(this.isPlaying) {
@@ -139,13 +150,28 @@ export class PlayerBarComponent implements OnInit {
 	}
 	nextMusic() : void {
 		this.listened.push(this.videoID);
+
+		// On stop si il y avait un fadeOut
+		this.isFading = false;
+		clearInterval(this.fading);
+		this.player1.setVolume(this.volume);
+		this.player2.setVolume(this.volume);
 		this.playlistPos++;
 
-		if(this.playlist.length > this.playlistPos) {
-			this.videoID = this.playlist[this.playlistPos];
+		if(this.playlist.length > this.playlistPos || this.waitingList.length > 0) {
 			this.pauseAllVideo();
 			this.switchPlayers();
 			this.player.playVideo();
+
+			if(this.waitingList.length > 0) {
+				this.playlistPos--;
+				this.videoID = this.waitingList[0];
+				this.waitingList.shift();
+			}
+			else {
+				this.videoID = this.playlist[this.playlistPos];
+			}
+
 			this.preloadNext();
 			this.isMusicLoaded = false;
 			this.isPlaying = true;
@@ -169,8 +195,13 @@ export class PlayerBarComponent implements OnInit {
 	}
 
 	preloadNext() : void {
-		if(this.playlist.length > this.playlistPos + 1) {
-			var url : string = "http://www.youtube.com/v/" + this.playlist[this.playlistPos + 1] + "?version=3&autoplay=0";
+		if(this.playlist.length > this.playlistPos + 1 || this.waitingList.length > 0) {
+			if(this.waitingList.length > 0) {
+				var url : string = "http://www.youtube.com/v/" + this.waitingList[0] + "?version=3&autoplay=0";
+			}
+			else {
+				var url : string = "http://www.youtube.com/v/" + this.playlist[this.playlistPos + 1] + "?version=3&autoplay=0";
+			}
 			this.playerPassiv.stopVideo();
 			this.playerPassiv.loadVideoByUrl(url,0,"hd720");
 			this.playerPassiv.pauseVideo();
@@ -227,8 +258,6 @@ export class PlayerBarComponent implements OnInit {
 		}
 	}
 
-
-
 	checkPlayerStatus() : void {
 		this.currentTime = this.player.getCurrentTime();
 		this.duration = this.player.getDuration();
@@ -239,8 +268,15 @@ export class PlayerBarComponent implements OnInit {
 				clearInterval(this.fading);
 				this.preloadNext();
 			}
-			this.playlistPos++;
-			this.videoID = this.playlist[this.playlistPos];
+
+			if(this.waitingList.length > 0) {
+				this.videoID = this.waitingList[0];
+				this.waitingList.shift();
+			}
+			else {
+				this.playlistPos++;
+				this.videoID = this.playlist[this.playlistPos];
+			}
 			this.doFadeOut();
 		}
 	}
@@ -287,16 +323,30 @@ export class PlayerBarComponent implements OnInit {
 		}
 	}
 
+	setPlaylist(playlist) : void {
+		this.playlist = playlist;
+	}
+
+	addToPlaylist(videoID : string) : void {
+		this.playlist.push(videoID);
+	}
+
+	addToWaitingList(videoID : string) : void {
+		this.waitingList.push(videoID);
+	}
+
 
 	initTestPlaylist() {
-		this.playlist.push("VPRjCeoBqrI");
-		this.playlist.push("du_urI33fuE");
-		this.playlist.push("Vujit_MkMt8");
-		this.playlist.push("K-865CiZKKE");
-		this.playlist.push("kiEJvdiA4yc");
-		this.playlist.push("CXBdq6YOv_c");
-		this.playlist.push("PGE7RG7wwTc");
-		this.playlist.push("p3l7fgvrEKM");
-		this.playlist.push("iRA82xLsb_w");
+		this.addToWaitingList("Uus8_DP1Fhg");
+
+		this.addToPlaylist("VPRjCeoBqrI");
+		this.addToPlaylist("du_urI33fuE");
+		this.addToPlaylist("Vujit_MkMt8");
+		this.addToPlaylist("K-865CiZKKE");
+		this.addToPlaylist("kiEJvdiA4yc");
+		this.addToPlaylist("CXBdq6YOv_c");
+		this.addToPlaylist("PGE7RG7wwTc");
+		this.addToPlaylist("p3l7fgvrEKM");
+		this.addToPlaylist("iRA82xLsb_w");
 	}
 }
