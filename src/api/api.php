@@ -22,10 +22,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 		echo json_encode($req->fetchAll(PDO::FETCH_ASSOC));
 	}
-	else if($_POST["function"] == "getTop") {
-		$req = $bdd->prepare('SELECT * FROM TOP50');
-		echo json_encode($req->fetchAll(PDO::FETCH_ASSOC));
-	}
 	else if($_POST["function"] == "getUserInfo") {
 		$account_id = $_POST["user"];
 

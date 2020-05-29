@@ -16,7 +16,7 @@ export class TopComponent implements OnInit {
   sounds : Array<{bddId : string,name : string, duration : number, id : string}> = [];
 
   @Input() accountid;
-  @Output() played = new EventEmitter<YouTubeSearchResult>();
+  @Output() played = new EventEmitter<any>();
 
   constructor() { }
 
@@ -26,8 +26,8 @@ export class TopComponent implements OnInit {
     this.getPlaylist();
   }
 
-  playSong(){
-    //this.played.emit(this.result);
+  playSong(sound){
+    this.played.emit(sound);
   }
 
   getTop(){
@@ -51,7 +51,7 @@ export class TopComponent implements OnInit {
         if(Object.keys(data).length > 0) {
             for (let index = 0; index < data.length; index++) {
               const element = data[index];
-              target.sounds.push({bddId: element.id,name : element.name, id : element.video_id, duraton : element.duration});
+              target.sounds.push({bddId: element.id,name : element.name, id : element.video_id, duration : element.duration});
             }
         }
     }
@@ -87,17 +87,17 @@ export class TopComponent implements OnInit {
     http.send(params);
   }
 
-  addToPlaylist(index){
-    /*var pipe = new DatePipe('fr-FR');
+  addToPlaylist(index,music){
+    var pipe = new DatePipe('fr-FR');
     this.playlistAdded = true;
     var http = new XMLHttpRequest();
 
     // On crée les params post que l'on va envoyer
     var params = new FormData();
     params.append('function', 'addMusicPlaylist');
-    params.append('name',this.result.title);
+    params.append('name',music.name);
     params.append('playlist_id', index);
-    params.append('video_id', this.result.id);
+    params.append('video_id', music.id);
     params.append('duration','100');
     params.append('add_date', pipe.transform(new Date(), 'yyyy-MM-dd'));
     // On connecte
@@ -105,7 +105,7 @@ export class TopComponent implements OnInit {
     http.onload = function() {
       console.log(http.response);
     }
-    http.send(params);*/
+    http.send(params);
   }
 
 }

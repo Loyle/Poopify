@@ -1,5 +1,5 @@
 <div class="topContainer w-100 h-100">
-  <div class="ml-sm-5 pl-sm-5">
+  <div class="ml-sm-5 px-sm-5">
     <div class="title text-center">
       <h1 class="font-weight-bolder">Top 50</h1>
       <hr>
@@ -50,8 +50,8 @@
         </div>
         <div class="col-lg-2 col-sm-4 col-10 mx-2 mt-lg-5">
           <div class="row">
-            <div class="vignette shadow-lg col-12 my-2 rounded" *ngFor="let t of times;index as i">
-              test
+            <div class="vignette shadow-lg col-12 my-2 rounded" *ngFor="let sound of sounds;index as i" [ngClass]="i<10 || i>20 ? 'd-none':'d-block'">
+              <img src="https://img.youtube.com/vi/{{sound.id}}/0.jpg" class="img-fluid">
               <div class="mask w-100 h-100 justify-content-center align-items-center rounded">
                 <div class="btn">
                   <ng-template *ngIf="playlistAdded ; then added else notadded"></ng-template>
@@ -92,8 +92,8 @@
         </div>
         <div class="col-lg-2 col-sm-4 col-10 mx-2">
           <div class="row">
-            <div class="vignette shadow-lg col-12 my-2 rounded" *ngFor="let t of times;index as i">
-              test
+            <div class="vignette shadow-lg col-12 my-2 rounded" *ngFor="let sound of sounds;index as i" [ngClass]="i<20 || i>30 ? 'd-none':'d-block'">
+              <img src="https://img.youtube.com/vi/{{sound.id}}/0.jpg" class="img-fluid">
               <div class="mask w-100 h-100 justify-content-center align-items-center rounded">
                 <div class="btn">
                   <ng-template *ngIf="playlistAdded ; then added else notadded"></ng-template>
@@ -134,8 +134,8 @@
         </div>
         <div class="col-lg-2 col-sm-4 col-10 mx-2 mt-lg-5">
           <div class="row">
-            <div class="vignette shadow-lg col-12 my-2 rounded" *ngFor="let t of times;index as i">
-              test
+            <div class="vignette shadow-lg col-12 my-2 rounded" *ngFor="let sound of sounds;index as i" [ngClass]="i<30 || i>40 ? 'd-none':'d-block'">
+              <img src="https://img.youtube.com/vi/{{sound.id}}/0.jpg" class="img-fluid">
               <div class="mask w-100 h-100 justify-content-center align-items-center rounded">
                 <div class="btn">
                   <ng-template *ngIf="playlistAdded ; then added else notadded"></ng-template>
@@ -152,10 +152,10 @@
                       <path fill-rule="evenodd" d="M13 12.5a.5.5 0 01.5-.5h2a.5.5 0 010 1H14v1.5a.5.5 0 01-1 0v-2z" clip-rule="evenodd"/>
                     </svg>
                     <div class="choice rounded" [ngClass]="playlistChoice ? 'd-block' : 'd-none'" (mouseenter)="playlistChoice=true"(mouseleave)="playlistChoice=false">
-                      <div *ngFor="let playlist of playlists; index as i" class="text-center py-2 playlistBtn" (click)="addToPlaylist(playlist.id)">{{playlist.name}}</div>
+                      <div *ngFor="let playlist of playlists; index as i" class="text-center py-2 playlistBtn" (click)="addToPlaylist(playlist.id,sound)">{{playlist.name}}</div>
                     </div>
                   </ng-template>
-                  <svg class="bi bi-play mx-md-3 mx-sm-1" width="5vh" height="5vh" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg" (click)="playSong( )">
+                  <svg class="bi bi-play mx-md-3 mx-sm-1" width="5vh" height="5vh" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg" (click)="playSong(sound)">
                     <path fill-rule="evenodd" d="M10.804 8L5 4.633v6.734L10.804 8zm.792-.696a.802.802 0 010 1.392l-6.363 3.692C4.713 12.69 4 12.345 4 11.692V4.308c0-.653.713-.998 1.233-.696l6.363 3.692z" clip-rule="evenodd"/>
                   </svg>
                   <ng-template *ngIf="songliked ; then liked else notliked"></ng-template>
@@ -176,8 +176,8 @@
         </div>
         <div class="col-lg-2 col-sm-8 col-10 mx-2">
           <div class="row">
-            <div class="vignette shadow-lg col-lg-12 col-sm-6 col-12 my-2 rounded" *ngFor="let t of times;index as i">
-              test
+            <div class="vignette shadow-lg col-lg-12 col-sm-6 col-12 my-2 rounded" *ngFor="let sound of sounds;index as i" [ngClass]="i<40 ? 'd-none':'d-block'">
+              <img src="https://img.youtube.com/vi/{{sound.id}}/0.jpg" class="img-fluid">
               <div class="mask w-100 h-100 justify-content-center align-items-center rounded">
                 <div class="btn">
                   <ng-template *ngIf="playlistAdded ; then added else notadded"></ng-template>
