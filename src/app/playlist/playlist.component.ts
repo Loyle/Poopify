@@ -25,6 +25,10 @@ export class PlaylistComponent implements OnChanges {
 
   OnInit(){}
 
+  update(index:number, el:any): number {
+    return el.id;
+  }
+
   run(){
     if(this.sounds.length != 0){
       if(this.i > this.sounds.length-1){
@@ -50,6 +54,7 @@ export class PlaylistComponent implements OnChanges {
   }
 
   updateMusic(val){
+    console.log(val);
     var http = new XMLHttpRequest();
     // On crée les params post que l'on va envoyer
     var params = new FormData();
@@ -65,6 +70,7 @@ export class PlaylistComponent implements OnChanges {
     http.onload = function(){
         // On parse les résultats du Json (On peut utiliser comme ceci : data.id, data.email, data.password etc...)
         var data = JSON.parse(http.response);
+        console.log(data);
         // On regarde si il y a un résultat
         if(Object.keys(data).length > 0) {
             for (let index = 0; index < data.length; index++) {
