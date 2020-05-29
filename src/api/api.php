@@ -26,7 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 		$account_id = $_POST["user"];
 
 		$req = $bdd->prepare('SELECT a.* FROM Account AS a WHERE a.id = :id');
-		$req->execute(array(":id" => $account_id);
+		$req->execute(array(":id" => $account_id));
 
 		echo json_encode($req->fetchAll(PDO::FETCH_ASSOC));
 	}
