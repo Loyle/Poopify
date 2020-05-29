@@ -18,7 +18,7 @@ export class PlaylistLineComponent implements  OnInit {
   @Output()
   played = new EventEmitter<any>();
 
-  sounds: Array<{bddId: string, songName: string, description: string, duration: number, id: string , addDate: Date , isPlay: false}>;
+  sounds: Array<{bddId: string, songName: string, description: string, duration: number, id: string , addDate: Date , isPlay: false}> = [];
 
 
   getPlaylistContent(){
@@ -82,17 +82,20 @@ export class PlaylistLineComponent implements  OnInit {
     this.played.emit(id);
   }
    constructor() {
-
+     this.getPlaylistContent();
+     this.computeNbActive();
+     this.songInArray();
   }
 
   ngOnInit(): void {
-    this.getPlaylistContent();
+
     this.computeNbActive();
+    this.getPlaylistContent();
     this.songInArray();
     }
   @HostListener('window:resize', ['$event'])
   onResize(event) {
-   this.computeNbActive();
-   this.songInArray();
+    this.computeNbActive();
+    this.songInArray();
   }
 }

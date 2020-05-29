@@ -12,9 +12,11 @@ export class BoxComponent implements OnInit {
   @Input() songCode: string;
   @Input() isPlay: boolean;
 
-  @Output() played = new EventEmitter<any>();
+  @Output()
+  played = new EventEmitter<any>();
 
-  sound: Array<{id: string}> = [];
+  @Input()
+  sound;
 
   constructor() {
   }
@@ -24,11 +26,9 @@ export class BoxComponent implements OnInit {
   }
 
 
-  playSong(){
+  playSong(id){
 
-    this.sound.push({id: this.songCode});
-
-    this.played.emit(this.sound);
+    this.played.emit(id);
     this.isPlay = !this.isPlay;
 
   }
