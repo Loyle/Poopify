@@ -7,7 +7,7 @@
   <app-settings [accountid] = "accountid" [openSetting]="toggleSettings" [darkMode]="themedark" (close)="closeSettings($event)" (themeSwap)="changeTheme($event)"></app-settings>
   <app-profil [openProfil]="toggleProfil" [accountid] = "accountid" (close)="closeProfil($event)"></app-profil>
   <div *ngIf="path == 'Home'">
-    <app-home></app-home>
+    <app-home [accountid]="accountid"></app-home>
   </div>
   <div *ngIf="path == 'Top'">
     <app-top [accountid] = "accountid"></app-top>

@@ -1,4 +1,4 @@
-import {Component, EventEmitter, HostListener, Input, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, HostListener, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
 import {$} from 'jquery';
 
 
@@ -7,124 +7,46 @@ import {$} from 'jquery';
   templateUrl: './playlist-line.component.html',
   styleUrls: ['./playlist-line.component.css']
 })
-export class PlaylistLineComponent implements OnInit {
+export class PlaylistLineComponent implements OnInit, OnChanges {
   @Input() playlistName: string;
   @Input() id: string;
   nbActive: number;
   content: any[];
 
-  active = '';
-  @Output()
-  path = new EventEmitter();
+  @Input()
+  accountid;
 
-  songs = [
-    {
-      songName : 'Name',
-      description : ' this is the song description, with title, author, mzoihdfozsiehdfmqoidhfoidhfomishdofhisefifezmf zeo zefzh zeçueofoe zejrjr zizezh djd )àefee  z popfes ',
-      imgURL : 'https://scx1.b-cdn.net/csz/news/800/2016/578650fe544c4.jpg',
-      songCode : null,
-      isPlay : false,
-    },
-    {
-      songName : 'La dance des canards',
-      description : ' Coin coin',
-      imgURL : 'https://scx1.b-cdn.net/csz/news/800/2016/578650fe544c4.jpg',
-      songCode : null,
-      isPlay : false,
-    },
-    {
-      songName : 'Yolo yolo yolo yolo yolo yolo yolo yolo',
-      description : null,
-      imgURL : 'https://scx1.b-cdn.net/csz/news/800/2016/578650fe544c4.jpg',
-      songCode : null,
-      isPlay : false,
-    },
-    {
-      songName : 'La dance des canards',
-      description : ' Coin coin',
-      imgURL : 'https://scx1.b-cdn.net/csz/news/800/2016/578650fe544c4.jpg',
-      songCode : null,
-      isPlay : false,
-    },
-    {
-      songName : 's1',
-      description : ' Coin coin',
-      imgURL : 'https://scx1.b-cdn.net/csz/news/800/2016/578650fe544c4.jpg',
-      songCode : null,
-      isPlay : false,
-    },
-    {
-      songName : 's2',
-      description : ' Coin coin',
-      imgURL : 'https://scx1.b-cdn.net/csz/news/800/2016/578650fe544c4.jpg',
-      songCode : null,
-      isPlay : false,
-    },
-    {
-      songName : 's3',
-      description : ' Coin coin',
-      imgURL : 'https://scx1.b-cdn.net/csz/news/800/2016/578650fe544c4.jpg',
-      songCode : null,
-      isPlay : false,
-    },
-    {
-      songName : 's4',
-      description : ' Coin coin',
-      imgURL : 'https://scx1.b-cdn.net/csz/news/800/2016/578650fe544c4.jpg',
-      songCode : null,
-      isPlay : false,
-    },
-    {
-      songName : 'La dance des canards',
-      description : ' Coin coin',
-      imgURL : 'https://scx1.b-cdn.net/csz/news/800/2016/578650fe544c4.jpg',
-      songCode : null,
-      isPlay : false,
-    },
-    {
-      songName : 'La dance des canards',
-      description : ' Coin coin',
-      imgURL : 'https://scx1.b-cdn.net/csz/news/800/2016/578650fe544c4.jpg',
-      songCode : null,
-      isPlay : false,
-    },
-    {
-      songName : 'La dance des canards',
-      description : ' Coin coin',
-      imgURL : 'https://scx1.b-cdn.net/csz/news/800/2016/578650fe544c4.jpg',
-      songCode : null,
-      isPlay : false,
-    },
-    {
-      songName : 'La dance des canards',
-      description : ' Coin coin',
-      imgURL : 'https://scx1.b-cdn.net/csz/news/800/2016/578650fe544c4.jpg',
-      songCode : null,
-      isPlay : false,
-    },
-    {
-      songName : 'La dance des canards',
-      description : ' Coin coin',
-      imgURL : 'https://scx1.b-cdn.net/csz/news/800/2016/578650fe544c4.jpg',
-      songCode : null,
-      isPlay : false,
-    },
-    {
-      songName : 'La dance des canards',
-      description : ' Coin coin',
-      imgURL : 'https://scx1.b-cdn.net/csz/news/800/2016/578650fe544c4.jpg',
-      songCode : null,
-      isPlay : false,
-    },
-    {
-      songName : 'La dance des canards',
-      description : ' Coin coin',
-      imgURL : 'https://scx1.b-cdn.net/csz/news/800/2016/578650fe544c4.jpg',
-      songCode : null,
-      isPlay : false,
-    },
+  sounds: Array<{bddId: string, songName: string, description: string, duration: number, id: string , addDate: Date , isPlay: false}>;
 
-  ];
+  ngOnChanges(value: SimpleChanges) {
+    this.getPlaylistContent(value.playlistId.currentValue);
+  }
+
+  getPlaylistContent(val){
+    var http = new XMLHttpRequest();
+    var params = new FormData();
+    params.append('function', 'getPlaylistById');
+    params.append('pl', val);
+    params.append('user', this.accountid);
+    var target = this;
+    target.sounds = [];
+    // On connecte
+    http.open('POST', 'https://poopify.fr/api/api.php', true);
+    // Lorsque l'execution est terminé
+    http.onload = function(){
+      // On parse les résultats du Json (On peut utiliser comme ceci : data.id, data.email, data.password etc...)
+      var data = JSON.parse(http.response);
+      // On regarde si il y a un résultat
+      if (Object.keys(data).length > 0) {
+        for (let index = 0; index < data.length; index++) {
+          const element = data[index];
+          target.sounds.push({bddId: element.id, songName : element.name, description: element.name,
+            duration : element.duration, id : element.video_id , addDate : element.add_date, isPlay: false});
+        }
+      }
+    };
+    http.send(params);
+  }
   computeNbActive(){
     let width: number;
 
@@ -145,20 +67,28 @@ export class PlaylistLineComponent implements OnInit {
 
     this.content = [];
     let j = -1;
-    for ( let i = 0; i < this.songs.length; i++){
+    for ( let i = 0; i < this.sounds.length; i++){
       if (i % this.nbActive === 0) {
         j++;
         this.content[j] = [];
-        this.content[j].push(this.songs[i]);
+        this.content[j].push(this.sounds[i]);
       }
       else {
-        this.content[j].push(this.songs[i]);
+        this.content[j].push(this.sounds[i]);
       }
     }
+    this.content.push({
+      songName : 'La dance des canards',
+      description : ' Coin coin',
+      imgURL : 'https://scx1.b-cdn.net/csz/news/800/2016/578650fe544c4.jpg',
+      songCode : null,
+      isPlay : false,
+    });
   }
    constructor() {
-     this.computeNbActive();
-     this.songInArray();
+    this.getPlaylistContent(this.id);
+    this.computeNbActive();
+    this.songInArray();
   }
   @HostListener('window:resize', ['$event'])
   onResize(event) {
