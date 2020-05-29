@@ -19,7 +19,7 @@ export class PlaylistLineComponent implements OnInit, OnChanges {
   sounds: Array<{bddId: string, songName: string, description: string, duration: number, id: string , addDate: Date , isPlay: false}>;
 
   ngOnChanges(value: SimpleChanges) {
-    this.getPlaylistContent(value.playlistId.currentValue);
+    this.getPlaylistContent(value.id.currentValue);
   }
 
   getPlaylistContent(val){
