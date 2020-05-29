@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 
 @Component({
   selector: 'app-home',
@@ -9,6 +9,9 @@ export class HomeComponent implements OnInit {
 
   @Input()
   accountid;
+
+  @Output()
+  played = new EventEmitter<any>();
 
   playlists: Array<{id: string, playlistName }> = [];
   constructor() {  }
@@ -37,5 +40,9 @@ export class HomeComponent implements OnInit {
       }
     };
     http.send(params);
+  }
+
+  playSong(id){
+    this.played.emit(id);
   }
 }

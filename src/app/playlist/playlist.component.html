@@ -15,36 +15,6 @@
     <div class="" [ngClass]="sounds.length == 0 ? 'd-block' : 'd-none'">
       <h4>No music here :(</h4>
     </div>
-    <div class="song row align-items-center py-2" *ngFor="let sound of sounds">
-      <div class="icons col-sm-4 col-5 p-0">
-        <svg class="bi bi-play mx-md-3 mx-sm-1" width="5vh" height="5vh" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg" (click)="playSong(sound)">
-          <path fill-rule="evenodd" d="M10.804 8L5 4.633v6.734L10.804 8zm.792-.696a.802.802 0 010 1.392l-6.363 3.692C4.713 12.69 4 12.345 4 11.692V4.308c0-.653.713-.998 1.233-.696l6.363 3.692z" clip-rule="evenodd"/>
-        </svg>
-        <ng-template *ngIf="songliked ; then liked else notliked"></ng-template>
-        <ng-template #liked>
-          <svg class="bi bi-heart-fill mx-md-3 mx-sm-1" width="3vh" height="3vh" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg" (click)="songliked=false">
-            <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z" clip-rule="evenodd"/>
-          </svg>
-        </ng-template>
-        <ng-template #notliked>
-          <svg class="bi bi-heart mx-md-3 mx-sm-1" width="3vh" height="3vh" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg" (click)="songliked=true">
-            <path fill-rule="evenodd" d="M8 2.748l-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 01.176-.17C12.72-3.042 23.333 4.867 8 15z" clip-rule="evenodd"/>
-          </svg>
-        </ng-template>
-        <svg class="bi bi-x mx-md-3 mx-sm-1" width="4vh" height="4vh" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg" (click)="removeMusic(sound)">
-          <path fill-rule="evenodd" d="M11.854 4.146a.5.5 0 010 .708l-7 7a.5.5 0 01-.708-.708l7-7a.5.5 0 01.708 0z" clip-rule="evenodd"/>
-          <path fill-rule="evenodd" d="M4.146 4.146a.5.5 0 000 .708l7 7a.5.5 0 00.708-.708l-7-7a.5.5 0 00-.708 0z" clip-rule="evenodd"/>
-        </svg>
-      </div>
-      <div class="songTitle col-4 p-0">
-        {{sound.name}}
-      </div>
-      <div class="duration col-sm-2 col-3 p-0 text-right">
-        {{(sound.duration - sound.duration%60)/60}}:{{sound.duration%60}}
-      </div>
-      <div class="date text-right col-2 d-sm-block d-none">
-        {{sound.addDate}}
-      </div>
-    </div>
+    <app-music *ngFor="let sound of sounds; trackBy: update" [sound] = "sound" [accountid] = "accountid" [playlistId]="playlistId" (played)="playSong($event)" (update)="updateMusic($event)"></app-music>
   </div>
 </div>

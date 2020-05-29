@@ -2,13 +2,16 @@
   <div class="ml-sm-5 margin">
     <app-playlist-line [id]="'rec'"
                        [playlistName]="'Récemment écoutées'"
-                       [accountid]="accountid"></app-playlist-line>
+                       [accountid]="accountid"
+                       (played)="playSong($event)"></app-playlist-line>
     <app-playlist-line [id]="'fav'"
                        [playlistName]="'Favoris'"
-                       [accountid]="accountid"></app-playlist-line>
+                       [accountid]="accountid"
+                       (played)="playSong($event)"></app-playlist-line>
     <app-playlist-line *ngFor="let pl of playlists"
                        [playlistName]="pl.playlistName"
                        [id]="pl.id"
-                       [accountid]="accountid"></app-playlist-line>
+                       [accountid]="accountid"
+                       (played)="playSong($event)"></app-playlist-line>
   </div>
 </div>

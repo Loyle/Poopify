@@ -6,9 +6,8 @@ import { Component, OnChanges, OnInit,Output,EventEmitter,Input,SimpleChanges } 
   styleUrls: ['./playlist.component.css']
 })
 export class PlaylistComponent implements OnChanges {
-  songliked = false;
-  sounds : Array<{bddId : string,name : string, duration : number, id : string , addDate : Date}> = [];
   times = Array(24);
+  sounds : Array<{bddId : string,name : string, duration : number, id : string , addDate : Date}> = [];
   playlistName;
   test;
   i = 0;
@@ -25,6 +24,10 @@ export class PlaylistComponent implements OnChanges {
   constructor() {}
 
   OnInit(){}
+
+  update(index:number, el:any): number {
+    return el.id;
+  }
 
   run(){
     if(this.sounds.length != 0){
@@ -51,6 +54,7 @@ export class PlaylistComponent implements OnChanges {
   }
 
   updateMusic(val){
+    console.log(val);
     var http = new XMLHttpRequest();
     // On crée les params post que l'on va envoyer
     var params = new FormData();
@@ -66,6 +70,7 @@ export class PlaylistComponent implements OnChanges {
     http.onload = function(){
         // On parse les résultats du Json (On peut utiliser comme ceci : data.id, data.email, data.password etc...)
         var data = JSON.parse(http.response);
+        console.log(data);
         // On regarde si il y a un résultat
         if(Object.keys(data).length > 0) {
             for (let index = 0; index < data.length; index++) {
@@ -105,20 +110,5 @@ export class PlaylistComponent implements OnChanges {
         }
     }
     http.send(params);
-  }
-
-  removeMusic(sound){
-    var http = new XMLHttpRequest();
-
-    // On crée les params post que l'on va envoyer
-    var params = new FormData();
-    params.append('function', 'deleteMusicFromPlaylist');
-    params.append('id', sound.bddId);
-    // On connecte
-    http.open("POST","https://poopify.fr/api/api.php",true);
-    http.onload = function() {
-    }
-    http.send(params);
-    this.updateMusic(this.playlistId);
   }
 }

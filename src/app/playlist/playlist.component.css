@@ -1,3 +1,4 @@
+
 .playlistContainer{
   position: absolute;
   background-color: var(--bg-secondary);
@@ -8,9 +9,6 @@
   overflow-x: hidden;
 }
 
-.bi:hover{
-  color: var(--accent-color);
-}
 
 .top{
   height: 20vw;
@@ -39,12 +37,6 @@
 
 .content{
   margin-bottom: 100px;
-  color: var(--text-color);
-}
-
-.song{
-  border-top: 1px solid var(--text-color);
-  border-bottom: 1px solid var(--text-color);
   color: var(--text-color);
 }
 

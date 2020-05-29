@@ -10,8 +10,10 @@
     <ng-template ngbSlide *ngFor="let slide of content;" >
       <div class="d-inline-flex marge " >
        <div *ngFor="let sg of slide" >
-          <app-box [description]="sg.description"
-                   [songName]="sg.songName"></app-box>
+          <app-box [songName]="sg.songName"
+                   [description]="sg.description"
+                   [songCode]="sg.id"
+                   (played)="playSong($event)"></app-box>
         </div>
       </div>
     </ng-template>
