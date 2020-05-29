@@ -1,5 +1,4 @@
-import {Component, EventEmitter, HostListener, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
-import {$} from 'jquery';
+import {Component, EventEmitter, HostListener, Input, OnChanges, OnInit, Output} from '@angular/core';
 
 
 @Component({
@@ -7,7 +6,7 @@ import {$} from 'jquery';
   templateUrl: './playlist-line.component.html',
   styleUrls: ['./playlist-line.component.css']
 })
-export class PlaylistLineComponent implements OnInit, OnChanges {
+export class PlaylistLineComponent implements  OnInit {
   @Input() playlistName: string;
   @Input() id: string;
   nbActive: number;
@@ -16,17 +15,17 @@ export class PlaylistLineComponent implements OnInit, OnChanges {
   @Input()
   accountid;
 
+  @Output()
+  played = new EventEmitter<any>();
+
   sounds: Array<{bddId: string, songName: string, description: string, duration: number, id: string , addDate: Date , isPlay: false}>;
 
-  ngOnChanges(value: SimpleChanges) {
-    this.getPlaylistContent(value.id.currentValue);
-  }
 
-  getPlaylistContent(val){
+  getPlaylistContent(){
     var http = new XMLHttpRequest();
     var params = new FormData();
     params.append('function', 'getPlaylistById');
-    params.append('pl', val);
+    params.append('pl', this.id);
     params.append('user', this.accountid);
     var target = this;
     target.sounds = [];
@@ -34,7 +33,7 @@ export class PlaylistLineComponent implements OnInit, OnChanges {
     http.open('POST', 'https://poopify.fr/api/api.php', true);
     // Lorsque l'execution est terminé
     http.onload = function(){
-      // On parse les résultats du Json (On peut utiliser comme ceci : data.id, data.email, data.password etc...)
+      // On parse les résultats du Json
       var data = JSON.parse(http.response);
       // On regarde si il y a un résultat
       if (Object.keys(data).length > 0) {
@@ -77,24 +76,23 @@ export class PlaylistLineComponent implements OnInit, OnChanges {
         this.content[j].push(this.sounds[i]);
       }
     }
-    this.content.push({
-      songName : 'La dance des canards',
-      description : ' Coin coin',
-      imgURL : 'https://scx1.b-cdn.net/csz/news/800/2016/578650fe544c4.jpg',
-      songCode : null,
-      isPlay : false,
-    });
+  }
+
+  playSong(id){
+    this.played.emit(id);
   }
    constructor() {
-    this.getPlaylistContent(this.id);
+
+  }
+
+  ngOnInit(): void {
+    this.getPlaylistContent();
     this.computeNbActive();
     this.songInArray();
-  }
+    }
   @HostListener('window:resize', ['$event'])
   onResize(event) {
    this.computeNbActive();
    this.songInArray();
-  }
-  ngOnInit(): void {
   }
 }

@@ -1,10 +1,10 @@
 <html>
   <div class="box">
-    <img [src]="imgURL" class="image">
+    <img [src]="imgURL" class="image" alt="Miniature">
     <h1>{{songName}}</h1>
     <div class="overlay d-flex justify-content-center ">
-      <p><strong>{{songName}}</strong><br><br>{{description}}</p>
-      <button class="circle d-flex justify-content-center" (click)="onPlayPause()">
+      <p><br>{{description}}</p>
+      <button class="circle d-flex justify-content-center align-items-center" (click)="playSong()">
         <div class="play" [hidden]="isPlay"></div>
         <div class="pause" [hidden]="!isPlay"></div>
       </button>
