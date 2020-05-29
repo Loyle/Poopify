@@ -8,8 +8,8 @@
       <div class="row  justify-content-center">
         <div class="col-lg-2 col-sm-4 col-10 mx-2 offset-lg-1 offset-sm-2 offset-1">
           <div class="row">
-            <div class="vignette shadow-lg col-12 my-2 rounded" *ngFor="let t of times;index as i">
-              test
+            <div class="vignette shadow-lg col-12 my-2 rounded" *ngFor="let sound of sounds;index as i" [ngClass]="i>10 ? 'd-none':'d-block'">
+              <img src="https://img.youtube.com/vi/{{sound.id}}/0.jpg" class="img-fluid">
               <div class="mask w-100 h-100 justify-content-center align-items-center rounded">
                 <div class="btn">
                   <ng-template *ngIf="playlistAdded ; then added else notadded"></ng-template>

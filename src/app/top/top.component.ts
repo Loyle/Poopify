@@ -13,7 +13,7 @@ export class TopComponent implements OnInit {
   playlistChoice = false;
   songliked = false;
   playlists : Array<{name : string, id : number}> = [];
-
+  sounds : Array<{bddId : string,name : string, duration : number, id : string}> = [];
 
   @Input() accountid;
   @Output() played = new EventEmitter<YouTubeSearchResult>();
@@ -22,6 +22,43 @@ export class TopComponent implements OnInit {
 
 
   ngOnInit() {
+    this.getTop();
+    this.getPlaylist();
+  }
+
+  playSong(){
+    //this.played.emit(this.result);
+  }
+
+  getTop(){
+    var http = new XMLHttpRequest();
+
+    // On crée les params post que l'on va envoyer
+    var params = new FormData();
+    params.append('function', 'getTop');
+    // Pour pouvoir acceder au this dans la sous function
+    var target = this;
+    target.sounds = [];
+    // On connecte
+    http.open("POST","https://poopify.fr/api/api.php",true);
+
+    // Lorsque l'execution est terminé
+    http.onload = function(){
+        // On parse les résultats du Json (On peut utiliser comme ceci : data.id, data.email, data.password etc...)
+        var data = JSON.parse(http.response);
+        console.log(data);
+        // On regarde si il y a un résultat
+        if(Object.keys(data).length > 0) {
+            for (let index = 0; index < data.length; index++) {
+              const element = data[index];
+              target.sounds.push({bddId: element.id,name : element.name, id : element.video_id, duraton : element.duration});
+            }
+        }
+    }
+    http.send(params);
+  }
+
+  getPlaylist(){
     var http = new XMLHttpRequest();
 
     // On crée les params post que l'on va envoyer
@@ -47,10 +84,7 @@ export class TopComponent implements OnInit {
             }
         }
     }
-    http.send(params); }
-
-  playSong(){
-    //this.played.emit(this.result);
+    http.send(params);
   }
 
   addToPlaylist(index){
