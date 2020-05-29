@@ -7,7 +7,7 @@ import { Component, OnChanges, OnInit,Output,EventEmitter,Input,SimpleChanges } 
 })
 export class PlaylistComponent implements OnChanges {
   songliked = false;
-  sounds : Array<{name : string, duration : number, id : string , addDate : Date}> = [];
+  sounds : Array<{bddId : string,name : string, duration : number, id : string , addDate : Date}> = [];
   times = Array(24);
   playlistName;
   test;
@@ -47,13 +47,16 @@ export class PlaylistComponent implements OnChanges {
 
   ngOnChanges(value : SimpleChanges){
     this.getPlaylistName();
+    this.updateMusic(value.playlistId.currentValue);
+  }
+
+  updateMusic(val){
     var http = new XMLHttpRequest();
     // On crée les params post que l'on va envoyer
     var params = new FormData();
     params.append('function', 'getPlaylistById');
-    params.append('pl', value.playlistId.currentValue);
+    params.append('pl', val);
     params.append('user', this.accountid);
-    console.log(value.playlistId.currentValue);
     // Pour pouvoir acceder au this dans la sous function
     var target = this;
     target.sounds = [];
@@ -67,7 +70,7 @@ export class PlaylistComponent implements OnChanges {
         if(Object.keys(data).length > 0) {
             for (let index = 0; index < data.length; index++) {
               const element = data[index];
-              target.sounds.push({name : element.name, duration : element.duration, id : element.video_id , addDate : element.add_date});
+              target.sounds.push({bddId: element.id,name : element.name, duration : element.duration, id : element.video_id , addDate : element.add_date});
             }
         }
     }
@@ -102,5 +105,20 @@ export class PlaylistComponent implements OnChanges {
         }
     }
     http.send(params);
+  }
+
+  removeMusic(sound){
+    var http = new XMLHttpRequest();
+
+    // On crée les params post que l'on va envoyer
+    var params = new FormData();
+    params.append('function', 'deleteMusicFromPlaylist');
+    params.append('id', sound.bddId);
+    // On connecte
+    http.open("POST","https://poopify.fr/api/api.php",true);
+    http.onload = function() {
+    }
+    http.send(params);
+    this.updateMusic(this.playlistId);
   }
 }

@@ -2,15 +2,45 @@
   border: #FFFFFF;
 }
 
+.btn-outline,
+.btn-outline:hover {
+  border-color: var(--text-color);
+}
+
+.btn-outline {
+  border-radius: 2vw;
+}
+
+.btn-outline:hover {
+  box-shadow: inset 0 0 0 20rem var(--dark-theme-hover);
+}
+
+.btn-outline:active {
+  box-shadow: inset 0 0 0 20rem var(--text-color),
+  inset 0 3px 4px 0 var(--text-color),
+  0 0 1px var(--text-color);
+}
+
+.btn-outline:disabled,
+.btn-outline.is-disabled {
+  opacity: .5;
+}
+p{
+  color: var(--text-color);
+}
+
 .slick-list {
   outline: none;
 }
 h1{
-  color: white;
+  color: var(--text-color);
   margin: 1.5vw;
   position: relative;
 }
-
+.carousel-control-next-icon,carousel-control-next,carousel-control-prev,
+.carousel-control-prev-icon {
+color: blue;
+}
 @media all and (min-width: 960px) {
   .marge{
     padding-left: 15%;

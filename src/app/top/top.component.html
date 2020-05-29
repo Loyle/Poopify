@@ -1,79 +1,34 @@
 <div class="topContainer w-100 h-100">
-  <div class="ml-sm-5 pl-sm-5">
+  <div class="ml-sm-5 px-sm-5">
     <div class="title text-center">
-      <h1 class="font-weight-bolder">Top 50</h1>
+      <h1 class="font-weight-bolder">Worst 50</h1>
       <hr>
     </div>
     <div class="topContent mt-md-5">
       <div class="row  justify-content-center">
-        <div class="col-md-2 mx-md-2 offset-md-1">
+        <div class="col-lg-2 col-sm-4 col-10 mx-2 offset-lg-1 offset-sm-2 offset-1">
           <div class="row">
-            <div class="vignette shadow-lg col-12 my-md-2 rounded" *ngFor="let t of times;index as i">
-              test
-              <div class="mask w-100 h-100 justify-content-center align-items-center rounded">
-                <div class="btn">
-                  <svg class="bi bi-play mx-md-3 mx-sm-1" width="5vh" height="5vh" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg" (click)="playSong(sound)">
-                    <path fill-rule="evenodd" d="M10.804 8L5 4.633v6.734L10.804 8zm.792-.696a.802.802 0 010 1.392l-6.363 3.692C4.713 12.69 4 12.345 4 11.692V4.308c0-.653.713-.998 1.233-.696l6.363 3.692z" clip-rule="evenodd"/>
-                  </svg>
-                </div>
-              </div>
-            </div>
+            <app-vignette *ngFor="let sound of sounds;index as i" [ngClass]="i>9 ? 'd-none':'d-block'" [sound] = "sound" [accountid] = "accountid" (played)="playSong($event)"></app-vignette>
           </div>
         </div>
-        <div class="col-md-2 mx-md-2 mt-md-5">
+        <div class="col-lg-2 col-sm-4 col-10 mx-2 mt-lg-5">
           <div class="row">
-            <div class="vignette shadow-lg col-12 my-md-2 rounded" *ngFor="let t of times;index as i">
-              test
-              <div class="mask w-100 h-100 justify-content-center align-items-center rounded">
-                <div class="btn">
-                  <svg class="bi bi-play mx-md-3 mx-sm-1" width="5vh" height="5vh" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg" (click)="playSong(sound)">
-                    <path fill-rule="evenodd" d="M10.804 8L5 4.633v6.734L10.804 8zm.792-.696a.802.802 0 010 1.392l-6.363 3.692C4.713 12.69 4 12.345 4 11.692V4.308c0-.653.713-.998 1.233-.696l6.363 3.692z" clip-rule="evenodd"/>
-                  </svg>
-                </div>
-              </div>
-            </div>
+            <app-vignette *ngFor="let sound of sounds;index as i" [ngClass]="i<10 || i>19 ? 'd-none':'d-block'" [sound] = "sound" [accountid] = "accountid" (played)="playSong($event)"></app-vignette>
           </div>
         </div>
-        <div class="col-md-2 mx-md-2">
+        <div class="col-lg-2 col-sm-4 col-10 mx-2">
           <div class="row">
-            <div class="vignette shadow-lg col-12 my-md-2 rounded" *ngFor="let t of times;index as i">
-              test
-              <div class="mask w-100 h-100 justify-content-center align-items-center rounded">
-                <div class="btn">
-                  <svg class="bi bi-play mx-md-3 mx-sm-1" width="5vh" height="5vh" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg" (click)="playSong(sound)">
-                    <path fill-rule="evenodd" d="M10.804 8L5 4.633v6.734L10.804 8zm.792-.696a.802.802 0 010 1.392l-6.363 3.692C4.713 12.69 4 12.345 4 11.692V4.308c0-.653.713-.998 1.233-.696l6.363 3.692z" clip-rule="evenodd"/>
-                  </svg>
-                </div>
-              </div>
-            </div>
+            <app-vignette  *ngFor="let sound of sounds;index as i" [ngClass]="i<20 || i>29 ? 'd-none':'d-block'" [sound] = "sound" [accountid] = "accountid" (played)="playSong($event)"></app-vignette>
           </div>
         </div>
-        <div class="col-md-2 mx-md-2 mt-md-5">
+        <div class="col-lg-2 col-sm-4 col-10 mx-2 mt-lg-5">
           <div class="row">
-            <div class="vignette shadow-lg col-12 my-md-2 rounded" *ngFor="let t of times;index as i">
-              test
-              <div class="mask w-100 h-100 justify-content-center align-items-center rounded">
-                <div class="btn">
-                  <svg class="bi bi-play mx-md-3 mx-sm-1" width="5vh" height="5vh" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg" (click)="playSong(sound)">
-                    <path fill-rule="evenodd" d="M10.804 8L5 4.633v6.734L10.804 8zm.792-.696a.802.802 0 010 1.392l-6.363 3.692C4.713 12.69 4 12.345 4 11.692V4.308c0-.653.713-.998 1.233-.696l6.363 3.692z" clip-rule="evenodd"/>
-                  </svg>
-                </div>
-              </div>
-            </div>
+            <app-vignette *ngFor="let sound of sounds;index as i" [ngClass]="i<30 || i>39 ? 'd-none':'d-block'" [sound] = "sound" [accountid] = "accountid" (played)="playSong($event)"></app-vignette>
           </div>
         </div>
-        <div class="col-md-2 mx-md-2">
+        <div class="col-lg-2 col-sm-8 col-10 mx-2">
           <div class="row">
-            <div class="vignette shadow-lg col-12 my-md-2 rounded" *ngFor="let t of times;index as i">
-              test
-              <div class="mask w-100 h-100 justify-content-center align-items-center rounded">
-                <div class="btn">
-                  <svg class="bi bi-play mx-md-3 mx-sm-1" width="5vh" height="5vh" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg" (click)="playSong(sound)">
-                    <path fill-rule="evenodd" d="M10.804 8L5 4.633v6.734L10.804 8zm.792-.696a.802.802 0 010 1.392l-6.363 3.692C4.713 12.69 4 12.345 4 11.692V4.308c0-.653.713-.998 1.233-.696l6.363 3.692z" clip-rule="evenodd"/>
-                  </svg>
-                </div>
-              </div>
-            </div>
+            <app-vignette *ngFor="let sound of sounds;index as i" [ngClass]="i<40 ? 'd-none':'d-block'" [sound] = "sound" [accountid] = "accountid" (played)="playSong($event)"></app-vignette>
           </div>
         </div>
       </div>

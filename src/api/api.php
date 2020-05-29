@@ -39,6 +39,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 		echo json_encode($req->fetchAll(PDO::FETCH_ASSOC));
 	}
+	else if($_POST["function"] == "getTop") {
+		$req = $bdd->prepare('SELECT * FROM TOP50');
+		$req->execute();
+		echo json_encode($req->fetchAll(PDO::FETCH_ASSOC));
+	}
 	else if($_POST["function"] == "addMusicPlaylist") {
 		$req = $bdd->prepare("INSERT INTO PlaylistContent(name, playlist_id, video_id, duration, add_date) VALUES(:name, :playlist_id, :video_id, :duration, :add_date)");
 		$req->execute(array(

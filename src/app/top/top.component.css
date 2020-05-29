@@ -8,35 +8,13 @@
   overflow-x: hidden;
 }
 
+h1{
+  color: var(--hover);
+}
+
 .title{
   margin-top: 20vh;
   color: var(--bg-primary);
-}
-
-.mask{
-  position: absolute;
-  display: none;
-  top: 0;
-  left: 0;
-  transition-duration: 0.5s;
-  background-color: rgba(0,0,0,0.2);
-}
-
-.bi{
-  color: var(--text-color);
-}
-
-.bi:hover{
-  color: var(--accent-color);
-}
-
-.vignette{
-  background: var(--bg-secondary);
-  height: 20vh;
-}
-
-.vignette:hover .mask{
-  display: flex;
 }
 
 .topContent{
@@ -53,6 +31,7 @@ hr{
 h1{
   font-size: 5em;
 }
+
 ::-webkit-scrollbar {
   width: 3px;
   height: 2px;

@@ -23,8 +23,9 @@
                 <h5 class="mt-sm-5 mt-3">Song Fade :</h5>
                 <div class="custom-control d-flex ml-sm-5 mt-2 pl-2">
                   <span>Set Fade effect value :</span>
-                  <input type="text" class="fadeVal rounded mx-sm-3 mx-1" (keyup.enter)="setFadeVal()"/>
+                  <input type="text" class="fadeVal rounded mx-sm-3 mx-1" value="{{fadeoutVal}}" (keyup.enter)="setFadeVal($event)"/>
                   <span> seconds</span>
+                  <small *ngIf="errorFade" class="text-danger p-2">Only between 0 and 20</small>
                 </div>
             </div>
           </ng-template>
