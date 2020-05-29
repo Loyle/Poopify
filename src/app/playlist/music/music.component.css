@@ -1,0 +1,10 @@
+
+.bi:hover{
+  color: var(--accent-color);
+}
+
+.song{
+  border-top: 1px solid var(--text-color);
+  border-bottom: 1px solid var(--text-color);
+  color: var(--text-color);
+}

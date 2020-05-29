@@ -73,7 +73,7 @@ export class VignetteComponent implements OnInit {
     // On connecte
     http.open("POST","https://poopify.fr/api/api.php",true);
     http.onload = function() {
-      console.log(http.response);
+      
     }
     http.send(params);
   }

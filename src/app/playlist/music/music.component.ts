@@ -1,12 +1,12 @@
-import { Component, OnChanges, OnInit,Output,EventEmitter,Input,SimpleChanges } from '@angular/core';
+import { Component, OnInit,Output,EventEmitter,Input } from '@angular/core';
 
 @Component({
-  selector: 'app-playlist',
-  templateUrl: './playlist.component.html',
-  styleUrls: ['./playlist.component.css']
+  selector: 'app-music',
+  templateUrl: './music.component.html',
+  styleUrls: ['./music.component.css']
 })
-export class PlaylistComponent implements OnChanges {
-  times = Array(24);
+export class MusicComponent implements OnInit {
+  songliked = false;
   sounds : Array<{bddId : string,name : string, duration : number, id : string , addDate : Date}> = [];
   playlistName;
   test;
@@ -14,6 +14,9 @@ export class PlaylistComponent implements OnChanges {
 
   @Input()
   accountid;
+
+  @Input()
+  sound;
 
   @Output()
   played = new EventEmitter<any>();
@@ -23,30 +26,11 @@ export class PlaylistComponent implements OnChanges {
 
   constructor() {}
 
-  OnInit(){}
+  ngOnInit(): void{}
 
-  run(){
-    if(this.sounds.length != 0){
-      if(this.i > this.sounds.length-1){
-        this.i=0;
-        this.test = this.sounds[this.i].id;
-        ++this.i;
-      }else{
-        this.test = this.sounds[this.i].id;
-        ++this.i;
-      }
-    }else{
-      this.test = '';
-    }
-  }
 
   playSong(id){
     this.played.emit(id);
-  }
-
-  ngOnChanges(value : SimpleChanges){
-    this.getPlaylistName();
-    this.updateMusic(value.playlistId.currentValue);
   }
 
   updateMusic(val){
@@ -76,32 +60,16 @@ export class PlaylistComponent implements OnChanges {
     http.send(params);
   }
 
-  getPlaylistName(){
+  removeMusic(sound){
     var http = new XMLHttpRequest();
 
     // On crée les params post que l'on va envoyer
     var params = new FormData();
-    params.append('function', 'getPlaylistByUser');
-    params.append('user', this.accountid);
-
-    // Pour pouvoir acceder au this dans la sous function
-    var target = this;
-    target.sounds = [];
+    params.append('function', 'deleteMusicFromPlaylist');
+    params.append('id', sound.bddId);
     // On connecte
     http.open("POST","https://poopify.fr/api/api.php",true);
-
-    // Lorsque l'execution est terminé
-    http.onload = function(){
-        // On parse les résultats du Json (On peut utiliser comme ceci : data.id, data.email, data.password etc...)
-        var data = JSON.parse(http.response);
-        // On regarde si il y a un résultat
-        if(Object.keys(data).length > 0) {
-          for (let index = 0; index < data.length; index++) {
-            if(data[index].id == target.playlistId){
-              target.playlistName = data[index].name;
-            }
-          }
-        }
+    http.onload = function() {
     }
     http.send(params);
   }
