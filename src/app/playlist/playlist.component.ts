@@ -25,10 +25,6 @@ export class PlaylistComponent implements OnChanges {
 
   OnInit(){}
 
-  update(index:number, el:any): number {
-    return el.id;
-  }
-
   run(){
     if(this.sounds.length != 0){
       if(this.i > this.sounds.length-1){
