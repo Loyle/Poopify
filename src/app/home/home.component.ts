@@ -1,4 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {isNumber} from "@ng-bootstrap/ng-bootstrap/util/util";
+import {isNumeric} from "rxjs/internal-compatibility";
 
 @Component({
   selector: 'app-home',
@@ -9,6 +11,9 @@ export class HomeComponent implements OnInit {
 
   @Input()
   accountid;
+
+  @Output()
+  path = new EventEmitter();
 
   @Output()
   played = new EventEmitter<any>();
@@ -44,5 +49,14 @@ export class HomeComponent implements OnInit {
 
   playSong(id){
     this.played.emit(id);
+  }
+
+  goPage(path){
+    if(isNumeric(path)){
+      this.path.emit(Number(path));
+    }else{
+      this.path.emit(path);
+
+    }
   }
 }

@@ -1,19 +1,22 @@
 <div class="home pl-sm-5 py-sm-5 pt-5 w-100 h-100">
   <div class="ml-sm-5 margin">
-    <app-playlist-line [id]="'rec'"
+    <app-playlist-line [id]="'Rec'"
                        [playlistName]="'Récemment écoutées'"
                        [accountid]="accountid"
-                       (played)="playSong($event)"></app-playlist-line>
+                       (played)="playSong($event)"
+                       (path)="goPage($event)"></app-playlist-line>
 
-    <app-playlist-line [id]="'fav'"
+    <app-playlist-line [id]="'Fav'"
                        [playlistName]="'Favoris'"
                        [accountid]="accountid"
-                       (played)="playSong($event)"></app-playlist-line>
+                       (played)="playSong($event)"
+                       (path)="goPage($event)"></app-playlist-line>
 
     <app-playlist-line *ngFor="let pl of playlists"
                        [playlistName]="pl.playlistName"
                        [id]="pl.id"
                        [accountid]="accountid"
-                       (played)="playSong($event)"></app-playlist-line>
+                       (played)="playSong($event)"
+                       (path)="goPage($event)"></app-playlist-line>
   </div>
 </div>

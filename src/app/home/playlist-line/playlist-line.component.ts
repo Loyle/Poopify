@@ -1,4 +1,6 @@
 import {Component, EventEmitter, HostListener, Input, OnChanges, OnInit, Output} from '@angular/core';
+import {isNumber} from "@ng-bootstrap/ng-bootstrap/util/util";
+import {isNumeric} from "rxjs/internal-compatibility";
 
 
 @Component({
@@ -12,13 +14,18 @@ export class PlaylistLineComponent implements  OnInit {
   nbActive: number;
   content: any[];
 
+
   @Input()
   accountid;
 
   @Output()
+  path = new EventEmitter();
+
+
+  @Output()
   played = new EventEmitter<any>();
 
-  sounds: Array<{bddId: string, songName: string, description: string, duration: number, id: string , addDate: Date , isPlay: false}> = [];
+  sounds: any[];
 
 
   getPlaylistContent(){
@@ -82,20 +89,28 @@ export class PlaylistLineComponent implements  OnInit {
     this.played.emit(id);
   }
    constructor() {
-     this.getPlaylistContent();
      this.computeNbActive();
-     this.songInArray();
   }
 
   ngOnInit(): void {
-
-    this.computeNbActive();
     this.getPlaylistContent();
     this.songInArray();
     }
+
   @HostListener('window:resize', ['$event'])
   onResize(event) {
     this.computeNbActive();
     this.songInArray();
   }
+
+
+  goPage(path){
+    if (isNumeric(path)){
+      this.path.emit(Number(path));
+    }else{
+      this.path.emit(path);
+    }
+
+  }
+
 }
