@@ -1,11 +1,12 @@
-import { Component, OnInit, Output,Input, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output,Input,OnChanges, EventEmitter,SimpleChanges } from '@angular/core';
+import {isNumeric} from "rxjs/internal-compatibility";
 
 @Component({
   selector: 'app-sidenav',
   templateUrl: './sidenav.component.html',
   styleUrls: ['./sidenav.component.css']
 })
-export class SidenavComponent implements OnInit {
+export class SidenavComponent implements OnChanges {
   active = 'Home';
   dropdownenable = false;
   toggleNewPlaylist = false;
@@ -20,10 +21,23 @@ export class SidenavComponent implements OnInit {
   @Input()
   accountid;
 
+  @Input()
+  activePath! : number;
+
   constructor() { }
 
   ngOnInit() {
     this.loadPlaylists();
+  }
+
+  ngOnChanges(value : SimpleChanges){
+    console.log(value);
+    if(typeof value.activePath.currentValue === 'number'){
+      this.active = "Playlist";
+    }else{
+      this.active = value.activePath.currentValue;
+    }
+    console.log(this.active);
   }
 
   @Output()
@@ -48,22 +62,18 @@ export class SidenavComponent implements OnInit {
 
   goHome(){
     this.path.emit("Home");
-    this.active = "Home";
   }
 
   goTop(){
     this.path.emit("Top");
-    this.active = "Top";
   }
 
   goFav(){
-    this.path.emit("Fav");
-    this.active = "Favorite";
+    this.path.emit("Favorite");
   }
 
   goPlaylist(int){
     this.path.emit(Number(int));
-    this.active = "Playlist";
     this.toggleNewPlaylist = false;
     this.dropdownenable = false;
   }
@@ -169,7 +179,7 @@ export class SidenavComponent implements OnInit {
     http.onload = function() {
     }
     http.send(params);
-    
+
     this.loadPlaylists();
   }
 }
