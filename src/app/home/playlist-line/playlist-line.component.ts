@@ -1,6 +1,5 @@
 import {Component, EventEmitter, HostListener, Input, OnChanges, OnInit, Output} from '@angular/core';
-import {isNumber} from "@ng-bootstrap/ng-bootstrap/util/util";
-import {isNumeric} from "rxjs/internal-compatibility";
+import {isNumeric} from 'rxjs/internal-compatibility';
 
 
 @Component({
