@@ -12,6 +12,7 @@
        <div *ngFor="let sg of slide" >
           <app-box [songName]="sg.songName"
                    [description]="sg.description"
+                   [songCode]="sg.id"
                    [sound]="sg"
                    (played)="playSong($event)"></app-box>
         </div>

@@ -1,4 +1,4 @@
-import {Component, EventEmitter, HostListener, Input, OnChanges, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, HostListener, Input, OnInit, Output} from '@angular/core';
 import {isNumeric} from 'rxjs/internal-compatibility';
 
 
@@ -107,7 +107,6 @@ export class PlaylistLineComponent implements  OnInit {
     this.computeNbActive();
     this.songInArray();
   }
-
 
   goPage(path){
     if (isNumeric(path)){
