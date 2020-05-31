@@ -6,7 +6,7 @@
 </div>
 
   <ngb-carousel class="slick-list " [interval]="0"  [showNavigationIndicators]="false">
-
+    {{songInArray}}
     <ng-template ngbSlide *ngFor="let slide of content;" >
       <div class="d-inline-flex marge " >
        <div *ngFor="let sg of slide" >

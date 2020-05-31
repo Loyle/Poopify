@@ -13,6 +13,7 @@ export class PlaylistLineComponent implements  OnInit {
   @Input() id: string;
   nbActive: number;
   content: any[];
+  indexSounds = 0;
 
 
   @Input()
@@ -45,12 +46,13 @@ export class PlaylistLineComponent implements  OnInit {
       // On regarde si il y a un résultat
       if (Object.keys(data).length > 0) {
         for (let index = 0; index < data.length; index++) {
+          target.indexSounds++;
           const element = data[index];
           target.sounds.push({bddId: element.id, songName : element.name, description: element.name,
             duration : element.duration, id : element.video_id , addDate : element.add_date, isPlay: false});
         }
       }
-    };
+    }
     http.send(params);
   }
   computeNbActive(){
@@ -60,7 +62,6 @@ export class PlaylistLineComponent implements  OnInit {
     {
       width = (document.body.clientWidth);
     }
-
     if (width >= 960){
       this.nbActive = Math.trunc(width / 200 ) - 1 ;
     }else if (width > 481) {
@@ -70,10 +71,9 @@ export class PlaylistLineComponent implements  OnInit {
     }
   }
   songInArray(){
-
     this.content = [];
     let j = -1;
-    for ( let i = 0; i < this.sounds.length; i++){
+    for ( let i = 0; i < this.indexSounds; i++){
       if (i % this.nbActive === 0) {
         j++;
         this.content[j] = [];
@@ -89,10 +89,10 @@ export class PlaylistLineComponent implements  OnInit {
     this.played.emit(id);
   }
    constructor() {
-     this.computeNbActive();
   }
 
   ngOnInit(): void {
+    this.computeNbActive();
     this.getPlaylistContent();
     this.songInArray();
     }

@@ -31,13 +31,11 @@ export class SidenavComponent implements OnChanges {
   }
 
   ngOnChanges(value : SimpleChanges){
-    console.log(value);
     if(typeof value.activePath.currentValue === 'number'){
       this.active = "Playlist";
     }else{
       this.active = value.activePath.currentValue;
     }
-    console.log(this.active);
   }
 
   @Output()
