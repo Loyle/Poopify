@@ -1,5 +1,4 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {isNumber} from "@ng-bootstrap/ng-bootstrap/util/util";
 import {isNumeric} from "rxjs/internal-compatibility";
 
 @Component({
