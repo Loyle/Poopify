@@ -30,9 +30,15 @@ export class PlaylistLineComponent implements  OnInit {
   getPlaylistContent(){
     var http = new XMLHttpRequest();
     var params = new FormData();
-    params.append('function', 'getPlaylistById');
-    params.append('pl', this.id);
-    params.append('user', this.accountid);
+    if(this.id == 'Favorite'){
+      params.append('function', 'getLiked');
+      params.append('account_id', this.accountid);
+    }else{
+
+      params.append('function', 'getPlaylistById');
+      params.append('pl', this.id);
+      params.append('user', this.accountid);
+    }
     var target = this;
     target.sounds = [];
     // On connecte
