@@ -92,6 +92,7 @@ export class PlaylistLineComponent implements  OnChanges {
   }
 
   ngOnChanges(){
+    this.computeNbActive();
     this.getPlaylistContent();
     }
 
