@@ -6,12 +6,13 @@
 </div>
 
   <ngb-carousel class="slick-list " [interval]="0"  [showNavigationIndicators]="false">
-    {{songInArray}}
-    <ng-template ngbSlide *ngFor="let slide of content;" >
+
+    <ng-template ngbSlide *ngFor="let slide of sounds" >
       <div class="d-inline-flex marge " >
        <div *ngFor="let sg of slide" >
           <app-box [songName]="sg.songName"
                    [description]="sg.description"
+                   [songCode]="sg.id"
                    [sound]="sg"
                    (played)="playSong($event)"></app-box>
         </div>

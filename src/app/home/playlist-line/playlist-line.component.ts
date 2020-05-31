@@ -1,6 +1,5 @@
-import {Component, EventEmitter, HostListener, Input, OnChanges, OnInit, Output} from '@angular/core';
-import {isNumber} from "@ng-bootstrap/ng-bootstrap/util/util";
-import {isNumeric} from "rxjs/internal-compatibility";
+import {Component, EventEmitter, HostListener, Input, OnInit, Output, OnChanges} from '@angular/core';
+import {isNumeric} from 'rxjs/internal-compatibility';
 
 
 @Component({
@@ -8,7 +7,7 @@ import {isNumeric} from "rxjs/internal-compatibility";
   templateUrl: './playlist-line.component.html',
   styleUrls: ['./playlist-line.component.css']
 })
-export class PlaylistLineComponent implements  OnInit {
+export class PlaylistLineComponent implements  OnChanges {
   @Input() playlistName: string;
   @Input() id: string;
   nbActive: number;
@@ -32,15 +31,22 @@ export class PlaylistLineComponent implements  OnInit {
   getPlaylistContent(){
     var http = new XMLHttpRequest();
     var params = new FormData();
-    params.append('function', 'getPlaylistById');
-    params.append('pl', this.id);
-    params.append('user', this.accountid);
+    if(this.id == 'Favorite'){
+      params.append('function', 'getLiked');
+      params.append('account_id', this.accountid);
+    }else{
+
+      params.append('function', 'getPlaylistById');
+      params.append('pl', this.id);
+      params.append('user', this.accountid);
+    }
     var target = this;
     target.sounds = [];
     // On connecte
     http.open('POST', 'https://poopify.fr/api/api.php', true);
     // Lorsque l'execution est terminé
     http.onload = function(){
+      let j= -1;
       // On parse les résultats du Json
       var data = JSON.parse(http.response);
       // On regarde si il y a un résultat
@@ -48,12 +54,20 @@ export class PlaylistLineComponent implements  OnInit {
         for (let index = 0; index < data.length; index++) {
           target.indexSounds++;
           const element = data[index];
-          target.sounds.push({bddId: element.id, songName : element.name, description: element.name,
-            duration : element.duration, id : element.video_id , addDate : element.add_date, isPlay: false});
+          if(index % target.nbActive === 0){
+            ++j;
+            target.sounds[j] = [];
+            target.sounds[j].push({bddId: element.id, songName : element.name, description: element.name,
+              duration : element.duration, id : element.video_id , addDate : element.add_date, isPlay: false});
+          }else{
+            target.sounds[j].push({bddId: element.id, songName : element.name, description: element.name,
+              duration : element.duration, id : element.video_id , addDate : element.add_date, isPlay: false});
+          }
         }
       }
     }
     http.send(params);
+
   }
   computeNbActive(){
     let width: number;
@@ -70,20 +84,6 @@ export class PlaylistLineComponent implements  OnInit {
       this.nbActive = Math.trunc(width / 75) - 2;
     }
   }
-  songInArray(){
-    this.content = [];
-    let j = -1;
-    for ( let i = 0; i < this.indexSounds; i++){
-      if (i % this.nbActive === 0) {
-        j++;
-        this.content[j] = [];
-        this.content[j].push(this.sounds[i]);
-      }
-      else {
-        this.content[j].push(this.sounds[i]);
-      }
-    }
-  }
 
   playSong(id){
     this.played.emit(id);
@@ -91,18 +91,16 @@ export class PlaylistLineComponent implements  OnInit {
    constructor() {
   }
 
-  ngOnInit(): void {
-    this.computeNbActive();
+  ngOnChanges(){
     this.getPlaylistContent();
-    this.songInArray();
     }
+
 
   @HostListener('window:resize', ['$event'])
   onResize(event) {
     this.computeNbActive();
-    this.songInArray();
+    this.getPlaylistContent();
   }
-
 
   goPage(path){
     if (isNumeric(path)){
