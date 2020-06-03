@@ -186,14 +186,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
   }else if($_POST["function"] == "getNbRecent") {
       $req = $bdd->prepare("SELECT Count(*) FROM RecentContent WHERE account_id = ?");
-      $req->execute(array($_POST["account_id"]);
+      $req->execute(array($_POST["account_id"]));
 
       echo json_encode($req->fetchAll(PDO::FETCH_ASSOC));
   }
   else if($_POST["function"]=="getOlderRecent") {
-      $req = $bdd->prepare("SELECT add_date FROM RecentContent WHERE add_date >
-                             (SELECT min(add_date) FROM RecentContent WHERE account_id = ?) AND account_id = ? ORDER BY add_date ASC LIMIT 1");
-       $req->execute(array($_POST["account_id"]);
+      $req = $bdd->prepare("SELECT add_date FROM RecentContent WHERE add_date > (SELECT min(add_date) FROM RecentContent WHERE account_id = ?) AND account_id = ? ORDER BY add_date ASC LIMIT 1");
+       $req->execute(array($_POST["account_id"]));
 
       echo json_encode($req->fetchAll(PDO::FETCH_ASSOC));
   }
