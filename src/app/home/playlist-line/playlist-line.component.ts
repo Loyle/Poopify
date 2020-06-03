@@ -1,4 +1,4 @@
-import {Component, EventEmitter, HostListener, Input, OnInit, Output, OnChanges} from '@angular/core';
+import {Component, EventEmitter, HostListener, Input, Output, OnChanges} from '@angular/core';
 import {isNumeric} from 'rxjs/internal-compatibility';
 
 
@@ -11,7 +11,6 @@ export class PlaylistLineComponent implements  OnChanges {
   @Input() playlistName: string;
   @Input() id: string;
   nbActive: number;
-  content: any[];
   indexSounds = 0;
 
 
@@ -34,8 +33,10 @@ export class PlaylistLineComponent implements  OnChanges {
     if(this.id == 'Favorite'){
       params.append('function', 'getLiked');
       params.append('account_id', this.accountid);
+    }else if(this.id == 'Rec'){
+      params.append('funcion', 'getRecent');
+      params.append('account_id', this.accountid);
     }else{
-
       params.append('function', 'getPlaylistById');
       params.append('pl', this.id);
       params.append('user', this.accountid);

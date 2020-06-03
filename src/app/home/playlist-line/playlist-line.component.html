@@ -1,6 +1,6 @@
 <div class="row d-flex justify-content-between mt-3 ml-2 mr-5">
   <h1>{{playlistName}} </h1>
-  <div class="btn btn-outline btn-sm align-self-center d-flex justify-content-center" (click)="goPage(id)">
+  <div *ngIf="id!= 'Rec'" class="btn btn-outline btn-sm align-self-center d-flex justify-content-center " (click)="goPage(id)">
     <p class="mb-5">More</p>
   </div>
 </div>
@@ -12,6 +12,7 @@
           <app-box [songName]="sg.songName"
                    [description]="sg.description"
                    [songCode]="sg.id"
+                   [accountid]="accountid"
                    [sound]="sg"
                    (played)="playSong($event)"></app-box>
         </div>

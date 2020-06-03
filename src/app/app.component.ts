@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild  } from '@angular/core';
 import { YouTubeSearchResult } from './search-bar/youtube-search-result';
 import { PlayerBarComponent } from './player-bar/player-bar.component';
+import {DatePipe} from "@angular/common";
 
 @Component({
   selector: 'app-root',
