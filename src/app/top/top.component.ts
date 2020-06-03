@@ -13,6 +13,7 @@ export class TopComponent implements OnInit {
 
   @Input() accountid;
   @Output() played = new EventEmitter<any>();
+  @Output() queue = new EventEmitter<any>();
 
   constructor() { }
 
@@ -23,6 +24,10 @@ export class TopComponent implements OnInit {
 
   playSong(sound){
     this.played.emit(sound);
+  }
+
+  addToQueue(sound){
+    this.queue.emit(sound);
   }
 
   getTop(){

@@ -55,7 +55,7 @@
   background: #ffffff;
 }
 ::-webkit-scrollbar-thumb:active {
-  background: #000000;
+  background: var(--accent-color);
 }
 ::-webkit-scrollbar-track {
   background: var(--hover);

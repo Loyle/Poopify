@@ -7,7 +7,7 @@ import { YouTubeSearchResult } from './youtube-search-result';
   styleUrls: ['./youtube-search-result.component.css'],
   template: `
     <div class="d-sm-flex d-none align-items-center justify-content-center">
-      <img class="minia rounded-lg img-fluid shadow-lg" src="{{ result.thumbnailUrl }}"/>
+      <img class="minia rounded-lg img-fluid shadow-lg" src="https://img.youtube.com/vi/{{result.id}}/0.jpg"/>
     </div>
     <div class="caption d-flex align-items-center w-100 pl-sm-3 py-sm-0 py-2">
     <div class="row w-100">
@@ -53,6 +53,12 @@ import { YouTubeSearchResult } from './youtube-search-result';
             </svg>
           </ng-template>
         </div>
+        <div class="m-md-3 m-1">
+          <svg class="bi bi-plus" width="6vh" height="6vh" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg" (click)="addToQueue()">
+            <path fill-rule="evenodd" d="M8 3.5a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-.5.5H4a.5.5 0 0 1 0-1h3.5V4a.5.5 0 0 1 .5-.5z"/>
+            <path fill-rule="evenodd" d="M7.5 8a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1H8.5V12a.5.5 0 0 1-1 0V8z"/>
+          </svg>
+        </div>
       </div>
     </div>
   `
@@ -68,6 +74,7 @@ export class YouTubeSearchResultComponent implements OnInit {
   @Input() accountid;
   @HostBinding('attr.class') cssClass = 'thumbnail ml-sm-5 my-sm-5 my-3 rounded-lg';
   @Output() played = new EventEmitter<YouTubeSearchResult>();
+  @Output() queue = new EventEmitter<YouTubeSearchResult>();
 
   constructor() { }
 
@@ -130,6 +137,10 @@ export class YouTubeSearchResultComponent implements OnInit {
 
   playSong(){
     this.played.emit(this.result);
+  }
+
+  addToQueue(){
+    this.queue.emit(this.result);
   }
 
   addToPlaylist(index){

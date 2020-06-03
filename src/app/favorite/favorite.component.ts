@@ -18,6 +18,9 @@ export class FavoriteComponent implements OnInit, OnChanges {
   @Output()
   played = new EventEmitter<any>();
 
+  @Output()
+  queue = new EventEmitter<any>();
+
   @Input()
   playlistId! :number;
   constructor() { }
@@ -31,6 +34,11 @@ export class FavoriteComponent implements OnInit, OnChanges {
   playSong(id){
     this.played.emit(id);
   }
+
+  addToQueue(id){
+    this.queue.emit(id);
+  }
+
   run(){
     if(this.sounds.length != 0){
       if(this.i > this.sounds.length-1){

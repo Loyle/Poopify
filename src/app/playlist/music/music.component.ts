@@ -22,6 +22,9 @@ export class MusicComponent implements OnInit {
   @Output()
   update = new EventEmitter<any>();
 
+  @Output()
+  queue = new EventEmitter<any>();
+
   @Input()
   playlistId :number;
 
@@ -59,6 +62,9 @@ export class MusicComponent implements OnInit {
     this.played.emit(id);
   }
 
+  addToQueue(sound){
+    this.queue.emit(sound);
+  }
   removeMusic(sound){
     var http = new XMLHttpRequest();
 

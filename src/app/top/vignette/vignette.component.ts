@@ -16,6 +16,7 @@ export class VignetteComponent implements OnInit {
   @Input() accountid;
   @Input() sound;
   @Output() played = new EventEmitter<any>();
+  @Output() queue = new EventEmitter<any>();
 
   constructor() { }
 
@@ -50,6 +51,10 @@ export class VignetteComponent implements OnInit {
 
   playSong(sound){
     this.played.emit(sound);
+  }
+
+  addToQueue(sound){
+    this.queue.emit(sound);
   }
 
   getPlaylist(){

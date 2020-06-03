@@ -10,13 +10,13 @@
     <app-home [accountid]="accountid" (played)="playSong($event)" (path)="openPage($event)"></app-home>
   </div>
   <div *ngIf="path == 'Top'">
-    <app-top [accountid] = "accountid" (played)="playSong($event)"></app-top>
+    <app-top [accountid] = "accountid" (played)="playSong($event)" (queue)="addToQueue($event)"></app-top>
   </div>
   <div *ngIf="path == 'Favorite'">
-    <app-favorite [accountid]="accountid" (played)="playSong($event)"></app-favorite>
+    <app-favorite [accountid]="accountid" (played)="playSong($event)" (queue)="addToQueue($event)"></app-favorite>
   </div>
   <div *ngIf="isNumber(path)">
-    <app-playlist [playlistId]="path" [accountid] = "accountid" ng-change="displayPlaylist()" (played)="playSong($event)"></app-playlist>
+    <app-playlist [playlistId]="path" [accountid] = "accountid" ng-change="displayPlaylist()" (played)="playSong($event)" (queue)="addToQueue($event)"></app-playlist>
   </div>
   <div class="row">
     <div *ngIf="loadResults" class="results w-100 h-100 px-md-5 pl-sm-5 px-2 pr-sm-3">
@@ -25,7 +25,8 @@
             *ngFor="let r of results"
             [result]="r"
             [accountid] = "accountid"
-            (played)="playSong($event)">
+            (played)="playSong($event)"
+            (queue)="addToQueue($event)">
       </app-youtube-search-result>
     </div>
     <div *ngIf="error" class="results w-100 h-100 px-md-5 pl-sm-5 px-2 pr-sm-3">

@@ -68,6 +68,11 @@ export class AppComponent implements OnInit{
     this.playerBar.playMusic(song.id,true);
   }
 
+  addToQueue(song){
+    console.log(song);
+    this.playerBar.addToWaitingList(song.id);
+  }
+
   openPage(path){
     this.loadResults=false;
     this.error = false;

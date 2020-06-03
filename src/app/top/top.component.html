@@ -8,27 +8,27 @@
       <div class="row  justify-content-center">
         <div class="col-lg-2 col-sm-4 col-10 mx-2 offset-lg-1 offset-sm-2 offset-1">
           <div class="row">
-            <app-vignette *ngFor="let sound of sounds;index as i" [ngClass]="i>9 ? 'd-none':'d-block'" [sound] = "sound" [accountid] = "accountid" (played)="playSong($event)"></app-vignette>
+            <app-vignette *ngFor="let sound of sounds;index as i" [ngClass]="i>9 ? 'd-none':'d-block'" [sound] = "sound" [accountid] = "accountid" (played)="playSong($event)" (queue)="addToQueue($event)"></app-vignette>
           </div>
         </div>
         <div class="col-lg-2 col-sm-4 col-10 mx-2 mt-lg-5">
           <div class="row">
-            <app-vignette *ngFor="let sound of sounds;index as i" [ngClass]="i<10 || i>19 ? 'd-none':'d-block'" [sound] = "sound" [accountid] = "accountid" (played)="playSong($event)"></app-vignette>
+            <app-vignette *ngFor="let sound of sounds;index as i" [ngClass]="i<10 || i>19 ? 'd-none':'d-block'" [sound] = "sound" [accountid] = "accountid" (played)="playSong($event)" (queue)="addToQueue($event)"></app-vignette>
           </div>
         </div>
         <div class="col-lg-2 col-sm-4 col-10 mx-2">
           <div class="row">
-            <app-vignette  *ngFor="let sound of sounds;index as i" [ngClass]="i<20 || i>29 ? 'd-none':'d-block'" [sound] = "sound" [accountid] = "accountid" (played)="playSong($event)"></app-vignette>
+            <app-vignette  *ngFor="let sound of sounds;index as i" [ngClass]="i<20 || i>29 ? 'd-none':'d-block'" [sound] = "sound" [accountid] = "accountid" (played)="playSong($event)" (queue)="addToQueue($event)"></app-vignette>
           </div>
         </div>
         <div class="col-lg-2 col-sm-4 col-10 mx-2 mt-lg-5">
           <div class="row">
-            <app-vignette *ngFor="let sound of sounds;index as i" [ngClass]="i<30 || i>39 ? 'd-none':'d-block'" [sound] = "sound" [accountid] = "accountid" (played)="playSong($event)"></app-vignette>
+            <app-vignette *ngFor="let sound of sounds;index as i" [ngClass]="i<30 || i>39 ? 'd-none':'d-block'" [sound] = "sound" [accountid] = "accountid" (played)="playSong($event)" (queue)="addToQueue($event)"></app-vignette>
           </div>
         </div>
         <div class="col-lg-2 col-sm-8 col-10 mx-2">
           <div class="row">
-            <app-vignette *ngFor="let sound of sounds;index as i" [ngClass]="i<40 ? 'd-none':'d-block'" [sound] = "sound" [accountid] = "accountid" (played)="playSong($event)"></app-vignette>
+            <app-vignette *ngFor="let sound of sounds;index as i" [ngClass]="i<40 ? 'd-none':'d-block'" [sound] = "sound" [accountid] = "accountid" (played)="playSong($event)" (queue)="addToQueue($event)"></app-vignette>
           </div>
         </div>
       </div>

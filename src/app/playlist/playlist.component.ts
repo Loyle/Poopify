@@ -18,6 +18,9 @@ export class PlaylistComponent implements OnChanges {
   @Output()
   played = new EventEmitter<any>();
 
+  @Output()
+  queue = new EventEmitter<any>();
+
   @Input()
   playlistId! :number;
 
@@ -42,6 +45,10 @@ export class PlaylistComponent implements OnChanges {
 
   playSong(id){
     this.played.emit(id);
+  }
+
+  addToQueue(sound){
+    this.queue.emit(sound);
   }
 
   ngOnChanges(value : SimpleChanges){
