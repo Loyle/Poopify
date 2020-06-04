@@ -33,8 +33,9 @@ export class PlaylistLineComponent implements  OnChanges {
     if(this.id == 'Favorite'){
       params.append('function', 'getLiked');
       params.append('account_id', this.accountid);
+
     }else if(this.id == 'Rec'){
-      params.append('funcion', 'getRecent');
+      params.append('function', 'getRecent');
       params.append('account_id', this.accountid);
     }else{
       params.append('function', 'getPlaylistById');

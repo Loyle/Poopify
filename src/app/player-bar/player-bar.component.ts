@@ -1,4 +1,5 @@
-import { Component, OnInit, HostListener} from '@angular/core';
+import {Component, OnInit, HostListener, Input} from '@angular/core';
+import {DatePipe} from "@angular/common";
 
 @Component({
 	selector: 'app-player-bar',
@@ -39,6 +40,12 @@ export class PlayerBarComponent implements OnInit {
 	public listened : string[] = [];
 
 	public playerReady : boolean = false;
+
+	nbRecent: number;
+	@Input()
+  accountid;
+
+	song: Array<{account_id: number, videoId: string, add_date: Date}>;
 
 	constructor() { }
 	init() {
@@ -81,7 +88,7 @@ export class PlayerBarComponent implements OnInit {
 		this.playerPassiv = this.player2;
 		this.actualPlayer = 1;
 	}
-	
+
 	previousMusic() : void {
 		// On stop si il y avait un fadeOut
 		this.isFading = false;
@@ -123,6 +130,15 @@ export class PlayerBarComponent implements OnInit {
 				if(!this.isMusicLoaded) {
 					if(this.player.getDuration() > 0) {
 						this.loadMusicData();
+            /** update Recent content **/
+            this.getNbRecent();
+            if(this.nbRecent < 24){
+              this.addRecent(this.videoID);
+            }else{
+              this.getOlderRecent();
+              this.removeRecent(this.song);
+              this.addRecent(this.videoID);
+            }
 					}
 				}
 				else {
@@ -130,6 +146,7 @@ export class PlayerBarComponent implements OnInit {
 				}
 			}, 100);
 		}
+
 	}
 	playPauseMusic(autoplay = true) : void {
 		if(this.isPlaying) {
@@ -144,7 +161,7 @@ export class PlayerBarComponent implements OnInit {
 			if(this.isFading)
 				this.playAllVideo();
 			else
-				this.player.playVideo(); 
+				this.player.playVideo();
 		}
 		this.isPlaying = !this.isPlaying;
 	}
@@ -232,7 +249,7 @@ export class PlayerBarComponent implements OnInit {
 		this.switchPlayers();
 		this.player.playVideo();
 		this.isMusicLoaded = false;
-		if(this.fadeOut > 0) {	
+		if(this.fadeOut > 0) {
 			this.isFading = true;
 
 			var upVolume = 0;
@@ -308,7 +325,7 @@ export class PlayerBarComponent implements OnInit {
 		/*console.log("Player1 is ready");
 		t.player = t.player1;
 		t.actualPlayer = 1;*/
-		
+
 	}
 	onPlayer2Ready(t) {
 		/*console.log("Player2 is ready");
@@ -317,7 +334,7 @@ export class PlayerBarComponent implements OnInit {
 	}
 
 	@HostListener('document:keypress', ['$event'])
-	handleKeyboardEvent(event: KeyboardEvent) { 
+	handleKeyboardEvent(event: KeyboardEvent) {
 		if(event.key == " ") {
 			//this.playPauseMusic(true);
 		}
@@ -349,4 +366,83 @@ export class PlayerBarComponent implements OnInit {
 		this.addToPlaylist("p3l7fgvrEKM");
 		this.addToPlaylist("iRA82xLsb_w");
 	}
+
+  addRecent(id){
+
+    var pipe = new DatePipe('fr-FR');
+    var http = new XMLHttpRequest();
+
+    var params = new FormData();
+    params.append('function', 'addRecent');
+    params.append('name', this.musicTitle);
+    params.append('account_id', this.accountid);
+    params.append('video_id', id);
+    params.append('duration', '100');
+    params.append('add_date', pipe.transform(new Date(), 'yyyy-MM-dd '));
+
+    http.open('POST', 'https://poopify.fr/api/api.php', true);
+    http.onload = function () {
+      console.log(http.response);
+    };
+    http.send(params);
+
+  }
+  removeRecent(song){
+    var http = new XMLHttpRequest();
+
+    var params = new FormData();
+    params.append('function', 'removeRecent');
+    params.append('account_id', this.accountid);
+    params.append('video_id', song.id);
+    params.append('adda_date', song.add_date);
+    http.open('POST', 'https://poopify.fr/api/api.php', true);
+    http.onload = function () {
+      console.log(http.response);
+    };
+    http.send(params);
+  }
+
+  getNbRecent(){
+    var http = new XMLHttpRequest();
+
+    var params = new FormData();
+    params.append('function', 'getNbRecent');
+    params.append('account_id', this.accountid);
+    var target = this;
+    http.open('POST', 'https://poopify.fr/api/api.php', true);
+    http.onload = function () {
+      var data = JSON.parse(http.response);
+      // On regarde si il y a un résultat
+      if(Object.keys(data).length > 0) {
+        target.nbRecent = data;
+      }
+    };
+    http.send(params);
+  }
+
+  getOlderRecent(){
+    var http = new XMLHttpRequest();
+    // On crée les params post que l'on va envoyer
+    var params = new FormData();
+    params.append('function', 'getOlderRecent');
+    params.append('account_id', this.accountid);
+    // Pour pouvoir acceder au this dans la sous function
+    var target = this;
+    target.song = [];
+    // On connecte
+    http.open("POST","https://poopify.fr/api/api.php",true);
+    // Lorsque l'execution est terminé
+    http.onload = function(){
+      // On parse les résultats du Json (On peut utiliser comme ceci : data.id, data.email, data.password etc...)
+      var data = JSON.parse(http.response);
+      // On regarde si il y a un résultat
+      if(Object.keys(data).length > 0) {
+        for (let index = 0; index < data.length; index++) {
+          const element = data[index];
+          target.song.push({account_id: target.accountid, videoId: element.id, add_date: element.add_date});
+        }
+      }
+    }
+    http.send(params);
+  }
 }
