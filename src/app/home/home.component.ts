@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import {isNumeric} from "rxjs/internal-compatibility";
 
 @Component({
@@ -6,7 +6,7 @@ import {isNumeric} from "rxjs/internal-compatibility";
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit  {
 
   @Input()
   accountid;
@@ -19,6 +19,7 @@ export class HomeComponent implements OnInit {
 
   playlists: Array<{id: string, playlistName }> = [];
   constructor() {  }
+
 
   ngOnInit(): void {
     this.getPlaylist();
@@ -55,7 +56,6 @@ export class HomeComponent implements OnInit {
       this.path.emit(Number(path));
     }else{
       this.path.emit(path);
-
     }
   }
 }

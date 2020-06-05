@@ -130,7 +130,7 @@ export class PlayerBarComponent implements OnInit {
 						this.loadMusicData();
             /** update Recent content **/
             this.getNbRecent();
-            if(this.nbRecent < 24){
+            if(this.nbRecent < 1){
               this.addRecent(this.videoID);
             }else{
               this.getOlderRecent();
@@ -384,15 +384,13 @@ export class PlayerBarComponent implements OnInit {
     http.send(params);
 
   }
-  removeRecent(videoId,add_date){
+  removeRecent(id){
 
     var http = new XMLHttpRequest();
 
     var params = new FormData();
     params.append('function', 'removeRecent');
-    params.append('account_id', this.accountid);
-    params.append('video_id', videoId);
-    params.append('adda_date', add_date);
+    params.append('id', id);
     http.open('POST', 'https://poopify.fr/api/api.php', true);
     http.onload = function () {
       console.log(http.response);
@@ -435,7 +433,7 @@ export class PlayerBarComponent implements OnInit {
       // On regarde si il y a un résultat
       if(Object.keys(data).length > 0) {
           const element = data;
-          target.removeRecent(element.id, element.add_date);
+          target.removeRecent(element.id);
       }
     }
     http.send(params);
