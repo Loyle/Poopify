@@ -130,7 +130,7 @@ export class PlayerBarComponent implements OnInit {
 						this.loadMusicData();
             /** update Recent content **/
             this.getNbRecent();
-            if(this.nbRecent < 1){
+            if(this.nbRecent < 24){
               this.addRecent(this.videoID);
             }else{
               this.getOlderRecent();
