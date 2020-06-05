@@ -191,7 +191,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       echo json_encode($req->fetchAll(PDO::FETCH_ASSOC));
   }
   else if($_POST["function"]=="getOlderRecent") {
-      $req = $bdd->prepare("SELECT * FROM `RecentContent` WHERE id < (SELECT MAX(id) FROM `RecentContent` WHERE account_id = ?) AND account_id = ? ORDER BY id ASC LIMIT 1");
+      $req = $bdd->prepare("SELECT * FROM RecentContent WHERE id < (SELECT MAX(id) FROM RecentContent WHERE account_id = ?) AND account_id = ? ORDER BY id ASC LIMIT 1");
        $req->execute(array($_POST["account_id"]));
 
       echo json_encode($req->fetchAll(PDO::FETCH_ASSOC));

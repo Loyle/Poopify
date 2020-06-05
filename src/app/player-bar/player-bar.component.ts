@@ -1,5 +1,5 @@
 import {Component, OnInit, HostListener, Input} from '@angular/core';
-import {DatePipe} from "@angular/common";
+import {DatePipe} from '@angular/common';
 
 @Component({
 	selector: 'app-player-bar',
@@ -44,8 +44,6 @@ export class PlayerBarComponent implements OnInit {
 	nbRecent: number;
 	@Input()
   accountid;
-
-	song: Array<{account_id: number, videoId: string, add_date: Date}>;
 
 	constructor() { }
 	init() {
@@ -132,11 +130,10 @@ export class PlayerBarComponent implements OnInit {
 						this.loadMusicData();
             /** update Recent content **/
             this.getNbRecent();
-            if(this.nbRecent < 24){
+            if(this.nbRecent < 1){
               this.addRecent(this.videoID);
             }else{
               this.getOlderRecent();
-              this.removeRecent(this.song);
               this.addRecent(this.videoID);
             }
 					}
@@ -387,14 +384,15 @@ export class PlayerBarComponent implements OnInit {
     http.send(params);
 
   }
-  removeRecent(song){
+  removeRecent(videoId,add_date){
+
     var http = new XMLHttpRequest();
 
     var params = new FormData();
     params.append('function', 'removeRecent');
     params.append('account_id', this.accountid);
-    params.append('video_id', song.id);
-    params.append('adda_date', song.add_date);
+    params.append('video_id', videoId);
+    params.append('adda_date', add_date);
     http.open('POST', 'https://poopify.fr/api/api.php', true);
     http.onload = function () {
       console.log(http.response);
@@ -428,7 +426,6 @@ export class PlayerBarComponent implements OnInit {
     params.append('account_id', this.accountid);
     // Pour pouvoir acceder au this dans la sous function
     var target = this;
-    target.song = [];
     // On connecte
     http.open("POST","https://poopify.fr/api/api.php",true);
     // Lorsque l'execution est terminé
@@ -437,10 +434,8 @@ export class PlayerBarComponent implements OnInit {
       var data = JSON.parse(http.response);
       // On regarde si il y a un résultat
       if(Object.keys(data).length > 0) {
-        for (let index = 0; index < data.length; index++) {
-          const element = data[index];
-          target.song.push({account_id: target.accountid, videoId: element.id, add_date: element.add_date});
-        }
+          const element = data;
+          target.removeRecent(element.id, element.add_date);
       }
     }
     http.send(params);
