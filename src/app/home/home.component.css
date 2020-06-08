@@ -4,13 +4,8 @@
   top: 0;
   left: 0;
   bottom: 0px;
-  margin-bottom: 80px;
   overflow-y: scroll;
   overflow-x: hidden;
-}
-
-.margin{
-  margin-bottom: 80px;
 }
 
 ::-webkit-scrollbar {
