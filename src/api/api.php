@@ -161,41 +161,41 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 		echo json_encode();
 	}
 	else if($_POST["function"] == "addRecent") {
-     $req = $bdd->prepare("INSERT INTO RecentContent(name, account_id, video_id, duration, add_date) VALUES(:name, :account_id, :video_id, :duration, :add_date)");
-     $req->execute(array(
-       ':name' => $_POST["name"],
-       ':account_id' => $_POST["account_id"],
-       ':video_id' => $_POST["video_id"],
-       ':duration' => $_POST["duration"],
-       ':add_date' => $_POST["add_date"]
-     ));
+		$req = $bdd->prepare("INSERT INTO RecentContent(name, account_id, video_id, duration, add_date) VALUES(:name, :account_id, :video_id, :duration, :add_date)");
+		$req->execute(array(
+			':name' => $_POST["name"],
+			':account_id' => $_POST["account_id"],
+			':video_id' => $_POST["video_id"],
+			':duration' => $_POST["duration"],
+			':add_date' => $_POST["add_date"]
+		));
 
-     echo json_encode();
-  }
-  else if($_POST["function"] == "getRecent") {
-       $req = $bdd->prepare('SELECT * FROM RecentContent WHERE account_id = ? ORDER BY id DESC');
-       $req->execute(array($_POST["account_id"]));
+		echo json_encode();
+	}
+	else if($_POST["function"] == "getRecent") {
+		$req = $bdd->prepare('SELECT * FROM RecentContent WHERE account_id = ? ORDER BY id DESC');
+		$req->execute(array($_POST["account_id"]));
 
-       echo json_encode($req->fetchAll(PDO::FETCH_ASSOC));
-  }
-  else if($_POST["function"] == "removeRecent") {
-      $req = $bdd->prepare("DELETE FROM RecentContent WHERE id = ?");
-      $req->execute(array($_POST["id"]));
+		echo json_encode($req->fetchAll(PDO::FETCH_ASSOC));
+	}
+	else if($_POST["function"] == "removeRecent") {
+		$req = $bdd->prepare("DELETE FROM RecentContent WHERE id = ?");
+		$req->execute(array($_POST["id"]));
 
-      echo json_encode();
+		echo json_encode();
 
-  }else if($_POST["function"] == "getNbRecent") {
-      $req = $bdd->prepare("SELECT Count(*) FROM RecentContent WHERE account_id = ?");
-      $req->execute(array($_POST["account_id"]));
+	}else if($_POST["function"] == "getNbRecent") {
+		$req = $bdd->prepare("SELECT Count(*) FROM RecentContent WHERE account_id = ?");
+		$req->execute(array($_POST["account_id"]));
 
-      echo json_encode($req->fetchAll(PDO::FETCH_ASSOC));
-  }
-  else if($_POST["function"]=="getOlderRecent") {
-      $req = $bdd->prepare("SELECT * FROM RecentContent WHERE id < (SELECT MAX(id) FROM RecentContent WHERE account_id = ?) AND account_id = ? ORDER BY id ASC LIMIT 1");
-       $req->execute(array($_POST["account_id"]));
+		echo json_encode($req->fetchAll(PDO::FETCH_ASSOC));
+	}
+	else if($_POST["function"]=="getOlderRecent") {
+		$req = $bdd->prepare("SELECT * FROM RecentContent WHERE id < (SELECT MAX(id) FROM RecentContent WHERE account_id = ?) AND account_id = ? ORDER BY id ASC LIMIT 1");
+		$req->execute(array($_POST["account_id"],$_POST["account_id"]));
 
-      echo json_encode($req->fetchAll(PDO::FETCH_ASSOC));
-  }
+		echo json_encode($req->fetchAll(PDO::FETCH_ASSOC));
+	}
 	else {
 		// We do nothing
 		echo json_encode(array());
