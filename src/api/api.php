@@ -179,8 +179,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
        echo json_encode($req->fetchAll(PDO::FETCH_ASSOC));
   }
   else if($_POST["function"] == "removeRecent") {
-      $req = $bdd->prepare("DELETE FROM RecentContent WHERE account_id = ? AND video_id = ? AND add_date = ?");
-      $req->execute(array($_POST["account_id"],$_POST["video_id"],$_POST["add_date"]));
+      $req = $bdd->prepare("DELETE FROM RecentContent WHERE id = ?");
+      $req->execute(array($_POST["id"]);
 
       echo json_encode();
 
