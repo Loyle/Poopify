@@ -130,7 +130,7 @@ export class PlayerBarComponent implements OnInit {
 						this.loadMusicData();
             /** update Recent content **/
             this.getNbRecent();
-            if(this.nbRecent < 1){
+            if(this.nbRecent < 10){
               this.addRecent(this.videoID);
             }else{
               this.getOlderRecent();
@@ -417,6 +417,7 @@ export class PlayerBarComponent implements OnInit {
   }
 
   getOlderRecent(){
+
     var http = new XMLHttpRequest();
     // On crée les params post que l'on va envoyer
     var params = new FormData();
@@ -430,10 +431,11 @@ export class PlayerBarComponent implements OnInit {
     http.onload = function(){
       // On parse les résultats du Json (On peut utiliser comme ceci : data.id, data.email, data.password etc...)
       var data = JSON.parse(http.response);
+
+      console.log('http' + http.response);
       // On regarde si il y a un résultat
       if(Object.keys(data).length > 0) {
-          const element = data;
-          target.removeRecent(element.id);
+          target.removeRecent(data[0].id);
       }
     }
     http.send(params);
