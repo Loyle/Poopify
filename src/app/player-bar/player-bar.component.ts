@@ -41,9 +41,12 @@ export class PlayerBarComponent implements OnInit {
 
 	public playerReady : boolean = false;
 
+	public isMobile : boolean = false;
+	public activePlayer : boolean = false;
+
 	nbRecent: number;
 	@Input()
-  accountid;
+	accountid;
 
 	constructor() { }
 	init() {
@@ -54,6 +57,11 @@ export class PlayerBarComponent implements OnInit {
 	}
 
 	ngOnInit(): void {
+		if(window.innerWidth <= 576) {
+			this.isMobile = true;
+		}
+
+
 		this.init();
 		this.initTestPlaylist();
 
@@ -128,14 +136,14 @@ export class PlayerBarComponent implements OnInit {
 				if(!this.isMusicLoaded) {
 					if(this.player.getDuration() > 0) {
 						this.loadMusicData();
-            /** update Recent content **/
-            this.getNbRecent();
-            if(this.nbRecent < 10){
-              this.addRecent(this.videoID);
-            }else{
-              this.getOlderRecent();
-              this.addRecent(this.videoID);
-            }
+						/** update Recent content **/
+						this.getNbRecent();
+						if(this.nbRecent < 10){
+							this.addRecent(this.videoID);
+						}else{
+							this.getOlderRecent();
+							this.addRecent(this.videoID);
+						}
 					}
 				}
 				else {
@@ -364,80 +372,86 @@ export class PlayerBarComponent implements OnInit {
 		this.addToPlaylist("iRA82xLsb_w");
 	}
 
-  addRecent(id){
+	setPlayerActive(value : boolean) {
+		if(this.isMobile) {
+			this.activePlayer = value;
+		}
+	}
 
-    var pipe = new DatePipe('fr-FR');
-    var http = new XMLHttpRequest();
+	addRecent(id){
 
-    var params = new FormData();
-    params.append('function', 'addRecent');
-    params.append('name', this.musicTitle);
-    params.append('account_id', this.accountid);
-    params.append('video_id', id);
-    params.append('duration', '100');
-    params.append('add_date', pipe.transform(new Date(), 'yyyy-MM-dd '));
+		var pipe = new DatePipe('fr-FR');
+		var http = new XMLHttpRequest();
 
-    http.open('POST', 'https://poopify.fr/api/api.php', true);
-    http.onload = function () {
-      console.log(http.response);
-    };
-    http.send(params);
+		var params = new FormData();
+		params.append('function', 'addRecent');
+		params.append('name', this.musicTitle);
+		params.append('account_id', this.accountid);
+		params.append('video_id', id);
+		params.append('duration', '100');
+		params.append('add_date', pipe.transform(new Date(), 'yyyy-MM-dd '));
 
-  }
-  removeRecent(id){
+		http.open('POST', 'https://poopify.fr/api/api.php', true);
+		http.onload = function () {
+			console.log(http.response);
+		};
+		http.send(params);
 
-    var http = new XMLHttpRequest();
+	}
+	removeRecent(id){
 
-    var params = new FormData();
-    params.append('function', 'removeRecent');
-    params.append('id', id);
-    http.open('POST', 'https://poopify.fr/api/api.php', true);
-    http.onload = function () {
-      console.log(http.response);
-    };
-    http.send(params);
-  }
+		var http = new XMLHttpRequest();
 
-  getNbRecent(){
-    var http = new XMLHttpRequest();
+		var params = new FormData();
+		params.append('function', 'removeRecent');
+		params.append('id', id);
+		http.open('POST', 'https://poopify.fr/api/api.php', true);
+		http.onload = function () {
+			console.log(http.response);
+		};
+		http.send(params);
+	}
 
-    var params = new FormData();
-    params.append('function', 'getNbRecent');
-    params.append('account_id', this.accountid);
-    var target = this;
-    http.open('POST', 'https://poopify.fr/api/api.php', true);
-    http.onload = function () {
-      var data = JSON.parse(http.response);
-      // On regarde si il y a un résultat
-      if(Object.keys(data).length > 0) {
-        target.nbRecent = data;
-      }
-    };
-    http.send(params);
-  }
+	getNbRecent(){
+		var http = new XMLHttpRequest();
 
-  getOlderRecent(){
+		var params = new FormData();
+		params.append('function', 'getNbRecent');
+		params.append('account_id', this.accountid);
+		var target = this;
+		http.open('POST', 'https://poopify.fr/api/api.php', true);
+		http.onload = function () {
+			var data = JSON.parse(http.response);
+			// On regarde si il y a un résultat
+			if(Object.keys(data).length > 0) {
+				target.nbRecent = data;
+			}
+		};
+		http.send(params);
+	}
 
-    var http = new XMLHttpRequest();
-    // On crée les params post que l'on va envoyer
-    var params = new FormData();
-    params.append('function', 'getOlderRecent');
-    params.append('account_id', this.accountid);
-    // Pour pouvoir acceder au this dans la sous function
-    var target = this;
-    // On connecte
-    http.open("POST","https://poopify.fr/api/api.php",true);
-    // Lorsque l'execution est terminé
-    http.onload = function(){
-      // On parse les résultats du Json (On peut utiliser comme ceci : data.id, data.email, data.password etc...)
-      var data = JSON.parse(http.response);
+	getOlderRecent(){
 
-      console.log('http' + http.response);
-      // On regarde si il y a un résultat
-      if(Object.keys(data).length > 0) {
-          target.removeRecent(data[0].id);
-      }
-    }
-    http.send(params);
-  }
+		var http = new XMLHttpRequest();
+		// On crée les params post que l'on va envoyer
+		var params = new FormData();
+		params.append('function', 'getOlderRecent');
+		params.append('account_id', this.accountid);
+		// Pour pouvoir acceder au this dans la sous function
+		var target = this;
+		// On connecte
+		http.open("POST","https://poopify.fr/api/api.php",true);
+		// Lorsque l'execution est terminé
+		http.onload = function(){
+			// On parse les résultats du Json (On peut utiliser comme ceci : data.id, data.email, data.password etc...)
+			var data = JSON.parse(http.response);
+
+			console.log('http' + http.response);
+			// On regarde si il y a un résultat
+			if(Object.keys(data).length > 0) {
+				target.removeRecent(data[0].id);
+			}
+		}
+		http.send(params);
+	}
 }

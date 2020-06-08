@@ -22,8 +22,10 @@
 	padding: 10px 10px;
 }
 .music-info .thumbnail {
-	width: 60px;
 	padding: 5px;
+}
+.thumbnail {
+	width: 60px;
 }
 .music-info {
 	font-size: 13px;
@@ -119,9 +121,25 @@ input[type=range].customRange::-ms-thumb {
 
 @media screen and (max-width: 576px){
 	.player-bar {
-		left: 0px;
-		bottom: 50px;
+		transition-duration: 0.5s;
+		transition-property: height;
 
-		padding: 0px 60px;
+		left: 0px;
+		bottom: 49px;
+
+		padding: 0px 10px;
+
+		height: 60px;
+	}
+	.music-info, .music-volume, .music-controller {
+		padding: 2px 10px;
+	}
+
+	.player-bar-active {
+		height: 80%;
+	}
+
+	.thumbnail {
+		width: 60px;
 	}
 }
