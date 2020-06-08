@@ -9,7 +9,7 @@
       <ul class="navbar-nav text-center w-100">
 
         <li class="nav-item d-flex align-items-center justify-content-sm-start justify-content-center" [ngClass]="active==='Home' ? 'active' : ''" (click)="goHome()">
-          <div class="icon">
+          <div class="icon h-100 align-items-center justify-content-center d-flex">
             <ng-template *ngIf="active === 'Home' ; then homeActive else homeNotActive"></ng-template>
             <ng-template #homeActive>
               <svg class="bi bi-house-fill" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -28,7 +28,7 @@
         </li>
 
         <li class="nav-item d-flex align-items-center justify-content-sm-start justify-content-center" [ngClass]="active==='Top' ? 'active' : ''" (click)="goTop()">
-          <div class="icon">
+          <div class="icon h-100 align-items-center justify-content-center d-flex">
             <ng-template *ngIf="active === 'Top' ; then topActive else topNotActive"></ng-template>
             <ng-template #topActive>
               <svg class="bi bi-grid-fill" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -44,7 +44,7 @@
           <span class="menuspan d-sm-block d-none">Top</span>
         </li>
         <li class="nav-item d-flex align-items-center justify-content-sm-start justify-content-center" [ngClass]="active==='Favorite' ? 'active' : ''" (click)="goFav()">
-          <div class="icon">
+          <div class="icon h-100 align-items-center justify-content-center d-flex">
             <ng-template *ngIf="active === 'Favorite' ; then favActive else favNotActive"></ng-template>
             <ng-template #favActive>
               <svg class="bi bi-heart-fill" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -83,7 +83,7 @@
           </div>
         </li>
         <li class="nav-item d-flex align-items-center justify-content-sm-start justify-content-center" (click)="openSettings()">
-          <div class="icon">
+          <div class="icon h-100 align-items-center justify-content-center d-flex">
             <ng-template *ngIf="active === 'Settings' ; then settingsActive else settingsNotActive"></ng-template>
             <ng-template #settingsActive>
               <svg class="bi bi-gear-fill" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
