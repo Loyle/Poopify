@@ -180,7 +180,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   }
   else if($_POST["function"] == "removeRecent") {
       $req = $bdd->prepare("DELETE FROM RecentContent WHERE id = ?");
-      $req->execute(array($_POST["id"]);
+      $req->execute(array($_POST["id"]));
 
       echo json_encode();
 
