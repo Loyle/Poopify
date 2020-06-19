@@ -24,6 +24,7 @@ export class SidenavComponent implements OnChanges {
   @Input()
   activePath! : number;
 
+
   constructor() { }
 
   ngOnInit() {
@@ -49,6 +50,8 @@ export class SidenavComponent implements OnChanges {
 
   @Output()
   quit = new EventEmitter<boolean>();
+  
+  @Output() closePlayerEvent = new EventEmitter();
 
   openSettings(){
     this.setting.emit(true);
@@ -180,4 +183,8 @@ export class SidenavComponent implements OnChanges {
 
     this.loadPlaylists();
   }
+
+    closePlayer() : void {
+      this.closePlayerEvent.emit();
+    }
 }

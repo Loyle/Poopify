@@ -35,6 +35,8 @@ export class SearchBarComponent implements OnInit {
     @Output() results: EventEmitter<YouTubeSearchResult[]> = new EventEmitter<YouTubeSearchResult[]>();
     @Output() error: EventEmitter<boolean> = new EventEmitter<boolean>();
 
+    @Output() closePlayerEvent = new EventEmitter();
+
     constructor(
       private youtube: YouTubeSearchService,
       private el: ElementRef
@@ -109,5 +111,9 @@ export class SearchBarComponent implements OnInit {
             this.loading.emit(false);
           }
         );
+    }
+
+    closePlayer() : void {
+      this.closePlayerEvent.emit();
     }
 }

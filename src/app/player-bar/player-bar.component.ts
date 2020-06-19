@@ -152,6 +152,10 @@ export class PlayerBarComponent implements OnInit {
 			}, 100);
 		}
 
+		if(this.isMobile) {
+			this.player.setVolume(100);
+		}
+
 	}
 	playPauseMusic(autoplay = true) : void {
 		if(this.isPlaying) {

@@ -2,8 +2,8 @@
 
 <ng-template *ngIf="logged; then run"></ng-template>
 <ng-template #run>
-  <app-search-bar (loading)="loading=$event" (results)="updateResults($event)" (error)="error=$event"></app-search-bar>
-  <app-sidenav [accountid] = "accountid" [activePath] = "path" (setting)="openSettings($event)" (profil)="openProfil($event)" (path)="openPage($event)" (quit)="switch = logged =!$event"></app-sidenav>
+  <app-search-bar (loading)="loading=$event" (closePlayerEvent)="closePlayer()" (results)="updateResults($event)" (error)="error=$event"></app-search-bar>
+  <app-sidenav [accountid] = "accountid" [activePath] = "path" (closePlayerEvent)="closePlayer()" (setting)="openSettings($event)" (profil)="openProfil($event)" (path)="openPage($event)" (quit)="switch = logged =!$event"></app-sidenav>
   <app-settings [accountid] = "accountid" [openSetting]="toggleSettings" [darkMode]="themedark" (close)="closeSettings($event)" (themeSwap)="changeTheme($event)"></app-settings>
   <app-profil [openProfil]="toggleProfil" [accountid] = "accountid" (close)="closeProfil($event)"></app-profil>
   <div *ngIf="path == 'Home'">

@@ -2,7 +2,7 @@
 	
 	<div class="music-info d-flex align-items-center col-sm-2" [ngClass]="activePlayer ? 'col-12' : 'col-10'">
 		<div class="h-100 align-items-center col-12 d-flex">
-			<img *ngIf="thumbnail" class="thumbnail d-flex d-sm-none d-lg-flex" [ngClass]="activePlayer ? 'col-12' : ''" src="{{thumbnail}}" alt="thumbnail"/>
+			<img *ngIf="thumbnail" class="thumbnail d-flex d-sm-none d-lg-flex" [ngClass]="activePlayer ? 'col-12 d-block' : ''" src="{{thumbnail}}" alt="thumbnail"/>
 			{{musicTitle}}
 		</div>
 	</div>

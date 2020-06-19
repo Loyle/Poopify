@@ -121,7 +121,7 @@ input[type=range].customRange::-ms-thumb {
 
 @media screen and (max-width: 576px){
 	.player-bar {
-		transition-duration: 0.5s;
+		transition-duration: 0.3s;
 		transition-property: height;
 
 		left: 0px;
@@ -136,7 +136,7 @@ input[type=range].customRange::-ms-thumb {
 	}
 
 	.player-bar-active {
-		height: 80%;
+		height: calc(100% - 93px);
 	}
 
 	.thumbnail {

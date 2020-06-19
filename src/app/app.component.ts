@@ -67,6 +67,9 @@ export class AppComponent implements OnInit{
   playSong(song){
     this.playerBar.playMusic(song.id,true);
   }
+  closePlayer() {
+    this.playerBar.setPlayerActive(false);
+  }
 
   addToQueue(song){
     console.log(song);
