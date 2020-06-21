@@ -1,10 +1,10 @@
 <div class="player-bar text-center row" (click)="setPlayerActive(true)" (mouseleave)="setPlayerActive(false)" [ngClass]="activePlayer ? 'player-bar-active' : ''">
 	
 	<div class="music-info d-flex align-items-center col-sm-2" [ngClass]="activePlayer ? 'col-12 h-75' : 'col-10'">
-		<div class="h-100 align-items-center col-12 justify-content-center d-flex">
-			<div [ngClass]="activePlayer ? '' : 'd-flex'">
+		<div class="h-100 col-12 d-flex align-items-center">
+			<div [ngClass]="activePlayer ? '' : 'd-flex justify-content-left align-items-center'">
 				<img *ngIf="thumbnail" class="thumbnail d-flex d-sm-none d-lg-flex" [ngClass]="activePlayer ? 'col-12 w-100 mt-5' : ''" src="{{thumbnail}}" alt="thumbnail"/>
-				<span [ngClass]="activePlayer ? 'mt-4 d-block h3' : ''">{{musicTitle}}</span>
+				<span [ngClass]="activePlayer ? 'mt-5 d-block h4' : ''">{{musicTitle}}</span>
 			</div>
 		</div>
 	</div>

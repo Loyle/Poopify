@@ -14,7 +14,7 @@
 
 	color: var(--text-color);
 
-	z-index: 50;
+	z-index: 9;
 
 	border-top: 1px solid var(--text-color);
 }
@@ -144,7 +144,8 @@ input[type=range].customRange::-ms-thumb {
 	}
 
 	.player-bar-active {
-		height: calc(100% - 93px);
+		height: 100%;
+		padding-top: 20%;
 	}
 
 	.thumbnail {
