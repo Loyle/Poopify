@@ -193,8 +193,6 @@ export class PlayerBarComponent implements OnInit {
 		}
 
 		this.pauseAllVideo();
-		this.switchPlayers();
-		this.player.playVideo();
 
 		if(this.waitingList.length > 0) {
 			this.playlistPos--;
@@ -204,6 +202,9 @@ export class PlayerBarComponent implements OnInit {
 		else {
 			this.videoID = this.playlist[this.playlistPos];
 		}
+
+		this.switchPlayers();
+		this.player.playVideo();
 
 		this.preloadNext();
 		this.isMusicLoaded = false;
