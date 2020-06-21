@@ -118,6 +118,14 @@ input[type=range].customRange::-ms-thumb {
 	top: 50%;
 	left: 50%;
 }
+.controller-button-size {
+	width: 1em;
+	height: 1em;
+}
+.controller-button-size-active {
+	width: 1.5em;
+	height: 1.5em;
+}
 
 @media screen and (max-width: 576px){
 	.player-bar {

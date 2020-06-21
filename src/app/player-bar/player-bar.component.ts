@@ -44,6 +44,8 @@ export class PlayerBarComponent implements OnInit {
 	public isMobile : boolean = false;
 	public activePlayer : boolean = false;
 
+	public btnSize = "1em";
+
 	nbRecent: number;
 	@Input()
 	accountid;
@@ -378,6 +380,12 @@ export class PlayerBarComponent implements OnInit {
 
 	setPlayerActive(value : boolean) {
 		if(this.isMobile) {
+			if(value) {
+				this.btnSize = "2em";
+			}
+			else {
+				this.btnSize = "1em";
+			}
 			this.activePlayer = value;
 		}
 	}
