@@ -14,6 +14,7 @@ export class TopComponent implements OnInit {
   @Input() accountid;
   @Output() played = new EventEmitter<any>();
   @Output() queue = new EventEmitter<any>();
+  @Output() playlist = new EventEmitter<any>();
 
   constructor() { }
 
@@ -23,6 +24,12 @@ export class TopComponent implements OnInit {
   }
 
   playSong(sound){
+    var pl : string[] = [];
+    this.sounds.forEach(function(value) {
+      // On ajoute les musiques dans la playlist
+      pl.push(value.id);
+    });
+    this.playlist.emit(pl);
     this.played.emit(sound);
   }
 
@@ -44,15 +51,15 @@ export class TopComponent implements OnInit {
 
     // Lorsque l'execution est terminé
     http.onload = function(){
-        // On parse les résultats du Json (On peut utiliser comme ceci : data.id, data.email, data.password etc...)
-        var data = JSON.parse(http.response);
-        // On regarde si il y a un résultat
-        if(Object.keys(data).length > 0) {
-            for (let index = 0; index < data.length; index++) {
-              const element = data[index];
-              target.sounds.push({bddId: element.id,name : element.name, id : element.video_id, duration : element.duration});
-            }
+      // On parse les résultats du Json (On peut utiliser comme ceci : data.id, data.email, data.password etc...)
+      var data = JSON.parse(http.response);
+      // On regarde si il y a un résultat
+      if(Object.keys(data).length > 0) {
+        for (let index = 0; index < data.length; index++) {
+          const element = data[index];
+          target.sounds.push({bddId: element.id,name : element.name, id : element.video_id, duration : element.duration});
         }
+      }
     }
     http.send(params);
   }

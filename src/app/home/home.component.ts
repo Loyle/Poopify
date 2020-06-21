@@ -17,6 +17,9 @@ export class HomeComponent implements OnInit  {
   @Output()
   played = new EventEmitter<any>();
 
+  @Output()
+  playlist = new EventEmitter<any>();
+
   playlists: Array<{id: string, playlistName }> = [];
   constructor() {  }
 
@@ -49,6 +52,9 @@ export class HomeComponent implements OnInit  {
 
   playSong(id){
     this.played.emit(id);
+  }
+  setPlaylist(pl) {
+    this.playlist.emit(pl);
   }
 
   goPage(path){

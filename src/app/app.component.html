@@ -7,16 +7,16 @@
   <app-settings [accountid] = "accountid" [openSetting]="toggleSettings" [darkMode]="themedark" (close)="closeSettings($event)" (themeSwap)="changeTheme($event)"></app-settings>
   <app-profil [openProfil]="toggleProfil" [accountid] = "accountid" (close)="closeProfil($event)"></app-profil>
   <div *ngIf="path == 'Home'">
-    <app-home [accountid]="accountid" (played)="playSong($event)" (path)="openPage($event)"></app-home>
+    <app-home [accountid]="accountid" (played)="playSong($event)" (playlist)="setPlaylist($event)" (path)="openPage($event)"></app-home>
   </div>
   <div *ngIf="path == 'Top'">
-    <app-top [accountid] = "accountid" (played)="playSong($event)" (queue)="addToQueue($event)"></app-top>
+    <app-top [accountid] = "accountid" (played)="playSong($event)" (playlist)="setPlaylist($event)" (queue)="addToQueue($event)"></app-top>
   </div>
   <div *ngIf="path == 'Favorite'">
-    <app-favorite [accountid]="accountid" (played)="playSong($event)" (queue)="addToQueue($event)"></app-favorite>
+    <app-favorite [accountid]="accountid" (played)="playSong($event)" (playlist)="setPlaylist($event)" (queue)="addToQueue($event)"></app-favorite>
   </div>
   <div *ngIf="isNumber(path)">
-    <app-playlist [playlistId]="path" [accountid] = "accountid" ng-change="displayPlaylist()" (played)="playSong($event)" (queue)="addToQueue($event)"></app-playlist>
+    <app-playlist [playlistId]="path" [accountid] = "accountid" ng-change="displayPlaylist()" (played)="playSong($event)" (playlist)="setPlaylist($event)" (queue)="addToQueue($event)"></app-playlist>
   </div>
   <div class="row">
     <div *ngIf="loadResults" class="results w-100 h-100 px-md-5 pl-sm-5 px-2 pr-sm-3">
@@ -26,6 +26,7 @@
             [result]="r"
             [accountid] = "accountid"
             (played)="playSong($event)"
+            (playlist)="setPlaylist($event)"
             (queue)="addToQueue($event)">
       </app-youtube-search-result>
     </div>

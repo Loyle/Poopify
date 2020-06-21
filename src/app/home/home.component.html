@@ -4,12 +4,14 @@
                        [playlistName]="'Récemment écoutées'"
                        [accountid]="accountid"
                        (played)="playSong($event)"
+                       (playlist)="setPlaylist($event)"
                        (path)="goPage($event)"></app-playlist-line>
 
     <app-playlist-line [id]="'Favorite'"
                        [playlistName]="'Favorite'"
                        [accountid]="accountid"
                        (played)="playSong($event)"
+                       (playlist)="setPlaylist($event)"
                        (path)="goPage($event)"></app-playlist-line>
 
     <app-playlist-line *ngFor="let pl of playlists"
@@ -17,6 +19,7 @@
                        [id]="pl.id"
                        [accountid]="accountid"
                        (played)="playSong($event)"
+                       (playlist)="setPlaylist($event)"
                        (path)="goPage($event)"></app-playlist-line>
   </div>
 </div>

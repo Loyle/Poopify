@@ -23,6 +23,8 @@ export class PlaylistLineComponent implements  OnChanges {
 
   @Output()
   played = new EventEmitter<any>();
+  @Output()
+  playlist = new EventEmitter<any>();
 
   sounds: any[];
 
@@ -88,15 +90,22 @@ export class PlaylistLineComponent implements  OnChanges {
   }
 
   playSong(id){
+    var pl : string[] = [];
+    this.sounds.forEach(function(page) {
+      page.forEach(function(value) {
+        // On ajoute les musiques dans la playlist
+        pl.push(value.id);
+      });
+    });
+    this.playlist.emit(pl);
     this.played.emit(id);
   }
-   constructor() {
-  }
+
 
   ngOnChanges(){
     this.computeNbActive();
     this.getPlaylistContent();
-    }
+  }
 
 
   @HostListener('window:resize', ['$event'])

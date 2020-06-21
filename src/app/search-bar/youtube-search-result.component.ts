@@ -135,7 +135,13 @@ export class YouTubeSearchResultComponent implements OnInit {
     http.send(params);
   }
 
-  playSong(){
+  playSong(id){
+    var pl : string[] = [];
+    /*this.sounds.forEach(function(value) {
+      // On ajoute les musiques dans la playlist
+      pl.push(value.id);
+    });
+    this.playlist.emit(pl);*/
     this.played.emit(this.result);
   }
 

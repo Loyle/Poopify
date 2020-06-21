@@ -17,6 +17,8 @@ export class PlaylistComponent implements OnChanges {
 
   @Output()
   played = new EventEmitter<any>();
+  @Output()
+  playlist = new EventEmitter<any>();
 
   @Output()
   queue = new EventEmitter<any>();
@@ -44,6 +46,12 @@ export class PlaylistComponent implements OnChanges {
   }
 
   playSong(id){
+    var pl : string[] = [];
+    this.sounds.forEach(function(value) {
+      // On ajoute les musiques dans la playlist
+      pl.push(value.id);
+    });
+    this.playlist.emit(pl);
     this.played.emit(id);
   }
 
@@ -70,15 +78,15 @@ export class PlaylistComponent implements OnChanges {
     http.open("POST","https://poopify.fr/api/api.php",true);
     // Lorsque l'execution est terminé
     http.onload = function(){
-        // On parse les résultats du Json (On peut utiliser comme ceci : data.id, data.email, data.password etc...)
-        var data = JSON.parse(http.response);
-        // On regarde si il y a un résultat
-        if(Object.keys(data).length > 0) {
-            for (let index = 0; index < data.length; index++) {
-              const element = data[index];
-              target.sounds.push({bddId: element.id,name : element.name, duration : element.duration, id : element.video_id , addDate : element.add_date});
-            }
+      // On parse les résultats du Json (On peut utiliser comme ceci : data.id, data.email, data.password etc...)
+      var data = JSON.parse(http.response);
+      // On regarde si il y a un résultat
+      if(Object.keys(data).length > 0) {
+        for (let index = 0; index < data.length; index++) {
+          const element = data[index];
+          target.sounds.push({bddId: element.id,name : element.name, duration : element.duration, id : element.video_id , addDate : element.add_date});
         }
+      }
     }
     http.send(params);
   }
@@ -99,16 +107,16 @@ export class PlaylistComponent implements OnChanges {
 
     // Lorsque l'execution est terminé
     http.onload = function(){
-        // On parse les résultats du Json (On peut utiliser comme ceci : data.id, data.email, data.password etc...)
-        var data = JSON.parse(http.response);
-        // On regarde si il y a un résultat
-        if(Object.keys(data).length > 0) {
-          for (let index = 0; index < data.length; index++) {
-            if(data[index].id == target.playlistId){
-              target.playlistName = data[index].name;
-            }
+      // On parse les résultats du Json (On peut utiliser comme ceci : data.id, data.email, data.password etc...)
+      var data = JSON.parse(http.response);
+      // On regarde si il y a un résultat
+      if(Object.keys(data).length > 0) {
+        for (let index = 0; index < data.length; index++) {
+          if(data[index].id == target.playlistId){
+            target.playlistName = data[index].name;
           }
         }
+      }
     }
     http.send(params);
   }

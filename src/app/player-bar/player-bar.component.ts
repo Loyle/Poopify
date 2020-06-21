@@ -9,7 +9,7 @@ import {DatePipe} from '@angular/common';
 export class PlayerBarComponent implements OnInit {
 
 	public YT: any;
-	public videoID = "VPRjCeoBqrI";
+	public videoID = "";
 
 	public player: any;
 	public playerPassiv : any;
@@ -65,7 +65,6 @@ export class PlayerBarComponent implements OnInit {
 
 
 		this.init();
-		this.initTestPlaylist();
 
 		window['onYouTubeIframeAPIReady'] = (e) => {
 			this.YT = window['YT'];
@@ -112,20 +111,22 @@ export class PlayerBarComponent implements OnInit {
 			// On charge la musique precedente
 			if(this.playlistPos > 0) {
 				this.playlistPos--;
-				this.videoID = this.playlist[this.playlistPos];
-				this.loadMusic();
-				this.preloadNext();
-				this.isMusicLoaded = false;
-				this.isPlaying = true;
 			}
 			else {
 				console.log("[PLAYLIST] Playlist is already at the beginning");
-				this.player.seekTo(0);
 			}
-
+			this.videoID = this.playlist[this.playlistPos];
+			this.loadMusic();
+			this.preloadNext();
+			this.isMusicLoaded = false;
+			this.isPlaying = true;
 		}
 	}
 	playMusic(videoID, autoplay = true) : void {
+		if(videoID == "") {
+			return;
+		}
+
 		this.videoID = videoID;
 		this.loadMusic(autoplay);
 		this.preloadNext();
@@ -351,31 +352,26 @@ export class PlayerBarComponent implements OnInit {
 		}
 	}
 
-	setPlaylist(playlist) : void {
+	setPlaylist(playlist, pos = 0) : void {
 		this.playlist = playlist;
+		this.playlistPos = pos;
 	}
 
 	addToPlaylist(videoID : string) : void {
 		this.playlist.push(videoID);
 	}
+	refeshPlaylistPos(song) {
+		for (var i = 0; i <= this.playlist.length; i++) {
+			if(this.playlist[i] == song) {
+				this.playlistPos = i;
+				break;
+			}
+		}
+	}
 
 	addToWaitingList(videoID : string) : void {
 		this.waitingList.push(videoID);
-	}
-
-
-	initTestPlaylist() {
-		this.addToWaitingList("Uus8_DP1Fhg");
-
-		this.addToPlaylist("VPRjCeoBqrI");
-		this.addToPlaylist("du_urI33fuE");
-		this.addToPlaylist("Vujit_MkMt8");
-		this.addToPlaylist("K-865CiZKKE");
-		this.addToPlaylist("kiEJvdiA4yc");
-		this.addToPlaylist("CXBdq6YOv_c");
-		this.addToPlaylist("PGE7RG7wwTc");
-		this.addToPlaylist("p3l7fgvrEKM");
-		this.addToPlaylist("iRA82xLsb_w");
+		this.preloadNext();
 	}
 
 	setPlayerActive(value : boolean) {
@@ -458,7 +454,6 @@ export class PlayerBarComponent implements OnInit {
 			// On parse les résultats du Json (On peut utiliser comme ceci : data.id, data.email, data.password etc...)
 			var data = JSON.parse(http.response);
 
-			console.log('http' + http.response);
 			// On regarde si il y a un résultat
 			if(Object.keys(data).length > 0) {
 				target.removeRecent(data[0].id);

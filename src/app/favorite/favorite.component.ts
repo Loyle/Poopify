@@ -21,6 +21,8 @@ export class FavoriteComponent implements OnInit, OnChanges {
   @Output()
   queue = new EventEmitter<any>();
 
+  @Output() playlist = new EventEmitter<any>();
+
   @Input()
   playlistId! :number;
   constructor() { }
@@ -32,6 +34,12 @@ export class FavoriteComponent implements OnInit, OnChanges {
   }
 
   playSong(id){
+    var pl : string[] = [];
+    this.sounds.forEach(function(value) {
+      // On ajoute les musiques dans la playlist
+      pl.push(value.id);
+    });
+    this.playlist.emit(pl);
     this.played.emit(id);
   }
 

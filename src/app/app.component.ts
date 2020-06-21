@@ -65,14 +65,17 @@ export class AppComponent implements OnInit{
 
   @ViewChild(PlayerBarComponent ) playerBar: PlayerBarComponent ;
   playSong(song){
+    this.playerBar.refeshPlaylistPos(song.id);
     this.playerBar.playMusic(song.id,true);
   }
   closePlayer() {
     this.playerBar.setPlayerActive(false);
   }
+  setPlaylist(pl) {
+    this.playerBar.setPlaylist(pl);
+  }
 
   addToQueue(song){
-    console.log(song);
     this.playerBar.addToWaitingList(song.id);
   }
 
