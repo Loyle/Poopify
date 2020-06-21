@@ -135,7 +135,7 @@ export class YouTubeSearchResultComponent implements OnInit {
     http.send(params);
   }
 
-  playSong(id){
+  playSong(){
     var pl : string[] = [];
     this.played.emit(this.result);
   }
