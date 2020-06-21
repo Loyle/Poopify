@@ -113,7 +113,8 @@ export class PlayerBarComponent implements OnInit {
 				this.playlistPos--;
 			}
 			else {
-				console.log("[PLAYLIST] Playlist is already at the beginning");
+				this.playlistPos = this.playlist.length - 1;
+				console.log("[PLAYLIST] Playlist is already at the beginning => go to the end");
 			}
 			this.videoID = this.playlist[this.playlistPos];
 			this.loadMusic();
@@ -186,29 +187,28 @@ export class PlayerBarComponent implements OnInit {
 		this.player1.setVolume(this.volume);
 		this.player2.setVolume(this.volume);
 		this.playlistPos++;
-
-		if(this.playlist.length > this.playlistPos || this.waitingList.length > 0) {
-			this.pauseAllVideo();
-			this.switchPlayers();
-			this.player.playVideo();
-
-			if(this.waitingList.length > 0) {
-				this.playlistPos--;
-				this.videoID = this.waitingList[0];
-				this.waitingList.shift();
-			}
-			else {
-				this.videoID = this.playlist[this.playlistPos];
-			}
-
-			this.preloadNext();
-			this.isMusicLoaded = false;
-			this.isPlaying = true;
-		}
-		else {
-			this.playlistPos--;
+		if(this.playlist.length <= this.playlistPos) {
+			this.playlistPos = 0;
 			console.log("[PLAYLIST] Playlist is ended");
 		}
+
+		this.pauseAllVideo();
+		this.switchPlayers();
+		this.player.playVideo();
+
+		if(this.waitingList.length > 0) {
+			this.playlistPos--;
+			this.videoID = this.waitingList[0];
+			this.waitingList.shift();
+		}
+		else {
+			this.videoID = this.playlist[this.playlistPos];
+		}
+
+		this.preloadNext();
+		this.isMusicLoaded = false;
+		this.isPlaying = true;
+		
 	}
 	volumeChanged(value) : void {
 		this.player1.setVolume(value);
@@ -226,12 +226,16 @@ export class PlayerBarComponent implements OnInit {
 	}
 
 	preloadNext() : void {
-		if(this.playlist.length > this.playlistPos + 1 || this.waitingList.length > 0) {
+		var toPreload = this.playlistPos + 1;
+		if(this.playlist.length > toPreload) {
+			toPreload = 0;
+		}
+		if(this.playlist.length > toPreload || this.waitingList.length > 0) {
 			if(this.waitingList.length > 0) {
 				var url : string = "http://www.youtube.com/v/" + this.waitingList[0] + "?version=3&autoplay=0";
 			}
 			else {
-				var url : string = "http://www.youtube.com/v/" + this.playlist[this.playlistPos + 1] + "?version=3&autoplay=0";
+				var url : string = "http://www.youtube.com/v/" + this.playlist[toPreload] + "?version=3&autoplay=0";
 			}
 			this.playerPassiv.stopVideo();
 			this.playerPassiv.loadVideoByUrl(url,0,"hd720");
@@ -307,7 +311,7 @@ export class PlayerBarComponent implements OnInit {
 			else {
 				this.playlistPos++;
 				if(this.playlist.length <= this.playlistPos) {
-					return;
+					this.playlistPos = 0;
 				}
 				this.videoID = this.playlist[this.playlistPos];
 			}
