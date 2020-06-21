@@ -205,8 +205,10 @@ export class PlayerBarComponent implements OnInit {
 			this.isMusicLoaded = false;
 			this.isPlaying = true;
 		}
-		else
+		else {
+			this.playlistPos--;
 			console.log("[PLAYLIST] Playlist is ended");
+		}
 	}
 	volumeChanged(value) : void {
 		this.player1.setVolume(value);
@@ -304,6 +306,9 @@ export class PlayerBarComponent implements OnInit {
 			}
 			else {
 				this.playlistPos++;
+				if(this.playlist.length <= this.playlistPos) {
+					return;
+				}
 				this.videoID = this.playlist[this.playlistPos];
 			}
 			this.doFadeOut();
