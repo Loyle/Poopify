@@ -1,9 +1,9 @@
 <div class="player-bar text-center row" (click)="setPlayerActive(true)" (mouseleave)="setPlayerActive(false)" [ngClass]="activePlayer ? 'player-bar-active' : ''">
 	
-	<div class="music-info d-flex align-items-center col-sm-2" [ngClass]="activePlayer ? 'col-12 h-75' : 'col-10'">
+	<div class="music-info d-flex align-items-center col-sm-3 p-lg-1 p-0" [ngClass]="activePlayer ? 'col-12 h-75' : 'col-10'">
 		<div class="h-100 col-12 d-flex align-items-center">
 			<div [ngClass]="activePlayer ? '' : 'd-flex justify-content-left align-items-center'">
-				<img *ngIf="thumbnail" class="thumbnail d-flex d-sm-none d-lg-flex" [ngClass]="activePlayer ? 'col-12 w-100 mt-5' : ''" src="{{thumbnail}}" alt="thumbnail"/>
+				<img *ngIf="thumbnail" class="thumbnail d-flex d-sm-none d-xl-flex" [ngClass]="activePlayer ? 'col-12 w-100 mt-5' : ''" src="{{thumbnail}}" alt="thumbnail"/>
 				<span [ngClass]="activePlayer ? 'mt-5 d-block h4' : ''">{{musicTitle}}</span>
 			</div>
 		</div>
@@ -11,7 +11,7 @@
 
 
 
-	<div class="music-controller col-2 col-sm-8 justify-content-center align-items-center d-flex" [ngClass]="activePlayer ? 'col-12' : 'col-2'">
+	<div class="music-controller col-sm-6 justify-content-center align-items-center d-flex p-lg-1 p-0" [ngClass]="activePlayer ? 'col-12' : 'col-2'">
 
 		<div class="w-100">
 			<div class="controller-button align-items-center d-flex justify-content-center">
@@ -46,7 +46,7 @@
 
 
 
-			<div class="controller-bar align-items-center justify-content-center d-sm-flex" [ngClass]="activePlayer ? 'd-flex' : 'd-none'">
+			<div class="controller-bar align-items-center justify-content-center d-sm-flex p-lg-1 p-0" [ngClass]="activePlayer ? 'd-flex' : 'd-none'">
 				<span class="playerTimes">{{currentTime * 1000 | date:'mm:ss'}}</span>
 				<input #playerStateRange type="range" id="playerStateRange" class="customRange w-75" value="{{currentTime*1000}}" max="{{duration*1000}}" (input)="timeChanged(playerStateRange.value)">
 				<span class="playerTimes">{{duration * 1000 | date:'mm:ss'}}</span>
@@ -54,7 +54,7 @@
 		</div>
 	</div>
 
-	<div class="music-volume align-items-center justify-content-center col-2 d-none d-sm-flex">
+	<div class="music-volume align-items-center justify-content-center col-2 col-sm-3 d-none d-sm-flex">
 		<input #volumeRange type="range" name="volumeRange" class="customRange" value="{{volume}}" (input)="volumeChanged(volumeRange.value)">
 	</div>
 </div>
