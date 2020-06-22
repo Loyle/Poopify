@@ -6,10 +6,9 @@ import {Component, EventEmitter, Input, OnChanges, OnInit, Output} from '@angula
   styleUrls: ['./favorite.component.css']
 })
 export class FavoriteComponent implements OnInit, OnChanges {
-  times = Array(24);
+  minia = Array(24);
   sounds : Array<{bddId : string,name : string, duration : number, id : string , addDate : Date}> = [];
   playlistName = 'Favorite';
-  test;
   i = 0;
 
   @Input()
@@ -48,19 +47,23 @@ export class FavoriteComponent implements OnInit, OnChanges {
   }
 
   run(){
-    if(this.sounds.length != 0){
-      if(this.i > this.sounds.length-1){
-        this.i=0;
-        this.test = this.sounds[this.i].id;
-        ++this.i;
+    for (let index = 0; index < 24; index++) {
+      if(this.sounds.length != 0){
+        if(this.i > this.sounds.length-1){
+          this.i=0;
+          this.minia[index] = this.sounds[this.i].id;
+          ++this.i;
+        }else{
+          this.minia[index] = this.sounds[this.i].id;
+          ++this.i;
+        }
+        ++this.j;
       }else{
-        this.test = this.sounds[this.i].id;
-        ++this.i;
+        this.minia[0] = '';
       }
-    }else{
-      this.test = '';
     }
   }
+
   updateMusic(){
     var http = new XMLHttpRequest();
     // On crée les params post que l'on va envoyer
@@ -88,6 +91,7 @@ export class FavoriteComponent implements OnInit, OnChanges {
           });
         }
       }
+      target.run();
     }
     http.send(params);
   }

@@ -5,11 +5,11 @@ import { Component, OnChanges, OnInit,Output,EventEmitter,Input,SimpleChanges } 
   templateUrl: './playlist.component.html',
   styleUrls: ['./playlist.component.css']
 })
+
 export class PlaylistComponent implements OnChanges {
-  times = Array(24);
+  minia = Array(24);
   sounds : Array<{bddId : string,name : string, duration : number, id : string , addDate : Date}> = [];
   playlistName;
-  test;
   i = 0;
 
   @Input()
@@ -31,17 +31,20 @@ export class PlaylistComponent implements OnChanges {
   OnInit(){}
 
   run(){
-    if(this.sounds.length != 0){
-      if(this.i > this.sounds.length-1){
-        this.i=0;
-        this.test = this.sounds[this.i].id;
-        ++this.i;
+    for (let index = 0; index < 24; index++) {
+      if(this.sounds.length != 0){
+        if(this.i > this.sounds.length-1){
+          this.i=0;
+          this.minia[index] = this.sounds[this.i].id;
+          ++this.i;
+        }else{
+          this.minia[index] = this.sounds[this.i].id;
+          ++this.i;
+        }
+        ++this.j;
       }else{
-        this.test = this.sounds[this.i].id;
-        ++this.i;
+        this.minia[0] = '';
       }
-    }else{
-      this.test = '';
     }
   }
 
@@ -81,12 +84,15 @@ export class PlaylistComponent implements OnChanges {
       // On parse les résultats du Json (On peut utiliser comme ceci : data.id, data.email, data.password etc...)
       var data = JSON.parse(http.response);
       // On regarde si il y a un résultat
+      var test = 0;
       if(Object.keys(data).length > 0) {
         for (let index = 0; index < data.length; index++) {
           const element = data[index];
+          ++test;
           target.sounds.push({bddId: element.id,name : element.name, duration : element.duration, id : element.video_id , addDate : element.add_date});
         }
       }
+      target.run();
     }
     http.send(params);
   }
