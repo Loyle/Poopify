@@ -8,7 +8,7 @@
       </div>
       <ul class="navbar-nav text-center w-100">
 
-        <li class="nav-item d-flex align-items-center justify-content-sm-start justify-content-center" [ngClass]="{'active' : active==='Playlist', 'hover' : hoverHome, '' : !hoverHome}" (click)="goHome()" (mouseenter)="hoverHome = true" (mouseleave)="hoverHome = false">
+        <li class="nav-item d-flex align-items-center justify-content-sm-start justify-content-center" [ngClass]="{'active' : active==='Home', 'hover' : hoverHome, '' : !hoverHome}" (click)="goHome()" (mouseenter)="hoverHome = true" (mouseleave)="hoverHome = false">
           <div class="icon">
             <ng-template *ngIf="active === 'Home' ; then homeActive else homeNotActive"></ng-template>
             <ng-template #homeActive>
@@ -27,7 +27,7 @@
           <span class="menuspan d-sm-block d-none">Home</span>
         </li>
 
-        <li class="nav-item d-flex align-items-center justify-content-sm-start justify-content-center" [ngClass]="{'active' : active==='Playlist', 'hover' : hoverTop, '' : !hoverTop}" (click)="goTop()" (mouseenter)="hoverTop = true" (mouseleave)="hoverTop = false">
+        <li class="nav-item d-flex align-items-center justify-content-sm-start justify-content-center" [ngClass]="{'active' : active==='Top', 'hover' : hoverTop, '' : !hoverTop}" (click)="goTop()" (mouseenter)="hoverTop = true" (mouseleave)="hoverTop = false">
           <div class="icon">
             <ng-template *ngIf="active === 'Top' ; then topActive else topNotActive"></ng-template>
             <ng-template #topActive>
@@ -43,7 +43,7 @@
           </div>
           <span class="menuspan d-sm-block d-none">Top</span>
         </li>
-        <li class="nav-item d-flex align-items-center justify-content-sm-start justify-content-center" [ngClass]="{'active' : active==='Playlist', 'hover' : hoverFav, '' : !hoverFav}" (click)="goFav()" (mouseenter)="hoverFav = true" (mouseleave)="hoverFav = false">
+        <li class="nav-item d-flex align-items-center justify-content-sm-start justify-content-center" [ngClass]="{'active' : active==='Fav', 'hover' : hoverFav, '' : !hoverFav}" (click)="goFav()" (mouseenter)="hoverFav = true" (mouseleave)="hoverFav = false">
           <div class="icon">
             <ng-template *ngIf="active === 'Favorite' ; then favActive else favNotActive"></ng-template>
             <ng-template #favActive>
