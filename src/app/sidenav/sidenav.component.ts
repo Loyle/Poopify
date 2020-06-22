@@ -15,6 +15,10 @@ export class SidenavComponent implements OnChanges {
   private = false;
   isPrivate;
   errorName = false;
+  hoverFav = false;
+  hoverTop = false;
+  hoverSettings = false;
+  hoverHome = false;
   playlists : Array<{name : string, id : number}> = [];
   width;
 
@@ -50,7 +54,7 @@ export class SidenavComponent implements OnChanges {
 
   @Output()
   quit = new EventEmitter<boolean>();
-  
+
   @Output() closePlayerEvent = new EventEmitter();
 
   openSettings(){

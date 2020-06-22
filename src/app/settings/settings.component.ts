@@ -79,6 +79,7 @@ export class SettingsComponent implements OnInit {
   setFadeVal(data){
     this.errorFade = false;
     if(Number(data.target.value) < 20){
+      this.fadeoutVal = data.target.value;
       var http = new XMLHttpRequest();
 
       // On crée les params post que l'on va envoyer

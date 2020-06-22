@@ -116,7 +116,7 @@ input, input:focus{
   cursor: pointer;
 }
 
-.nav-item:hover{
+.hover{
   background-color: var(--hover);
 }
 

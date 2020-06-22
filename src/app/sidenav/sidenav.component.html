@@ -8,8 +8,8 @@
       </div>
       <ul class="navbar-nav text-center w-100">
 
-        <li class="nav-item d-flex align-items-center justify-content-sm-start justify-content-center" [ngClass]="active==='Home' ? 'active' : ''" (click)="goHome()">
-          <div class="icon h-100 align-items-center justify-content-center d-flex">
+        <li class="nav-item d-flex align-items-center justify-content-sm-start justify-content-center" [ngClass]="{'active' : active==='Playlist', 'hover' : hoverHome, '' : !hoverHome}" (click)="goHome()" (mouseenter)="hoverHome = true" (mouseleave)="hoverHome = false">
+          <div class="icon">
             <ng-template *ngIf="active === 'Home' ; then homeActive else homeNotActive"></ng-template>
             <ng-template #homeActive>
               <svg class="bi bi-house-fill" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -27,8 +27,8 @@
           <span class="menuspan d-sm-block d-none">Home</span>
         </li>
 
-        <li class="nav-item d-flex align-items-center justify-content-sm-start justify-content-center" [ngClass]="active==='Top' ? 'active' : ''" (click)="goTop()">
-          <div class="icon h-100 align-items-center justify-content-center d-flex">
+        <li class="nav-item d-flex align-items-center justify-content-sm-start justify-content-center" [ngClass]="{'active' : active==='Playlist', 'hover' : hoverTop, '' : !hoverTop}" (click)="goTop()" (mouseenter)="hoverTop = true" (mouseleave)="hoverTop = false">
+          <div class="icon">
             <ng-template *ngIf="active === 'Top' ; then topActive else topNotActive"></ng-template>
             <ng-template #topActive>
               <svg class="bi bi-grid-fill" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -43,8 +43,8 @@
           </div>
           <span class="menuspan d-sm-block d-none">Top</span>
         </li>
-        <li class="nav-item d-flex align-items-center justify-content-sm-start justify-content-center" [ngClass]="active==='Favorite' ? 'active' : ''" (click)="goFav()">
-          <div class="icon h-100 align-items-center justify-content-center d-flex">
+        <li class="nav-item d-flex align-items-center justify-content-sm-start justify-content-center" [ngClass]="{'active' : active==='Playlist', 'hover' : hoverFav, '' : !hoverFav}" (click)="goFav()" (mouseenter)="hoverFav = true" (mouseleave)="hoverFav = false">
+          <div class="icon">
             <ng-template *ngIf="active === 'Favorite' ; then favActive else favNotActive"></ng-template>
             <ng-template #favActive>
               <svg class="bi bi-heart-fill" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -59,7 +59,7 @@
           </div>
           <span class="menuspan d-sm-block d-none">Favorite</span>
         </li>
-        <li class="nav-item d-flex align-items-center justify-content-center" [ngClass]="{'active' : active==='Playlist', 'dropdown' : dropdownenable, '' : !dropdownenable}" (mouseenter)="dropdownenable=true" (mouseleave)="dropdownenable=false" (click)="playlist()">
+        <li class="nav-item d-flex align-items-center justify-content-center" [ngClass]="{'active' : active==='Playlist', 'dropdown hover' : dropdownenable, '' : !dropdownenable}" (mouseenter)="dropdownenable=true" (mouseleave)="dropdownenable=false" (click)="playlist()">
           <div class="pasopti d-flex align-items-center justify-content-sm-start justify-content-center justify-content-center">
             <div class="icon">
               <ng-template *ngIf="active === 'Playlist' ; then playlistActive else playlistNotActive"></ng-template>
@@ -82,8 +82,8 @@
             </div>
           </div>
         </li>
-        <li class="nav-item d-flex align-items-center justify-content-sm-start justify-content-center" (click)="openSettings()">
-          <div class="icon h-100 align-items-center justify-content-center d-flex">
+        <li class="nav-item d-flex align-items-center justify-content-sm-start justify-content-center" (click)="openSettings()" [ngClass]="hoverSettings ? 'hover' : ''" (mouseenter)="hoverSettings = true" (mouseleave)="hoverSettings = false">
+          <div class="icon">
             <ng-template *ngIf="active === 'Settings' ; then settingsActive else settingsNotActive"></ng-template>
             <ng-template #settingsActive>
               <svg class="bi bi-gear-fill" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">

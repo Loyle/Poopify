@@ -28,6 +28,7 @@
   overflow-y: scroll;
   position: absolute;
   padding: 8vh 0;
+  padding-bottom: 110px;
 }
 
 ::-webkit-scrollbar {
