@@ -43,7 +43,7 @@
           </div>
           <span class="menuspan d-sm-block d-none">Top</span>
         </li>
-        <li class="nav-item d-flex align-items-center justify-content-sm-start justify-content-center" [ngClass]="{'active' : active==='Fav', 'hover' : hoverFav, '' : !hoverFav}" (click)="goFav()" (mouseenter)="hoverFav = true" (mouseleave)="hoverFav = false">
+        <li class="nav-item d-flex align-items-center justify-content-sm-start justify-content-center" [ngClass]="{'active' : active==='Favorite', 'hover' : hoverFav, '' : !hoverFav}" (click)="goFav()" (mouseenter)="hoverFav = true" (mouseleave)="hoverFav = false">
           <div class="icon">
             <ng-template *ngIf="active === 'Favorite' ; then favActive else favNotActive"></ng-template>
             <ng-template #favActive>
