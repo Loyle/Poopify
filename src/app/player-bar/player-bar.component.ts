@@ -228,7 +228,7 @@ export class PlayerBarComponent implements OnInit {
 
 	preloadNext() : void {
 		var toPreload = this.playlistPos + 1;
-		if(this.playlist.length > toPreload) {
+		if(this.playlist.length <= toPreload) {
 			toPreload = 0;
 		}
 		if(this.playlist.length > toPreload || this.waitingList.length > 0) {
