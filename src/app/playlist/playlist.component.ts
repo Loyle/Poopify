@@ -10,7 +10,7 @@ export class PlaylistComponent implements OnChanges {
   minia = Array(24);
   sounds : Array<{bddId : string,name : string, duration : number, id : string , addDate : Date}> = [];
   playlistName;
-  isInPlaylist = true;
+  toggler = true;
   i = 0;
 
   @Input()
