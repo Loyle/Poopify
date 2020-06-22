@@ -14,6 +14,6 @@
     <div class="" [ngClass]="sounds.length == 0 ? 'd-block' : 'd-none'">
       <h4>No music here :(</h4>
     </div>
-    <app-music *ngFor="let sound of sounds;" [sound] = "sound" [accountid] = "accountid" [playlistId]="playlistId" (played)="playSong($event)" (queue)="addToQueue($event)" (update)="updateMusic($event)"></app-music>
+    <app-music *ngFor="let sound of sounds;" [sound] = "sound" [accountid] = "accountid" [isInPlaylist] = "isInPlaylist" [playlistId]="playlistId" (played)="playSong($event)" (queue)="addToQueue($event)" (update)="updateMusic($event)"></app-music>
   </div>
 </div>

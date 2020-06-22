@@ -9,6 +9,7 @@ export class FavoriteComponent implements OnInit, OnChanges {
   minia = Array(24);
   sounds : Array<{bddId : string,name : string, duration : number, id : string , addDate : Date}> = [];
   playlistName = 'Favorite';
+  isInPlaylist = false;
   i = 0;
 
   @Input()

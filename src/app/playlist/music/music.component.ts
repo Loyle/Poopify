@@ -16,6 +16,9 @@ export class MusicComponent implements OnInit {
   @Input()
   sound;
 
+  @Input()
+  isInPlaylist;
+
   @Output()
   played = new EventEmitter<any>();
 
