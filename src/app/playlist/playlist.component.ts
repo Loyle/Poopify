@@ -42,7 +42,6 @@ export class PlaylistComponent implements OnChanges {
           this.minia[index] = this.sounds[this.i].id;
           ++this.i;
         }
-        ++this.j;
       }else{
         this.minia[0] = '';
       }
