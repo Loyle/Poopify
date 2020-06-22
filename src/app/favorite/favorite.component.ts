@@ -58,7 +58,6 @@ export class FavoriteComponent implements OnInit, OnChanges {
           this.minia[index] = this.sounds[this.i].id;
           ++this.i;
         }
-        ++this.j;
       }else{
         this.minia[0] = '';
       }
