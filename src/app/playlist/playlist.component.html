@@ -1,0 +1,19 @@
+<div class="playlistContainer w-100 h-100">
+  <div class="top">
+      <div class="row">
+        <div class="cover w-100"></div>
+          <div class="col-md-1 col-3 p-0 border" *ngFor="let sound of minia;index as i">
+            <img src="https://img.youtube.com/vi/{{sound}}/0.jpg" class="img-fluid" [ngClass]="i>23 ? 'd-none':'d-block'">
+          </div>
+      </div>
+  </div>
+  <div class="title ml-sm-5 pl-sm-5 w-100 d-flex align-items-center shadow">
+    <h1 class="font-weight-bold ml-3">{{playlistName}}</h1>
+  </div>
+  <div class="content mt-sm-4 p-5 ml-sm-5">
+    <div class="" [ngClass]="sounds.length == 0 ? 'd-block' : 'd-none'">
+      <h4>No music here :(</h4>
+    </div>
+    <app-music *ngFor="let sound of sounds;" [sound] = "sound" [accountid] = "accountid" [isInPlaylist] = "toggler" [playlistId]="playlistId" (played)="playSong($event)" (queue)="addToQueue($event)" (update)="updateMusic($event)"></app-music>
+  </div>
+</div>

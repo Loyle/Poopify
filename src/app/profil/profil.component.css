@@ -1,0 +1,77 @@
+*{
+  transition-duration: 0.1s;
+}
+
+.mask{
+  z-index: 2000;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgba(0,0,0,0.3);
+}
+
+.profilContainer{
+  background-color: var(--bg-secondary);
+}
+
+.leaveBtn{
+  color: var(--text-color);
+  position: absolute;
+  z-index: 10
+}
+
+.modifyBtn{
+  color: var(--text-color);
+}
+
+.leaveBtn:hover{
+  color: white;
+}
+
+.profil-pic{
+  width: 200px;
+  height: 200px;
+}
+
+.profilinfo{
+  color: var(--text-color);
+}
+
+input{
+  background-color: transparent;
+  border: none;
+  box-shadow: none;
+  color: var(--text-color);
+  text-align: right;
+  font-size: 25px;
+}
+
+.profilpiccontainer{
+  height: 100%;
+}
+
+.modif{
+  border: 1px solid var(--accent-color);
+  border-radius: 50px;
+}
+
+@media screen and (max-width: 768px){
+  .profil-pic{
+    width: 90px;
+    height: 90px;
+  }
+
+  .profilpiccontainer{
+    height: auto;
+  }
+
+  input{
+    font-size: 15px;
+    text-align: center;
+  }
+
+  h5{
+    font-size: 0.9em;
+  }
+
+}

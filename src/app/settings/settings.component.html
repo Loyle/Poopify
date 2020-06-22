@@ -1,0 +1,47 @@
+<div *ngIf="openSetting" class="container-fluid mask h-100 d-flex align-items-center justify-content-center position-absolute">
+  <div class="container h-75 rounded-lg settings p-0">
+    <div class="leaveBtn mt-3 ml-3 position-absolute" (click)="leaveSettings()">
+      <svg class="bi bi-x" width="2em" height="2em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd" d="M11.854 4.146a.5.5 0 010 .708l-7 7a.5.5 0 01-.708-.708l7-7a.5.5 0 01.708 0z" clip-rule="evenodd"/>
+        <path fill-rule="evenodd" d="M4.146 4.146a.5.5 0 000 .708l7 7a.5.5 0 00.708-.708l-7-7a.5.5 0 00-.708 0z" clip-rule="evenodd"/>
+      </svg>
+    </div>
+    <div class="row h-100 w-100 m-0">
+      <div class="col-sm-8 offset-sm-2 col-12 p-0 settingsParam">
+        <div class="container">
+          <ng-template *ngIf="settingsField === 'General' ; then General else Quality"></ng-template>
+          <ng-template #General>
+            <div class="p-sm-5 pt-5 px-1">
+              <h2>General</h2>
+              <hr>
+              <h5 class="mt-5">Theme :</h5>
+              <div class="custom-control custom-switch d-flex ml-sm-5 mt-2 pl-2">
+                <p>Enable dark mode</p>
+                <input type="checkbox" class="custom-control-input" id="customSwitches" [checked]="darkMode" (click)="changeTheme()">
+                <label class="custom-control-label  ml-5" for="customSwitches"></label>
+              </div>
+                <h5 class="mt-sm-5 mt-3">Song Fade :</h5>
+                <div class="custom-control d-flex ml-sm-5 mt-2 pl-2">
+                  <span>Set Fade effect value :</span>
+                  <input type="text" class="fadeVal rounded mx-sm-3 mx-1" value="{{fadeoutVal}}" (keyup)="setFadeVal($event)"/>
+                  <span> seconds</span>
+                  <small *ngIf="errorFade" class="text-danger p-2">Only between 0 and 20</small>
+                </div>
+            </div>
+          </ng-template>
+
+          <ng-template #Quality>
+
+          </ng-template>
+        </div>
+      </div>
+      <div class="col-12 settingsMenu d-flex p-0 align-items-center">
+        <ul class="navbar-nav w-100 rounded justify-content-center align-items-center position-absolute">
+          <li class="nav-item p-sm-3 p-2 font-weight-bold d-flex align-items-center shadow mx-sm-4 justify-content-center"><h3 class="m-0 d-sm-block d-none">General</h3><h5 class="m-0 d-sm-none d-block">General</h5></li>
+          <li class="nav-item p-sm-3 p-2 font-weight-bold d-flex align-items-center shadow mx-sm-4 justify-content-center"><h3 class="m-0 d-sm-block d-none">Quality</h3><h5 class="m-0 d-sm-none d-block">Quality</h5></li>
+          <li class="nav-item p-sm-3 p-2 font-weight-bold d-flex align-items-center shadow mx-sm-4 justify-content-center"><h3 class="m-0 d-sm-block d-none">Confidentiality</h3><h5 class="m-0 d-sm-none d-block">Confidentiality</h5></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

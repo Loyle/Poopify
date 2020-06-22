@@ -1,34 +1,15 @@
-
-.wraper{
-  height: 100%;
-}
-
-.playlistTile{
+.home{
   position: absolute;
-}
-
-.hoverinfo{
-  transition-duration: 0.3s;
-  position: absolute;
-  top: 0;
-  opacity: 0;
-  background-color: rgb(200,200,200,0.4);
-}
-
-.playlistTile:hover .hoverinfo{
-  opacity: 1;
-}
-
-.results{
   background-color: var(--bg-secondary);
-  color: var(--text-color);
-  left: 0;
   top: 0;
-  z-index: 6;
+  left: 0;
+  bottom: 0px;
   overflow-y: scroll;
-  position: absolute;
-  padding: 8vh 0;
-  padding-bottom: 110px;
+  overflow-x: hidden;
+}
+
+.margin{
+  margin-bottom: 100px;
 }
 
 ::-webkit-scrollbar {

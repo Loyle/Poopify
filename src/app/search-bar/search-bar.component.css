@@ -1,0 +1,51 @@
+*{
+  transition-duration: 0.5s;
+}
+
+.serchBar{
+  height: 7vh;
+  background-color: var(--bg-secondary);
+  position: absolute;
+  z-index: 10;
+}
+
+.searchZone{
+  margin-left: 90px;
+  width: 10em;
+  height: 4vh;
+  cursor: pointer;
+}
+
+.textField{
+  width: 5em;
+  border: none;
+  outline: none;
+  color: var(--text-color);
+  text-shadow: 0 0 0 gray;
+  cursor: pointer;
+}
+
+.active{
+  width: 25em;
+}
+
+.active .textField{
+  width: 20em;
+}
+
+@media screen and (max-width: 576px){
+    .searchZone{
+        margin-left: 10px;
+        width: 10em;
+        height: 4vh;
+        cursor: pointer;
+    }
+
+    .active{
+        width: 18em;
+    }
+
+    .active .textField{
+        width: 13em;
+    }
+}

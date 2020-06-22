@@ -1,0 +1,172 @@
+<div class="container-fluid h-100" (mouseenter)="closePlayer()">
+  <div class="sidenav">
+    <nav>
+      <div class="profil d-flex justify-content-center mt-sm-5 align-items-center">
+        <div class="profil-pic rounded-circle justify-content-center d-flex align-items-center" (click)=openProfil()>
+          <span class="more d-sm-block d-none">Go to profil</span>
+        </div>
+      </div>
+      <ul class="navbar-nav text-center w-100">
+
+        <li class="nav-item d-flex align-items-center justify-content-sm-start justify-content-center" [ngClass]="{'active' : active==='Home', 'hover' : hoverHome, '' : !hoverHome}" (click)="goHome()" (mouseenter)="hoverHome = true" (mouseleave)="hoverHome = false">
+          <div class="icon justify-content-center align-items-center d-flex">
+            <ng-template *ngIf="active === 'Home' ; then homeActive else homeNotActive"></ng-template>
+            <ng-template #homeActive>
+              <svg class="bi bi-house-fill" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M8 3.293l6 6V13.5a1.5 1.5 0 01-1.5 1.5h-9A1.5 1.5 0 012 13.5V9.293l6-6zm5-.793V6l-2-2V2.5a.5.5 0 01.5-.5h1a.5.5 0 01.5.5z" clip-rule="evenodd"/>
+                <path fill-rule="evenodd" d="M7.293 1.5a1 1 0 011.414 0l6.647 6.646a.5.5 0 01-.708.708L8 2.207 1.354 8.854a.5.5 0 11-.708-.708L7.293 1.5z" clip-rule="evenodd"/>
+              </svg>
+            </ng-template>
+            <ng-template lass="icon" #homeNotActive>
+              <svg class="bi bi-house" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" class="test" d="M2 13.5V7h1v6.5a.5.5 0 00.5.5h9a.5.5 0 00.5-.5V7h1v6.5a1.5 1.5 0 01-1.5 1.5h-9A1.5 1.5 0 012 13.5zm11-11V6l-2-2V2.5a.5.5 0 01.5-.5h1a.5.5 0 01.5.5z" clip-rule="evenodd"/>
+                <path fill-rule="evenodd" class="test" d="M7.293 1.5a1 1 0 011.414 0l6.647 6.646a.5.5 0 01-.708.708L8 2.207 1.354 8.854a.5.5 0 11-.708-.708L7.293 1.5z" clip-rule="evenodd"/>
+              </svg>
+            </ng-template>
+          </div>
+          <span class="menuspan d-sm-block d-none">Home</span>
+        </li>
+
+        <li class="nav-item d-flex align-items-center justify-content-sm-start justify-content-center" [ngClass]="{'active' : active==='Top', 'hover' : hoverTop, '' : !hoverTop}" (click)="goTop()" (mouseenter)="hoverTop = true" (mouseleave)="hoverTop = false">
+          <div class="icon justify-content-center align-items-center d-flex">
+            <ng-template *ngIf="active === 'Top' ; then topActive else topNotActive"></ng-template>
+            <ng-template #topActive>
+              <svg class="bi bi-grid-fill" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M1 2.5A1.5 1.5 0 012.5 1h3A1.5 1.5 0 017 2.5v3A1.5 1.5 0 015.5 7h-3A1.5 1.5 0 011 5.5v-3zm8 0A1.5 1.5 0 0110.5 1h3A1.5 1.5 0 0115 2.5v3A1.5 1.5 0 0113.5 7h-3A1.5 1.5 0 019 5.5v-3zm-8 8A1.5 1.5 0 012.5 9h3A1.5 1.5 0 017 10.5v3A1.5 1.5 0 015.5 15h-3A1.5 1.5 0 011 13.5v-3zm8 0A1.5 1.5 0 0110.5 9h3a1.5 1.5 0 011.5 1.5v3a1.5 1.5 0 01-1.5 1.5h-3A1.5 1.5 0 019 13.5v-3z" clip-rule="evenodd"/>
+              </svg>
+            </ng-template>
+            <ng-template #topNotActive>
+              <svg class="bi bi-grid" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M1 2.5A1.5 1.5 0 012.5 1h3A1.5 1.5 0 017 2.5v3A1.5 1.5 0 015.5 7h-3A1.5 1.5 0 011 5.5v-3zM2.5 2a.5.5 0 00-.5.5v3a.5.5 0 00.5.5h3a.5.5 0 00.5-.5v-3a.5.5 0 00-.5-.5h-3zm6.5.5A1.5 1.5 0 0110.5 1h3A1.5 1.5 0 0115 2.5v3A1.5 1.5 0 0113.5 7h-3A1.5 1.5 0 019 5.5v-3zm1.5-.5a.5.5 0 00-.5.5v3a.5.5 0 00.5.5h3a.5.5 0 00.5-.5v-3a.5.5 0 00-.5-.5h-3zM1 10.5A1.5 1.5 0 012.5 9h3A1.5 1.5 0 017 10.5v3A1.5 1.5 0 015.5 15h-3A1.5 1.5 0 011 13.5v-3zm1.5-.5a.5.5 0 00-.5.5v3a.5.5 0 00.5.5h3a.5.5 0 00.5-.5v-3a.5.5 0 00-.5-.5h-3zm6.5.5A1.5 1.5 0 0110.5 9h3a1.5 1.5 0 011.5 1.5v3a1.5 1.5 0 01-1.5 1.5h-3A1.5 1.5 0 019 13.5v-3zm1.5-.5a.5.5 0 00-.5.5v3a.5.5 0 00.5.5h3a.5.5 0 00.5-.5v-3a.5.5 0 00-.5-.5h-3z" clip-rule="evenodd"/>
+              </svg>
+            </ng-template>
+          </div>
+          <span class="menuspan d-sm-block d-none">Top</span>
+        </li>
+        <li class="nav-item d-flex align-items-center justify-content-sm-start justify-content-center" [ngClass]="{'active' : active==='Favorite', 'hover' : hoverFav, '' : !hoverFav}" (click)="goFav()" (mouseenter)="hoverFav = true" (mouseleave)="hoverFav = false">
+          <div class="icon justify-content-center align-items-center d-flex">
+            <ng-template *ngIf="active === 'Favorite' ; then favActive else favNotActive"></ng-template>
+            <ng-template #favActive>
+              <svg class="bi bi-heart-fill" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z" clip-rule="evenodd"/>
+              </svg>
+            </ng-template>
+            <ng-template #favNotActive>
+              <svg class="bi bi-heart" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M8 2.748l-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 01.176-.17C12.72-3.042 23.333 4.867 8 15z" clip-rule="evenodd"/>
+              </svg>
+            </ng-template>
+          </div>
+          <span class="menuspan d-sm-block d-none">Favorite</span>
+        </li>
+        <li class="nav-item d-flex align-items-center justify-content-center" [ngClass]="{'active' : active==='Playlist', 'dropdown hover' : dropdownenable, '' : !dropdownenable}" (mouseenter)="dropdownenable=true" (mouseleave)="dropdownenable=false" (click)="playlist()">
+          <div class="pasopti d-flex align-items-center justify-content-sm-start justify-content-center">
+            <div class="icon justify-content-center align-items-center d-flex">
+              <ng-template *ngIf="active === 'Playlist' ; then playlistActive else playlistNotActive"></ng-template>
+              <ng-template #playlistActive>
+                <svg class="bi bi-collection-play-fill" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                  <path fill-rule="evenodd" d="M1.5 14.5A1.5 1.5 0 010 13V6a1.5 1.5 0 011.5-1.5h13A1.5 1.5 0 0116 6v7a1.5 1.5 0 01-1.5 1.5h-13zm5.265-7.924A.5.5 0 006 7v5a.5.5 0 00.765.424l4-2.5a.5.5 0 000-.848l-4-2.5zM2 3a.5.5 0 00.5.5h11a.5.5 0 000-1h-11A.5.5 0 002 3zm2-2a.5.5 0 00.5.5h7a.5.5 0 000-1h-7A.5.5 0 004 1z" clip-rule="evenodd"/>
+                </svg>
+              </ng-template>
+              <ng-template #playlistNotActive>
+                <svg class="bi bi-collection-play" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                  <path fill-rule="evenodd" d="M14.5 13.5h-13A.5.5 0 011 13V6a.5.5 0 01.5-.5h13a.5.5 0 01.5.5v7a.5.5 0 01-.5.5zm-13 1A1.5 1.5 0 010 13V6a1.5 1.5 0 011.5-1.5h13A1.5 1.5 0 0116 6v7a1.5 1.5 0 01-1.5 1.5h-13zM2 3a.5.5 0 00.5.5h11a.5.5 0 000-1h-11A.5.5 0 002 3zm2-2a.5.5 0 00.5.5h7a.5.5 0 000-1h-7A.5.5 0 004 1z" clip-rule="evenodd"/>
+                  <path fill-rule="evenodd" d="M6.258 6.563a.5.5 0 01.507.013l4 2.5a.5.5 0 010 .848l-4 2.5A.5.5 0 016 12V7a.5.5 0 01.258-.437z" clip-rule="evenodd"/>
+                </svg>
+              </ng-template>
+            </div>
+            <span class="menuspan d-sm-block d-none">Playlist</span>
+            <div class="dropdown-container d-sm-block d-none">
+              <li class="nav-item align-items-center justify-content-center" *ngFor="let playlist of playlists; index as i" [ngClass]="i>1 ? 'd-none' : 'd-flex'" (click)="goPlaylist(playlist.id)">{{playlist.name}}</li>
+              <li class="nav-item d-flex align-items-center justify-content-center" (click)="toggleNewPlaylist = true">&#8226;&#8226;&#8226;</li>
+            </div>
+          </div>
+        </li>
+        <li class="nav-item d-flex align-items-center justify-content-sm-start justify-content-center" (click)="openSettings()" [ngClass]="hoverSettings ? 'hover' : ''" (mouseenter)="hoverSettings = true" (mouseleave)="hoverSettings = false">
+          <div class="icon justify-content-center align-items-center d-flex">
+            <ng-template *ngIf="active === 'Settings' ; then settingsActive else settingsNotActive"></ng-template>
+            <ng-template #settingsActive>
+              <svg class="bi bi-gear-fill" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M9.405 1.05c-.413-1.4-2.397-1.4-2.81 0l-.1.34a1.464 1.464 0 01-2.105.872l-.31-.17c-1.283-.698-2.686.705-1.987 1.987l.169.311c.446.82.023 1.841-.872 2.105l-.34.1c-1.4.413-1.4 2.397 0 2.81l.34.1a1.464 1.464 0 01.872 2.105l-.17.31c-.698 1.283.705 2.686 1.987 1.987l.311-.169a1.464 1.464 0 012.105.872l.1.34c.413 1.4 2.397 1.4 2.81 0l.1-.34a1.464 1.464 0 012.105-.872l.31.17c1.283.698 2.686-.705 1.987-1.987l-.169-.311a1.464 1.464 0 01.872-2.105l.34-.1c1.4-.413 1.4-2.397 0-2.81l-.34-.1a1.464 1.464 0 01-.872-2.105l.17-.31c.698-1.283-.705-2.686-1.987-1.987l-.311.169a1.464 1.464 0 01-2.105-.872l-.1-.34zM8 10.93a2.929 2.929 0 100-5.86 2.929 2.929 0 000 5.858z" clip-rule="evenodd"/>
+              </svg>
+            </ng-template>
+            <ng-template #settingsNotActive>
+              <svg class="bi bi-gear" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M8.837 1.626c-.246-.835-1.428-.835-1.674 0l-.094.319A1.873 1.873 0 014.377 3.06l-.292-.16c-.764-.415-1.6.42-1.184 1.185l.159.292a1.873 1.873 0 01-1.115 2.692l-.319.094c-.835.246-.835 1.428 0 1.674l.319.094a1.873 1.873 0 011.115 2.693l-.16.291c-.415.764.42 1.6 1.185 1.184l.292-.159a1.873 1.873 0 012.692 1.116l.094.318c.246.835 1.428.835 1.674 0l.094-.319a1.873 1.873 0 012.693-1.115l.291.16c.764.415 1.6-.42 1.184-1.185l-.159-.291a1.873 1.873 0 011.116-2.693l.318-.094c.835-.246.835-1.428 0-1.674l-.319-.094a1.873 1.873 0 01-1.115-2.692l.16-.292c.415-.764-.42-1.6-1.185-1.184l-.291.159A1.873 1.873 0 018.93 1.945l-.094-.319zm-2.633-.283c.527-1.79 3.065-1.79 3.592 0l.094.319a.873.873 0 001.255.52l.292-.16c1.64-.892 3.434.901 2.54 2.541l-.159.292a.873.873 0 00.52 1.255l.319.094c1.79.527 1.79 3.065 0 3.592l-.319.094a.873.873 0 00-.52 1.255l.16.292c.893 1.64-.902 3.434-2.541 2.54l-.292-.159a.873.873 0 00-1.255.52l-.094.319c-.527 1.79-3.065 1.79-3.592 0l-.094-.319a.873.873 0 00-1.255-.52l-.292.16c-1.64.893-3.433-.902-2.54-2.541l.159-.292a.873.873 0 00-.52-1.255l-.319-.094c-1.79-.527-1.79-3.065 0-3.592l.319-.094a.873.873 0 00.52-1.255l-.16-.292c-.892-1.64.902-3.433 2.541-2.54l.292.159a.873.873 0 001.255-.52l.094-.319z" clip-rule="evenodd"/>
+                <path fill-rule="evenodd" d="M8 5.754a2.246 2.246 0 100 4.492 2.246 2.246 0 000-4.492zM4.754 8a3.246 3.246 0 116.492 0 3.246 3.246 0 01-6.492 0z" clip-rule="evenodd"/>
+              </svg>
+            </ng-template>
+          </div>
+          <span class="menuspan d-sm-block d-none">Settings</span>
+        </li>
+        <li class="nav-item d-sm-flex d-none align-items-center position-absolute w-100" (click)=logout()>
+          <div class="icon">
+            <svg class="bi bi-power" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd" d="M5.578 4.437a5 5 0 104.922.044l.5-.866a6 6 0 11-5.908-.053l.486.875z" clip-rule="evenodd"/>
+              <path fill-rule="evenodd" d="M7.5 8V1h1v7h-1z" clip-rule="evenodd"/>
+            </svg>
+          </div>
+          <span class="menuspan">Leave</span>
+        </li>
+      </ul>
+    </nav>
+  </div>
+  <div class="modal" [ngClass]="toggleNewPlaylist ? 'd-block' : 'd-none'">
+    <div class="modal-dialog h-100 py-0 my-0 align-items-center d-flex" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Playlists</h5>
+          <button type="button" class="close" data-dismiss="modal" (click)="quitter()">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <ng-template *ngIf="addNew ; then newPlaylist else List"></ng-template>
+          <ng-template #List>
+            <div class="playlistList">
+              <div *ngFor="let playlist of playlists; index as i" class="row px-5">
+                <div class="col-10 offset-1">
+                  <li class="playlistName d-flex align-items-center justify-content-center p-0" (click)="goPlaylist(playlist.id)">{{playlist.name}}</li>
+                </div>
+                <div class="col-1 p-0">
+                  <svg class="bi bi-x delete" width="4vh" height="4vh" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg" (click)="removePlaylist(playlist)">
+                    <path fill-rule="evenodd" d="M11.854 4.146a.5.5 0 010 .708l-7 7a.5.5 0 01-.708-.708l7-7a.5.5 0 01.708 0z" clip-rule="evenodd"/>
+                    <path fill-rule="evenodd" d="M4.146 4.146a.5.5 0 000 .708l7 7a.5.5 0 00.708-.708l-7-7a.5.5 0 00-.708 0z" clip-rule="evenodd"/>
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </ng-template>
+          <ng-template #newPlaylist>
+            <div class="newPlaylist py-4">
+              <div class="pl-2">
+                <span>Playlist title</span><input type="text" class="textField ml-3 px-2 h-100 rounded" placeholder="MyNewPlaylist" id="input" (keyup)="getPlaylistName($event)">
+                <small *ngIf="errorName" class="text-danger p-2">No name</small>
+              </div>
+              <div class="custom-control custom-switch d-flex pl-2 mt-2">
+                <span>Set private</span>
+                <input type="checkbox" class="custom-control-input" id="customSwitches" [checked]="private" (click)="changePrivacy()">
+                <label class="custom-control-label  ml-5" for="customSwitches"></label>
+              </div>
+            </div>
+          </ng-template>
+          <li class="h-25 d-flex align-items-center justify-content-center" (click)="addNew = true">
+            <ng-template *ngIf="addNew ; then submitBtn else addBtn"></ng-template>
+            <ng-template #addBtn>
+              <svg class="bi bi-plus-circle" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M8 3.5a.5.5 0 01.5.5v4a.5.5 0 01-.5.5H4a.5.5 0 010-1h3.5V4a.5.5 0 01.5-.5z" clip-rule="evenodd"/>
+                <path fill-rule="evenodd" d="M7.5 8a.5.5 0 01.5-.5h4a.5.5 0 010 1H8.5V12a.5.5 0 01-1 0V8z" clip-rule="evenodd"/>
+                <path fill-rule="evenodd" d="M8 15A7 7 0 108 1a7 7 0 000 14zm0 1A8 8 0 108 0a8 8 0 000 16z" clip-rule="evenodd"/>
+              </svg>
+            </ng-template>
+            <ng-template #submitBtn>
+              <svg class="bi bi-check" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg" (click)="addPlaylist()">
+                <path fill-rule="evenodd" d="M13.854 3.646a.5.5 0 010 .708l-7 7a.5.5 0 01-.708 0l-3.5-3.5a.5.5 0 11.708-.708L6.5 10.293l6.646-6.647a.5.5 0 01.708 0z" clip-rule="evenodd"/>
+              </svg>
+            </ng-template>
+          </li>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

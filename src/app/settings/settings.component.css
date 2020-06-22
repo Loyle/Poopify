@@ -1,0 +1,90 @@
+*{
+  transition-duration: 0.1s;
+}
+
+.mask{
+  z-index: 2000;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgba(0,0,0,0.3);
+}
+
+.settings{
+  transition-duration: 0.4s;
+  -webkit-box-shadow: 0px 0px 40px 9px rgba(0,0,0,0.75);
+  -moz-box-shadow: 0px 0px 40px 9px rgba(0,0,0,0.75);
+  box-shadow: 0px 0px 40px 9px rgba(0,0,0,0.50);
+  background-color: var(--bg-secondary);
+}
+
+.settingsMenu{
+  color: var(--text-color);
+}
+
+hr{
+  background-color: var(--text-color);
+}
+
+.fadeVal{
+  background-color: transparent;
+  border: 1px solid  var(--text-color);
+  color: var(--text-color);
+  text-shadow: 0 0 0 var(--text-color);
+  text-align: right;
+  width: 40px;
+  outline: none;
+  cursor: pointer;
+}
+
+.fadeVal:hover{
+  border: 1px solid var(--accent-color);
+}
+
+.settingsParam{
+  color: var(--text-color);
+}
+
+.leaveBtn{
+  z-index: 10;
+  color: var(--text-color);
+}
+
+.leaveBtn:hover{
+  z-index: 10;
+  color: white;
+}
+
+.navbar-nav{
+  bottom: 0;
+  height: 60px;
+  flex-direction: row;
+  background-color: var(--bg-primary);
+}
+
+.nav-item{
+  height: 50px;
+  bottom: 0;
+  cursor: pointer;
+}
+
+.nav-item:hover{
+  background-color: var(--hover);
+}
+
+
+.custom-control-input:checked~.custom-control-label::before {
+    color: #fff;
+    border: none;
+    background-color: var(--accent-color);
+}
+
+@media screen and (max-width: 576px){
+  h5{
+    font-size: 1em;
+  }
+
+  span{
+    font-size: 0.8em;
+  }
+}

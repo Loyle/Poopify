@@ -1,34 +1,43 @@
 
-.wraper{
-  height: 100%;
-}
-
-.playlistTile{
+.playlistContainer{
   position: absolute;
-}
-
-.hoverinfo{
-  transition-duration: 0.3s;
-  position: absolute;
-  top: 0;
-  opacity: 0;
-  background-color: rgb(200,200,200,0.4);
-}
-
-.playlistTile:hover .hoverinfo{
-  opacity: 1;
-}
-
-.results{
   background-color: var(--bg-secondary);
-  color: var(--text-color);
-  left: 0;
   top: 0;
-  z-index: 6;
+  left: 0;
+  bottom: 0px;
   overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+
+.top{
+  height: 20vw;
+  overflow: hidden;
+}
+
+.title{
+  position: sticky;
+  top: 7vh;
+  height: 10vh;
+  z-index: 4;
+  color: var(--text-color);
+  background-color: var(--bg-secondary);
+}
+
+.cover{
+  height: 20vw;
+  width: 100%;
   position: absolute;
-  padding: 8vh 0;
-  padding-bottom: 110px;
+  z-index: 4;
+  top: 0;
+  left: 0;
+  background: rgb(19,19,19);
+  background: linear-gradient(0deg, var(--bg-secondary) 20%, rgba(80,80,80,0.6) 100%);
+}
+
+.content{
+  margin-bottom: 100px;
+  color: var(--text-color);
 }
 
 ::-webkit-scrollbar {

@@ -1,0 +1,62 @@
+.logscreen{
+  background-color: var(--bg-secondary);
+  position: absolute;
+  z-index: 1000;
+  transition-duration: 0.5s;
+  color: var(--text-color);
+}
+
+.fade{
+  opacity: 0;
+}
+
+.logging{
+  background-color: var(--bg-primary);
+}
+
+input, input:focus{
+  background-color: transparent;
+  border: none;
+  box-shadow: none;
+  line-height: 2;
+  outline: none;
+  color: #B0B1B3;
+  position: relative;
+}
+
+.form-group::after{
+  content: '';
+  position: absolute;
+  left: 5%;
+  height: 2px;
+  background-color: grey;
+  width: 90%;
+  transition: 0.3s;
+}
+
+.form-group:hover::after{
+  background-color: var(--accent-color);
+}
+
+
+.spinner-border{
+  color: var(--accent-color);
+  width: 100px;
+  height: 100px;
+}
+
+
+.createAccount{
+  cursor: pointer;
+  color: var(--text-color);
+}
+
+.createAccount:hover{
+  color: var(--accent-color);
+}
+
+@media screen and (max-width : 758px){
+  h4{
+    font-size: 1em;
+  }
+}
